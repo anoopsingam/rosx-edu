@@ -271,7 +271,7 @@ $app->setTitle("New Admission");
                         </div>
                         <div class="col-md-4">
                             <label for="previousschool_address">Previous School Address</label>
-                            <textarea name="previousschool_address" id="previousschool_address" cols="30" rows="5"
+                            <textarea name="previousschool_address" id="previousschool_address" cols="30" rows="6"
                                 class="form-control m-1"></textarea>
 
                         </div>
@@ -284,23 +284,24 @@ $app->setTitle("New Admission");
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="studentbank">Student Bank Name</label><input class="form-control m-1"
-                                type="text" name="studentbank" id="studentbank" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="acc_no">Student Bank Account No.</label><input class="form-control m-1"
+                        <div class="col-md-4">
+                            <label for="studentbank">Student Bank Name</label><input class="form-control"
+                                type="text" name="studentbank" id="studentbank" />                                                                
+                            </div>
+                            <div class="col-md-4">
+                                <label for="acc_no">Student Bank Account No.</label><input class="form-control"
                                 type="text" name="acc_no" id="acc_no" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="ifsc">IFSC</label><input class="form-control m-1" type="text" name="ifsc"
+                                </div>
+                                <div class="col-md-4">
+                                <label for="ifsc">IFSC</label><input class="form-control" type="text" name="ifsc"
                                 id="ifsc" />
+
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="bankaddress">Bank Address</label><input class="form-control m-1" type="text"
-                                name="bankaddress" id="bankaddress" />
+                        <div class="row">
+                            <div class="col-md-6">                                
+                                <label for="bankaddress">Bank Address</label>
+                                <textarea name="bankaddress" class="form-control m-1" id="" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
@@ -374,24 +375,24 @@ $app->setTitle("New Admission");
                     <div class="row">
                         <div class="col-md-4">
                             <label for="admission_date">Admission Date</label><input class="form-control m-1"
-                                type="text" name="admission_date" id="admission_date" />
+                                type="date" name="admission_date" id="admission_date" />
                         </div>
                         <div class="col-md-4">
-                            <label for="present_class">Present Class</label><input class="form-control m-1" type="text"
-                                name="present_class" id="present_class" />
+                            <label for="present_class">Present Class</label>
+                            <?= func::classlist("present_class") ?>
                         </div>
                         <div class="col-md-4">
-                            <label for="present_section">Present Section</label><input class="form-control m-1"
-                                type="text" name="present_section" id="present_section" />
+                            <label for="present_section">Present Section</label>
+                            <?= func::sectionList("present_section") ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="academic_year">Academic Year</label><input class="form-control m-1" type="text"
-                                name="academic_year" id="academic_year" />
+                            <label for="academic_year">Academic Year</label>
+                            <?= func::academicYear("academic_year") ?>
                         </div>
                         <div class="col-md-4">
-                            <label for="sts_no">STS No</label><input class="form-control m-1" type="text" name="sts_no"
+                            <label for="sts_no">STS No.</label><input class="form-control m-1" type="text" name="sts_no"
                                 id="sts_no" />
                         </div>
                         <div class="col-md-4">
