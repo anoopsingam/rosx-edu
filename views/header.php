@@ -258,7 +258,12 @@ $user=login::UserInfo($_SESSION['username']);
                                     <span class="sidenav-normal"> New Admission </span>
                                 </a>
                             </li>
-
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Admission/QuickAdmission")?>">
+                                    <span class="sidenav-mini-icon"> Q </span>
+                                    <span class="sidenav-normal"> Quick Admission </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
