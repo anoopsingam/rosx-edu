@@ -166,3 +166,10 @@ new Chart(ctx2, {
         },
     },
 });
+
+
+//Full admissions button toggle fo temporary address
+function copyAddress(){
+    const tempaddress = document.getElementById("permanentaddress");
+    getElementById("temporaryaddress").value = tempaddress.value;
+}
