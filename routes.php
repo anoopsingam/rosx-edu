@@ -13,6 +13,11 @@ Login Routes
 */
 require_once("{$_SERVER['DOCUMENT_ROOT']}/routes/Auth.php");
 
+/**
+ * Admission
+ */
+require_once("{$_SERVER['DOCUMENT_ROOT']}/routes/Admission.php");
+
 /* 
 Error Routes
 */

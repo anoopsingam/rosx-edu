@@ -8,7 +8,7 @@ class database
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
-    private $database_name = "hms";
+    private $database_name = "rosx_edu";
 
     public function __construct()
     {

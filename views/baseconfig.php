@@ -1,16 +1,15 @@
 <?php
-require_once 'header.php';
-$app->setTitle("Home")
-?>
-<?php 
-require_once 'footer.php';
-?>
-
-//sub
-<?php
 require_once './views/header.php';
-$app->setTitle("Add Show")
+$app->setTitle("Page Title");
 ?>
-<?php 
-require_once './views/footer.php';
+<div class="card shadow-lg m-3">
+    <div class="card-header">
+        <button class="btn btn-primary">New Admission</button>
+    </div>
+    <div class="card-body">
+
+    </div>
+</div>
+<?php       
+    require_once './views/footer.php';
 ?>
