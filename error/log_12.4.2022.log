@@ -1,0 +1,18 @@
+Ip Address : 127.0.0.1 - April 12, 2022, 2:59 pm
+Error Message : Unknown column 'cahier' in 'field list'
+file path: C:\laragon\www\thimpu\model\order\UpdatePayment.php
+User Meassage: Error While Updating the payment of Order : 100002 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 12, 2022, 3:00 pm
+Error Message : Unknown column 'cahier' in 'field list'
+file path: C:\laragon\www\thimpu\model\order\UpdatePayment.php
+User Meassage: Error While Updating the payment of Order : 100002 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 12, 2022, 6:24 pm
+Error Message : Incorrect integer value: '' for column 'discount_issued' at row 6
+file path: C:\laragon\www\thimpu\model\order\UpdatePayment.php
+User Meassage: Error While Updating the payment of Order : 100004 
+User ID: admin
+-------------------------

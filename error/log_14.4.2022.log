@@ -1,0 +1,42 @@
+Ip Address : 127.0.0.1 - April 14, 2022, 12:39 am
+Error Message : Field 'bev_id' doesn't have a default value
+file path: C:\laragon\www\thimpu\model\beverage\BeverageController.php
+User Meassage: Error While Adding the Beverage 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:39 am
+Error Message : Field 'bev_id' doesn't have a default value
+file path: C:\laragon\www\thimpu\model\beverage\BeverageController.php
+User Meassage: Error While Adding the Beverage 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:41 am
+Error Message : Truncated incorrect DOUBLE value: '6257205a3df08'
+file path: C:\laragon\www\thimpu\model\beverage\BeverageController.php
+User Meassage: Error While Updating the Beverage 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:09 pm
+Error Message : Incorrect integer value: '' for column 'order_no' at row 1
+file path: C:\laragon\www\thimpu\model\bar\BarOrderController.php
+User Meassage: Error While Adding the Order :  
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:11 pm
+Error Message : Field 'tax_amount' doesn't have a default value
+file path: C:\laragon\www\thimpu\model\bar\BarOrderController.php
+User Meassage: Error While Adding the Order : 100001 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:53 pm
+Error Message : Table 'hms.bar_orders' doesn't exist
+file path: C:\laragon\www\thimpu\views\bar\ManageBarOrder.php
+User Meassage: Cant able to Process the request for fetching the data of Food  
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 14, 2022, 12:53 pm
+Error Message : Table 'hms.bar_orders' doesn't exist
+file path: C:\laragon\www\thimpu\views\bar\ManageBarOrder.php
+User Meassage: Cant able to Process the request for fetching the data of Food  
+User ID: admin
+-------------------------

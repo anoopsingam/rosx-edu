@@ -1,0 +1,90 @@
+Ip Address : 127.0.0.1 - April 8, 2022, 1:47 am
+Error Message : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==st' at line 1
+file path: C:\laragon\www\thimpu\views\customer\manageCustomer.php
+User Meassage: Cant able to Process the request for fetching the data of Guests 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 1:47 am
+Error Message : Unknown column 'x' in 'where clause'
+file path: C:\laragon\www\thimpu\views\customer\manageCustomer.php
+User Meassage: Cant able to Process the request for fetching the data of Guests 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 1:47 am
+Error Message : Unknown column 'x' in 'where clause'
+file path: C:\laragon\www\thimpu\views\customer\manageCustomer.php
+User Meassage: Cant able to Process the request for fetching the data of Guests 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 3:24 am
+Error Message : Incorrect integer value: '' for column 'guest_id' at row 1
+file path: C:\laragon\www\thimpu\model\booking\BookingController.php
+User Meassage: Error While Adding the Booking 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 9:11 am
+Error Message : Table 'hms.guest' doesn't exist
+file path: C:\laragon\www\thimpu\views\booking\managebooking.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 9:11 am
+Error Message : Table 'hms.guest' doesn't exist
+file path: C:\laragon\www\thimpu\views\booking\managebooking.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 9:12 am
+Error Message : Table 'hms.guest' doesn't exist
+file path: C:\laragon\www\thimpu\views\booking\managebooking.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 9:12 am
+Error Message : Unknown column 'g.guest_id' in 'where clause'
+file path: C:\laragon\www\thimpu\views\booking\managebooking.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 11:07 am
+Error Message : Incorrect integer value: '' for column 'room_id' at row 3
+file path: C:\laragon\www\thimpu\model\booking\BookingController.php
+User Meassage: Error While Updating the Guest Information
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 1:18 pm
+Error Message : 
+file path: C:\laragon\www\thimpu\model\order\OrderController.php
+User Meassage: Error While Adding the Guest 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 3:03 pm
+Error Message : Incorrect integer value: 'KOT-00001' for column 'kot_no' at row 1
+file path: C:\laragon\www\thimpu\model\order\OrderController.php
+User Meassage: Error While Adding the Guest 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 3:07 pm
+Error Message : Duplicate entry 'ORD-00001' for key 'order_no'
+file path: C:\laragon\www\thimpu\model\order\OrderController.php
+User Meassage: Error While Adding the Guest 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 3:14 pm
+Error Message : Incorrect integer value: 'NULL' for column 'room_no' at row 1
+file path: C:\laragon\www\thimpu\model\order\OrderController.php
+User Meassage: Error While Adding the Guest 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 3:51 pm
+Error Message : Incorrect integer value: '' for column 'order_no' at row 1
+file path: C:\laragon\www\thimpu\model\order\OrderController.php
+User Meassage: Error While Adding the Guest 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 8, 2022, 4:39 pm
+Error Message : Table 'hms.service_orders' doesn't exist
+file path: C:\laragon\www\thimpu\views\serviceOrder\ManageServiceOrder.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------

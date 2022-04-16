@@ -1,0 +1,30 @@
+Ip Address : 127.0.0.1 - April 5, 2022, 1:12 pm
+Error Message : Unknown column 'tax_description' in 'field list'
+file path: C:\laragon\www\thimpu\model\tax\Controller.php
+User Meassage: Error While Adding the Tax
+User ID: 
+-------------------------
+Ip Address : 127.0.0.1 - April 5, 2022, 2:04 pm
+Error Message : Table 'hms.ax' doesn't exist
+file path: C:\laragon\www\thimpu\views\tax\manage.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 5, 2022, 2:04 pm
+Error Message : Table 'hms.ax' doesn't exist
+file path: C:\laragon\www\thimpu\views\tax\manage.php
+User Meassage: Cant able to Process the request for fetching the data of ROOMs 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 5, 2022, 2:31 pm
+Error Message : Table 'hms.tx' doesn't exist
+file path: C:\laragon\www\thimpu\views\tax\manage.php
+User Meassage: Cant able to Process the request for fetching the data of Tax 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 5, 2022, 5:01 pm
+Error Message : Unknown column 'cat_dec' in 'field list'
+file path: C:\laragon\www\thimpu\model\food\FoodCategoryController.php
+User Meassage: Error While Adding the Food Category
+User ID: admin
+-------------------------
