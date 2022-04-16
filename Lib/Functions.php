@@ -52,7 +52,7 @@ class func{
         echo"<option value='2029-2030'>2029-2030</option>\n";
         echo"</select>";
     }
-    static function sectionList(){
+    static function sectionList(string $section){
         echo "<select class='form-control m-1' name='$section'>\n";
         echo"<option value=''>Select Section </option>\n";
         echo"<option value='A'>A</option>\n";
