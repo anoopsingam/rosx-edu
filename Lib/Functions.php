@@ -70,4 +70,84 @@ class func{
         echo"</select>";
     }
 
+    /**
+     * Function to fetch new Student ID
+     * @return string StudentId
+     */
+    static function getStudentId(){
+        $db=new database();
+        $conn=$db->conn;
+        $app=new app();
+        $sql = "SELECT * FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stu_id = ++$row['studentid'];
+        } else {
+            $stu_id = $app->short_name."00001";
+        }
+        return $stu_id;
+    }
+    
+    /**
+     * Function to fetch new Enrollment No
+     * @return string Enrollment No
+     */
+    static function getEnrollementNo(){
+        $db=new database();
+        $conn=$db->conn;
+        $app=new app();
+        $sql = "SELECT * FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stu_id = ++$row['enrollment_no'];
+        } else {
+            $stu_id = "ROSXE00001";
+        }
+        return $stu_id;
+    }
+
+    /**
+     * Function to fetch new Application No
+     * @return string Application No
+     */
+    static function getApplicationNo(){
+        $db=new database();
+        $conn=$db->conn;
+        $app=new app();
+        $sql = "SELECT * FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stu_id = ++$row['app_no'];
+        } else {
+            $stu_id = "APL00001";
+        }
+        return $stu_id;
+    }
+
+    /**
+     *  Function to Fetch Student Details
+     * @param string $student_id
+     * @return object Student Details
+     */
+    static function getStudentDetails(string $student_id){
+        $db=new database();
+        $conn=$db->conn;
+       if($student_id!=null){
+        $sql = "SELECT * FROM `student_enrollment` WHERE `studentid`='$student_id'";
+        $result = mysqli_query($conn,$sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_object();
+            $student_details = $row;
+        } else {
+            $student_details = null;
+        }
+        return $student_details;
+       }else{
+              return null;
+       }
+    }
+
 }
