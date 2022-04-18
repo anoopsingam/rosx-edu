@@ -1,0 +1,6 @@
+Ip Address : 127.0.0.1 - April 18, 2022, 11:37 pm
+Error Message : Unknown column 'enrollment_no' in 'field list'
+file path: C:\laragon\www\rosx\model\admission\FullAdmissionController.php
+User Meassage: Cant able to Process the request for Adding the Student , Student Name : Allen Osborne 
+User ID: admin
+-------------------------

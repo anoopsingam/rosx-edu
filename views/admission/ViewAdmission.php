@@ -1,14 +1,58 @@
 <?php
-require_once './views/header.php';
-$app->setTitle("New Admission");
+require '././config.php';
+$app=new app();
+$db=new database();
+$data=func::getStudentDetails(decrypt($ern));
+// print_r($data);
 ?>
-<div class="card shadow-lg m-3">
-    <div class="card-header">
-        <button class="btn btn-primary">New Admission</button>
-    </div>
-    <div class="card-body">
-        <form id="form1" name="form1" method="post" action="<?= func::href("/FullAdmissionController/new/".uniqid())?>">
-        <?= set_csrf();?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?= $app->setTitle("View Admission -".$data->enrollment_no);?>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row text-center mt-5">
+            <div class="col-md-2">
+                <?= $app->SetLogo('160','160');?>
+            </div>
+            <div class="col-md-8">
+                <h3 class="display-4 font-weigth-bolder"><?= $app->name;?> </h3>
+                <h6 class=""><?= $app->address;?> </h6>
+                <h6 class=""><?= "Contact No : ".$app->phone.'   Email : '.$app->email;?> </h6>
+                <br>
+                <!--<h6 class="h6">Contact No:  E-Mail:</h6>-->
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+        <div class="card m-3">
+            <div class="card-header text-center bg-warning text-dark">
+                <h4 class="m-3 text-uppercase">Admission Acknowledgement</h4>
+            </div>
+            <div class="card-body">
+            <table class="table table-border text-center">
+                <tr>
+                   
+                    <td>
+                        <h5 class="mt-5">Application No : <span class="text-danger h4"><?= $data->app_no?></span> </h5>
+                    </td>
+                    <td>
+                        <h5 class="mt-2">Enrollment No : <br>
+                            <p class="m-3"> <?= includes::barcode($data->enrollment_no)?></p>
+                        </h5>
+                    </td>
+                </tr>
+            </table>
             <div class="card mb-3">
                 <div class="card-header">
                     <h3 class="text-dark">Student Details </h3>
@@ -16,63 +60,57 @@ $app->setTitle("New Admission");
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="student_name">Student Name</label><input class="form-control m-1" type="text"
-                                name="student_name" id="student_name" />
+                            <label for="student_name">Student Name</label>
+                            <h5><?= $data->student_name?></h5>
                         </div>
                         <div class="col-md-3">
                             <label for="gender">Gender</label>
-                            <select name="gender" class="form-control m-1">
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+                            <h5><?= $data->gender?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="dob">DOB</label><input class="form-control m-1" type="date" name="dob"
-                                id="dob" />
+                            <label for="dob">DOB</label>
+                            <h5><?= $data->dob?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="studentemail">Student E-mail</label><input class="form-control m-1" type="email"
-                                name="studentemail" id="studentemail" />
+                            <label for="studentemail">Student E-mail</label>
+                            <h5><?= $data->studentemail?></h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class=" mb-3">
                 <div class="card-header">
                     <h3 class="text-dark">Father Details </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="father_name">Father Name</label><input class="form-control m-1" type="text"
-                                name="father_name" id="father_name" />
+                            <label for="father_name">Father Name</label>
+                            <h5><?= $data->father_name?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="fatheremail">Father E-mail</label><input class="form-control m-1" type="email"
-                                name="fatheremail" id="fatheremail" />
+                            <label for="fatheremail">Father E-mail</label>
+                            <h5><?= $data->fatheremail?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="fathereducation">Father Education</label><input class="form-control m-1"
-                                type="text" name="fathereducation" id="fathereducation" />
+                            <label for="fathereducation">Father Education</label>
+                            <h5><?= $data->fathereducation?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="total_family">Total Members in Family</label><input class="form-control m-1"
-                                type="number" name="total_family" id="total_family" />
+                            <label for="total_family">Total Members in Family</label>
+                            <h5><?= $data->total_family?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="fatheroccupation">Father Occupation</label><input class="form-control m-1"
-                                type="text" name="fatheroccupation" id="fatheroccupation" />
+                            <label for="fatheroccupation">Father Occupation</label>
+                            <h5><?= $data->fatheroccupation?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="father_number">Father Number</label><input class="form-control m-1"
-                                type="number" name="father_number" id="father_number" />
+                            <label for="father_number">Father Number</label><h5><?= $data->father_number?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="father_income">Father Income</label><input class="form-control m-1"
-                                type="number" name="father_income" id="father_income" />
+                            <label for="father_income">Father Income</label><h5><?= $data->father_income?></h5>
                         </div>
                     </div>
                 </div>
@@ -403,31 +441,11 @@ $app->setTitle("New Admission");
                     </div>
                 </div>
             </div>
-            <!-- <div class="card mb-3">
-                <div class="card-header">
-                    <h3 class="text-dark">Office Related Details </h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="remarks">Remarks</label><input class="form-control m-1" type="text"
-                                name="remarks" id="remarks" />
-                        </div>
-                        <div class="col-md-4">
-                            <label for="status">Status</label><input class="form-control m-1" type="text" name="status"
-                                id="status" />
-                        </div>
-                        <div class="col-md-4">
-                            <label for="login_id">Login Id</label><input class="form-control m-1" type="text"
-                                name="login_id" id="login_id" />
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <button type="submit" class="btn btn-danger">Enroll Student</button>
-        </form>
+            </div>
+
+        </div>
     </div>
-</div>
-<?php   
-    require_once './views/footer.php';
-?>
+
+</body>
+
+</html>

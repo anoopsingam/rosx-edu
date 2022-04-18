@@ -152,7 +152,7 @@
             // document so the table can retain its base styling. Note that we have
             // to use string manipulation as IE won't allow elements to be created
             // in the host document and then appended to the new window.
-            var head = '<title>' + exportInfo.title + ' Stark Tech Innovative Labs LLP</title>';
+            var head = '<title>' + exportInfo.title + ' | RoborosX Multitech Solutions LLP</title>';
             $('style, link').each(function() {
                 head += _styleToAbs(this);
             });
@@ -165,10 +165,10 @@
 
             // Inject the table and other surrounding information
             win.document.body.innerHTML =
-                '<center><h3>' + exportInfo.title + '</h3><p>Powered By Stark Tech Innovative Labs LLP</p></center>' +
+                '<center><h4>' + exportInfo.title + '</h4><p>Powered By RosX Edu Soft,RoborosX Multitech Solutions LLP</p></center>' +
                 '<div>' + (exportInfo.messageTop || '') + '</div>' +
                 html +
-                '<div><br><h6>&copy;2021 Software Designed & Developed by Stark Tech Innovative Labs LLP</h6></div>';
+                '<div><br><h6>&copy;2022 Software Designed & Developed by RoborosX Multitech Solutions LLP</h6></div>';
 
             $(win.document.body).addClass('dt-print-view');
 

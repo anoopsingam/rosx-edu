@@ -4,7 +4,7 @@ $app->setTitle("Quick Admission");
 ?>
 <div class="card m-2">
     <div class="card-header">
-        <span class="btn btn-info">Quick Admission</span>
+        <span class="btn btn-primary btn-lg">Admission Approval</span>
     </div>
     <div class="card-body">
 
@@ -40,6 +40,7 @@ $app->setTitle("Quick Admission");
     <?php 
 
         if(isset($_POST['filter_result'])){
+
             $sql="SELECT * FROM `student_enrollment` where `status`='WAITING'";
 
             if(!empty($_POST['from_date'])){
@@ -57,7 +58,6 @@ $app->setTitle("Quick Admission");
             if(!empty($_POST['user_id'])){
                 $sql .= " AND `login_id`='".$_POST['user_id']."'";
             }
-        
         }else{
          
             $sql="SELECT * FROM `student_enrollment` where `status`='WAITING'";
@@ -67,14 +67,17 @@ $app->setTitle("Quick Admission");
 
 
         <?= includes::Datatables("Admission Approval List","0,1,2,3,4,5,6,7,8,9","landscape")?>
-        <div style="overflow: auto;">
-        <table id="example" class="display table table-xl-responsive" style="width:100%">
+        <table id="example" class="display" style="width:100%">
             <thead>
                 <tr class="bg-dark text-light">
                     <th>Application No.</th>
                     <th>Enrollment ID</th>
                     <th>Student Name</th>
+                    <th>D.O.B</th>
                     <th>Father Name</th>
+                    <th>Mother Name</th>
+                    <th>Father Mobile No</th>
+                    <th>SATS NO</th>
                     <th>Class - Section</th>
                     <th>Academic Year</th>
                     <th>Action</th>
@@ -87,7 +90,11 @@ $app->setTitle("Quick Admission");
             echo"<td>".$data->app_no."</td>";
             echo"<td>".$data->enrollment_no."</td>";
             echo"<td>".$data->student_name."</td>";
+            echo"<td>".$data->dob."</td>";
             echo"<td>".$data->father_name."</td>";
+            echo"<td>".$data->mother_name."</td>";
+            echo"<td>".$data->father_number."</td>";
+            echo"<td>".$data->sts_no."</td>";
             echo"<td>".$data->present_class." - ".$data->present_section."</td>";
             echo"<td>".$data->academic_year."</td>";
             echo "<td>";
@@ -100,7 +107,6 @@ $app->setTitle("Quick Admission");
             ?>
             </tbody>
         </table>
-        </div>
     </div>
 </div>
 <?php   

@@ -9,7 +9,7 @@
                     if($student_id!=null && is_csrf_valid()){
                         //Sanitize the input
                         $token=mysqli_real_escape_string($conn,$student_id);
-                       
+                        
                         $PushData=[
                             "student_name"=>$student_name,
                            

@@ -70,6 +70,11 @@ class func{
         echo"</select>";
     }
 
+
+   
+    
+
+
     /**
      * Function to fetch new Student ID
      * @return string StudentId
@@ -78,7 +83,7 @@ class func{
         $db=new database();
         $conn=$db->conn;
         $app=new app();
-        $sql = "SELECT * FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
+        $sql = "SELECT max(studentid) FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
         $result = mysqli_query($conn,$sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -132,11 +137,14 @@ class func{
      * @param string $student_id
      * @return object Student Details
      */
-    static function getStudentDetails(string $student_id){
+    static function getStudentDetails(string $student_id='', string $status=''){
         $db=new database();
         $conn=$db->conn;
        if($student_id!=null){
-        $sql = "SELECT * FROM `student_enrollment` WHERE `studentid`='$student_id'";
+        $sql = "SELECT * FROM `student_enrollment` WHERE `studentid`='$student_id' OR `enrollment_no`='$student_id' OR `app_no`='$student_id'";
+        if(!empty($status)){
+            $sql .= " AND `status`='$status'";
+        }
         $result = mysqli_query($conn,$sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_object();
@@ -148,6 +156,28 @@ class func{
        }else{
               return null;
        }
+    }
+
+
+    /**
+     *
+     * Function to fecth all admin users from database
+     *@return html SelectList 
+     * 
+     */
+    static function adminList( string $name="users" ){
+        $db=new database();
+        $conn=$db->conn;
+        $result = mysqli_query($conn,"SELECT * FROM `users` WHERE `user_type`='ADMIN'");
+        if ($result->num_rows > 0) {
+            echo "<select class='form-control m-1' name='$name'>\n";
+            echo"<option value=''>Select User </option>\n";
+            while($row = $result->fetch_assoc()){
+                echo"<option value='".$row['username']."'>".$row['name']."</option>\n";
+            }
+            echo "</select>";
+        }
+
     }
 
 }

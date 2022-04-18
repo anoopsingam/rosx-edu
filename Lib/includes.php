@@ -3,6 +3,15 @@
 class includes
 {
 
+    static function barcodeJs(){
+        echo "<script src='".url::myurl().'/web_assets/brcd.js'."'></script>";
+    }
+
+    static function barcode(string $id='',string $size='50',bool $display=true){
+        echo '<img src="'.url::myurl().'/barcode/'.$size.'/'.$id.'/true" alt="'.$id.'">';
+
+    }
+
     public static function css(){
         $files=[
             "nucleo-icons.css",
