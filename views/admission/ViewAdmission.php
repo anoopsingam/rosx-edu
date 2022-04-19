@@ -17,7 +17,6 @@ $data=func::getStudentDetails(decrypt($ern));
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <?= $app->setTitle("View Admission -".$data->enrollment_no);?>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row text-center mt-5">
@@ -107,7 +106,8 @@ $data=func::getStudentDetails(decrypt($ern));
                             <h5><?= $data->fatheroccupation?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="father_number">Father Number</label><h5><?= $data->father_number?></h5>
+                            <label for="father_number">Father Number</label>
+                            <h5><?= $data->father_number?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="father_income">Father Income</label><h5><?= $data->father_income?></h5>
@@ -122,30 +122,32 @@ $data=func::getStudentDetails(decrypt($ern));
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="mother_name">Mother Name</label><input class="form-control m-1" type="text"
-                                name="mother_name" id="mother_name" />
+                            <label for="mother_name">Mother Name</label>                            
+                            <h5><?= $data->mother_name?></h5>
+
                         </div>
                         <div class="col-md-4">
-                            <label for="mothereducation">Mother Education</label><input class="form-control m-1"
-                                type="text" name="mothereducation" id="mothereducation" />
+                            <label for="mothereducation">Mother Education</label>                            
+                            <h5><?= $data->mothereducation?></h5>
+
                         </div>
                         <div class="col-md-4">
-                            <label for="motheroccupation">Mother Occupation</label><input class="form-control m-1"
-                                type="text" name="motheroccupation" id="motheroccupation" />
+                            <label for="motheroccupation">Mother Occupation</label>
+                            <h5><?= $data->motheroccupation?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="mother_income">Mother Income</label><input class="form-control m-1"
-                                type="number" name="mother_income" id="mother_income" />
+                            <label for="mother_income">Mother Income</label>
+                            <h5><?= $data->mother_income?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="mother_number">Mother Number</label><input class="form-control m-1"
-                                type="number" name="mother_number" id="mother_number" />
+                            <label for="mother_number">Mother Number</label>
+                            <h5><?= $data->mother_number?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="motheremail">Mother E-mail</label><input class="form-control m-1" type="email"
-                                name="motheremail" id="motheremail" />
+                            <label for="motheremail">Mother E-mail</label>
+                            <h5><?= $data->motheremail?></h5>
                         </div>
                     </div>
                 </div>
@@ -157,34 +159,34 @@ $data=func::getStudentDetails(decrypt($ern));
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="guardian_name">Guardian Name</label><input class="form-control m-1" type="text"
-                                name="guardian_name" id="guardian_name" />
+                            <label for="guardian_name">Guardian Name</label>
+                            <h5><?= $data->guardian_name?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="guardian_mobile">Guardian Mobile</label><input class="form-control m-1"
-                                type="number" name="guardian_mobile" id="guardian_mobile" />
+                            <label for="guardian_mobile">Guardian Mobile</label>
+                            <h5><?= $data->guardian_mobile?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="guardianeducation">Guardian Education</label><input class="form-control m-1"
-                                type="text" name="guardianeducation" id="guardianeducation" />
+                            <label for="guardianeducation">Guardian Education</label>
+                            <h5><?= $data->guardianeducation?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="guardian_income">Guardian Income</label><input class="form-control m-1"
-                                type="number" name="guardian_income" id="guardian_income" />
+                            <label for="guardian_income">Guardian Income</label>
+                            <h5><?= $data->guardian_income?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="guardianemail">Guardian E-mail</label><input class="form-control m-1"
-                                type="email" name="guardianemail" id="guardianemail" />
+                            <label for="guardianemail">Guardian E-mail</label>
+                            <h5><?= $data->guardianemail?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="guardian_relation">Guardian Relation</label><input class="form-control m-1"
-                                type="text" name="guardian_relation" id="guardian_relation" />
+                            <label for="guardian_relation">Guardian Relation</label>
+                            <h5><?= $data->guardian_relation?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="guardianoccupation">Guardian Occupation</label><input class="form-control m-1"
-                                type="text" name="guardianoccupation" id="guardianoccupation" />
+                            <label for="guardianoccupation">Guardian Occupation</label>
+                            <h5><?= $data->guardianoccupation?></h5>
                         </div>
                     </div>
                 </div>
@@ -197,26 +199,16 @@ $data=func::getStudentDetails(decrypt($ern));
                     <div class="row">
                         <div class="col-md-4">
                             <label for="permanentaddress">Permanent Address</label>
-                            <textarea name="permanentaddress" id="permanentaddress" cols="30" rows="5"
-                                class="form-control m-1"></textarea>
-
+                            <h5><?= $data->permanentaddress?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="temporaryaddress">Temporary Address</label>
-                            <textarea name="temporaryaddress" id="temporaryaddress" cols="30" rows="5"
-                                class="form-control m-1"></textarea>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" onclick="copyAddress()" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Same as Permanent Address
-                                </label>
-                            </div>
-
+                            <h5><?= $data->temporaryaddress?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="guardianaddress">Guardian Address</label>
-                            <textarea name="guardianaddress" id="guardianaddress" cols="30" rows="5"
-                                class="form-control m-1"></textarea>
-                        </div>
+                            <h5><?= $data->guardianaddress?></h5>
+                       </div>
                     </div>
                 </div>
             </div>
@@ -228,55 +220,43 @@ $data=func::getStudentDetails(decrypt($ern));
                     <div class="row">
                         <div class="col-md-4">
                             <label for="nationality">Nationality</label>
-                            <select name="nationality" class="form-control m-1" id="">
-                                <option value="">Select Nationality</option>
-                                <option value="INDIAN">INDIAN</option>
-                                <option value="OTHERS">OTHERS</option>
-                            </select>
+                            <h5><?= $data->nationality?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="religion">Religion</label><select name="religion" class="form-control m-1"
-                                id="">
-                                <option value="">Select religion</option>
-                                <option value="HINDU">HINDU</option>
-                                <option value="MUSLIM">MUSLIM</option>
-                                <option value="CHRISTIAN">CHRISTIAN</option>
-                                <option value="BUDDHA">BUDDHA</option>
-                                <option value="JAIN">JAIN</option>
-                                <option value="OTHERS">OTHERS</option>
-                            </select>
+                            <label for="religion">Religion</label>
+                            <h5><?= $data->religion?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="caste">Caste</label><input class="form-control m-1" type="text" name="caste"
-                                id="caste" />
+                            <label for="caste">Caste</label>
+                            <h5><?= $data->caste?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="subcaste">Subcaste</label><input class="form-control m-1" type="text"
-                                name="subcaste" id="subcaste" />
+                            <label for="subcaste">Subcaste</label>
+                            <h5><?= $data->subcaste?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="birthplace">Birthplace</label><input class="form-control m-1" type="text"
-                                name="birthplace" id="birthplace" />
+                            <label for="birthplace">Birthplace</label>
+                            <h5><?= $data->birthplace?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="taluk">Taluk</label><input class="form-control m-1" type="text" name="taluk"
-                                id="taluk" />
+                            <label for="taluk">Taluk</label>
+                            <h5><?= $data->taluk?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="district">District</label><input class="form-control m-1" type="text"
-                                name="district" id="district" />
+                            <label for="district">District</label>
+                            <h5><?= $data->district?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="village">Village</label><input class="form-control m-1" type="text"
-                                name="village" id="village" />
+                            <label for="village">Village</label>
+                            <h5><?= $data->village?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="mothertongue">Mother Tongue</label><input class="form-control m-1" type="text"
-                                name="mothertongue" id="mothertongue" />
+                            <label for="mothertongue">Mother Tongue</label>
+                            <h5><?= $data->mothertongue?></h5>
                         </div>
                     </div>
                 </div>
@@ -289,30 +269,19 @@ $data=func::getStudentDetails(decrypt($ern));
                     <div class="row">
                         <div class="col-md-4">
                             <label for="previousclass">Previous Class</label>
-                            <?= func::classlist("previousclass")?> <br>
+                            <h5><?= $data->previousclass?></h5>
                             <label for="admissionclass">Admission Class</label>
-                            <?= func::classlist("admissionclass")?>
+                            <h5><?= $data->admissionclass?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="previousschool">Previous School</label><input class="form-control m-1"
-                                type="text" name="previousschool" id="previousschool" /> <br>
+                            <label for="previousschool">Previous School</label>
+                            <h5><?= $data->previousschool?></h5>
                             <label for="medium_c">Medium</label>
-                            <select name="medium_c" class="form-control m-1" id="">
-                                <option value="">Select Medium</option>
-                                <option value="ENGLISH">ENGLISH</option>
-                                <option value="KANNADA">KANNADA</option>
-                                <option value="HINDI">HINDI</option>
-                                <option value="URDU">URDU</option>
-                                <option value="TAMIL">TAMIL</option>.0
-                                <option value="TELUGU">TELUGU</option>
-                                <option value="OTHERS">OTHERS</option>
-                            </select>
+                            <h5><?= $data->medium_c?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="previousschool_address">Previous School Address</label>
-                            <textarea name="previousschool_address" id="previousschool_address" cols="30" rows="6"
-                                class="form-control m-1"></textarea>
-
+                            <h5><?= $data->previousschool_address?></h5>
                         </div>
                     </div>
                 </div>
@@ -324,23 +293,22 @@ $data=func::getStudentDetails(decrypt($ern));
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="studentbank">Student Bank Name</label><input class="form-control"
-                                type="text" name="studentbank" id="studentbank" />                                                                
+                            <label for="studentbank">Student Bank Name</label>
+                            <h5><?= $data->studentbank?></h5>
                             </div>
                             <div class="col-md-4">
-                                <label for="acc_no">Student Bank Account No.</label><input class="form-control"
-                                type="text" name="acc_no" id="acc_no" />
+                                <label for="acc_no">Student Bank Account No.</label>
+                                <h5><?= $data->acc_no?></h5>
                                 </div>
                                 <div class="col-md-4">
-                                <label for="ifsc">IFSC</label><input class="form-control" type="text" name="ifsc"
-                                id="ifsc" />
-
+                                <label for="ifsc">IFSC</label>
+                                <h5><?= $data->ifsc?></h5>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">                                
                                 <label for="bankaddress">Bank Address</label>
-                                <textarea name="bankaddress" class="form-control m-1" id="" cols="30" rows="5"></textarea>
+                                <h5><?= $data->bankaddress?></h5>
                         </div>
                     </div>
                 </div>
@@ -352,56 +320,52 @@ $data=func::getStudentDetails(decrypt($ern));
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="studentaadhar">Student Aadhar</label><input class="form-control m-1" type="text"
-                                name="studentaadhar" id="studentaadhar" />
+                            <label for="studentaadhar">Student Aadhar</label>
+                            <h5><?= $data->studentaadhar?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="fatheraadhar">Father Aadhar</label><input class="form-control m-1" type="text"
-                                name="fatheraadhar" id="fatheraadhar" />
+                            <label for="fatheraadhar">Father Aadhar</label>
+                            <h5><?= $data->fatheraadhar?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="motheraadhar">Mother Aadhar</label><input class="form-control m-1" type="text"
-                                name="motheraadhar" id="motheraadhar" />
+                            <label for="motheraadhar">Mother Aadhar</label>
+                            <h5><?= $data->motheraadhar?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="studentcastenumber">Student Caste Certificate No.</label><input
-                                class="form-control m-1" type="text" name="studentcastenumber"
-                                id="studentcastenumber" />
+                            <label for="studentcastenumber">Student Caste Certificate No.</label>
+                            <h5><?= $data->studentcastenumber?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="studentincomenumber">Student Income Certificate No.</label><input
-                                class="form-control m-1" type="text" name="studentincomenumber"
-                                id="studentincomenumber" />
+                            <label for="studentincomenumber">Student Income Certificate No.</label>
+                            <h5><?= $data->studentincomenumber?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="rationcard">Ration Card</label><input class="form-control m-1" type="text"
-                                name="rationcard" id="rationcard" />
+                            <label for="rationcard">Ration Card</label>
+                            <h5><?= $data->rationcard?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="fathercastenumber">Father Caste Certificate No.</label><input
-                                class="form-control m-1" type="text" name="fathercastenumber" id="fathercastenumber" />
+                            <label for="fathercastenumber">Father Caste Certificate No.</label>
+                            <h5><?= $data->fathercastenumber?></h5>
                         </div>
                         <div class="col-md-3">
-                            <label for="fatherincomenumber">Father Income Certificate No.</label><input
-                                class="form-control m-1" type="text" name="fatherincomenumber"
-                                id="fatherincomenumber" />
+                            <label for="fatherincomenumber">Father Income Certificate No.</label>
+                            <h5><?= $data->fatherincomenumber?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="mothercastenumber">Mother Caste Certificate No.</label><input
-                                class="form-control m-1" type="text" name="mothercastenumber" id="mothercastenumber" />
+                            <label for="mothercastenumber">Mother Caste Certificate No.</label>
+                            <h5><?= $data->mothercastenumber?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="motherincomenumber">Mother Income Certificate No.</label><input
-                                class="form-control m-1" type="text" name="motherincomenumber"
-                                id="motherincomenumber" />
+                            <label for="motherincomenumber">Mother Income Certificate No.</label>
+                            <h5><?= $data->motherincomenumber?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="birthcertificate">Birth Certificate</label><input class="form-control m-1"
-                                type="text" name="birthcertificate" id="birthcertificate" />
+                            <label for="birthcertificate">Birth Certificate</label>
+                            <h5><?= $data->birthcertificate?></h5>
                         </div>
                     </div>
                 </div>
@@ -413,39 +377,36 @@ $data=func::getStudentDetails(decrypt($ern));
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="admission_date">Admission Date</label><input class="form-control m-1"
-                                type="date" name="admission_date" id="admission_date" />
+                            <label for="admission_date">Admission Date</label>
+                            <h5><?= $data->admission_date?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="present_class">Present Class</label>
-                            <?= func::classlist("present_class") ?>
+                            <h5><?= $data->present_class?></h5>
                         </div>
                         <div class="col-md-4">
                             <label for="present_section">Present Section</label>
-                            <?= func::sectionList("present_section") ?>
+                            <h5><?= $data->present_section?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <label for="academic_year">Academic Year</label>
-                            <?= func::academicYear("academic_year") ?>
+                            <h5><?= $data->academic_year?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="sts_no">STS No.</label><input class="form-control m-1" type="text" name="sts_no"
-                                id="sts_no" />
+                            <label for="sts_no">STS No.</label>
+                            <h5><?= $data->sts_no?></h5>
                         </div>
                         <div class="col-md-4">
-                            <label for="admission_no">Admission No.</label><input class="form-control m-1" type="text"
-                                name="admission_no" id="admission_no" />
+                            <label for="admission_no">Admission No.</label>
+                            <h5><?= $data->admission_no?></h5>
                         </div>
                     </div>
                 </div>
             </div>
             </div>
-
         </div>
     </div>
-
 </body>
-
 </html>
