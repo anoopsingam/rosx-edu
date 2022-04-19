@@ -264,6 +264,12 @@ $user=login::UserInfo($_SESSION['username']);
                                     <span class="sidenav-normal"> Quick Admission </span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Admission/approve")?>">
+                                    <span class="sidenav-mini-icon"> Ap </span>
+                                    <span class="sidenav-normal"> Admission Data </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
