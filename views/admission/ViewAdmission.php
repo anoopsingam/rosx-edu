@@ -58,7 +58,10 @@ $data=func::getStudentDetails(decrypt($ern));
     table {
         overflow: scroll;
     }
+    .declaration {
+                    border-color: 5px black;
 
+                }
     @media print {
         footer {
             page-break-after: always;
@@ -71,33 +74,42 @@ $data=func::getStudentDetails(decrypt($ern));
     </style>
     <?= $app->setTitle("View Admission -".$data->enrollment_no);?>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row text-center mt-5">
-            <div class="col-md-2">
-                <?= $app->SetLogo('160','160');?>
+            <div class="col-md-3">
+                <?= $app->SetLogo('140','130');?>
             </div>
-            <div class="col-md-8">
-                <h3 class="display-4 font-weigth-bolder"><?= $app->name;?> </h3>
+            <div class="col-md-6">
+                <h3 class="display-5 font-weigth-bolder text-uppercase"><?= $app->name;?> </h3>
                 <h6 class=""><?= $app->address;?> </h6>
                 <h6 class=""><?= "Contact No : ".$app->phone.'   Email : '.$app->email;?> </h6>
                 <br>
                 <h4 class="m-3 text-uppercase">Admission Acknowledgement</h4>
                 <!--<h6 class="h6">Contact No:  E-Mail:</h6>-->
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
+                <img src="../../web_assets/transperent.png" height="140" width="190" alt="">
+                <p>Powered by RosX Edu Soft </p>
             </div>
         </div>
         <table class="table table-bordered text-center">
             <tr>
-                <td>
+                <td><br>
                     <h5 class="mt-5">Application No : <span class="text-danger h4"><?= $data->app_no?></span>
                     </h5>
                 </td>
+                
                 <td>
+                    <br>
                     <h5 class="mt-2">Enrollment No : <br>
-                        <p class="m-3"> <?= includes::barcode($data->enrollment_no)?></p>
+                        <p class="m-3"> <?= includes::barcode($data->enrollment_no,'60')?></p>
                     </h5>
+                </td>
+                <td>
+                <img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?=  json_encode(["Student Name"=>$data->student_name,"Auth Token"=>$data->token,"Enrollment No "=>$data->enrollment_no,"Application No "=>$data->app_no,"Enroll Time"=>$data->enroll_time]); ?>'
+                        id="QR" height="180" width="180" alt="logo">
                 </td>
             </tr>
         </table>
@@ -416,6 +428,63 @@ $data=func::getStudentDetails(decrypt($ern));
                 </td>
             </tr>
         </table>
+        <footer></footer>
+        <center><span class="text-danger text-uppercase text-break">
+                <h5 style="color: red;"><strong>NOTE :</strong> ORIGINAL BIRTH CERTIFICATE MUST BE SUBMITTED AT THE TIME
+                    OF ADMISSION (APPLICABLE ONLY FOR 1ST STANDARD STUDENTS) </h5>
+            </span></center>
+        <div class="declaration">
+            <hr style="height :  2px;background-color :  black">
+            <center>
+                <h4>DECLARATION</h4>
+                <ul>
+                    <li style=" list-style-position: outside;">
+                        I DO HEREBY DECLARE THAT THE ABOVE INFORMATION IS CORRECT TO THE BEST OF MY KNOWLEDGE AND BELIEF
+                        & I SHALL ABIDE BY THE RULES AND REGULATIONS OF THE INSTITUTION.
+                    </li>
+                    <li style=" list-style-position: outside;">
+                        I UNDERTAKE TO ABIDE BY THE RULES AND REGULATIONS OF THE SCHOOL IN ACADEMICS, SPORTS, CODE OF
+                        CONDUCT, DISCIPLINE, EDUCATION IN HUMAN VALUES, EXTRA-CURRICULAR AND OTHER ACTIVITIES AS GIVEN
+                        IN THE PROSPECTUS.
+                    </li>
+                    <li style=" list-style-position: outside;">
+                        IN THE EVENT OF ANY ACT OF INDISCIPLINE ON MY PART, THE DECISION OF THE PRINCIPAL/MANAGEMENT
+                        SHALL BE FINAL AND BINDING ON ME.
+                    </li>
+                </ul>
+            </center>
+
+
+            <h4 style="padding-top: 30px;text-align:center;">I ENDORSE THE ABOVE STATEMENTS</h4>
+            <p class="text-left"> ADMISSION NO.: <strong><?= $data->admission_no?></strong></p>
+            <p class="text-left"> ACADEMIC YEAR: <strong><?= $data->academic_year?></strong></p>
+            <p class="text-left">ENROLLMENT DATE : <strong><?= $data->enroll_time?></strong></p>
+            <div class="sign main" style="padding-top: 60px; padding-right: 60px; float: right;">
+                <h6> ____________________</h6>
+
+                <h6>APPLICANT’S SIGNATURE</h6>
+            </div>
+
+
+
+
+
+            <div class="sign main" style="padding-top: 60px; ">
+                <h6> ___________________</h6>
+
+                <h6>PARENTS'S SIGN</h6>
+                Application Printed on: 19-04-2022
+            </div><br><br><br>
+            <h5 class="text-right">SIGN OF THE HEAD OF
+                INSTITUTION WITH SEAL</h5>
+            <hr style="height :  2px;background-color :  black">
+        </div>
+        <div class="copyright text-center text-sm text-muted text-lg-start">
+                                © <?= date("Y")?> Software Developed <i class="text-danger fa fa-heart"></i> by
+                                <a href="https://www.roborosx.com" class="font-weight-bold text-primary text-decoration-none" target="_blank">RoborosX Multi Tech Solutions LLP </a> 
+                            </div>
     </div>
+
 </body>
+
 </html>
