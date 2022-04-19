@@ -184,7 +184,7 @@ $app->setTitle("New Admission");
             </div>
             <div class="card mb-3">
                 <div class="card-header">
-                    <h3 class="text-dark">Misc Details </h3>
+                    <h3 class="text-dark">Other Details </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
