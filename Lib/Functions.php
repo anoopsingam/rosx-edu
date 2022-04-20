@@ -89,7 +89,7 @@ class func{
             $row = $result->fetch_assoc();
             $stu_id = ++$row['studentid'];
         } else {
-            $stu_id = $app->short_name."00001";
+            $stu_id = $app->short_name."0001";
         }
         return $stu_id;
     }

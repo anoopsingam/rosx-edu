@@ -11,11 +11,11 @@
 // For demonstration purposes, get pararameters that are passed in through $_GET or set to the default value
 $filepath = (isset($_GET["filepath"])?$_GET["filepath"]:"");
 $text = (isset($text)?$text:"0");
-$size = (isset($size)?$size:"20");
+$size = (isset($size)?$size:"60");
 $orientation = (isset($_GET["orientation"])?$_GET["orientation"]:"horizontal");
 $code_type = (isset($_GET["codetype"])?$_GET["codetype"]:"code128");
 $print = (isset($print)&&$print=='true'?true:false);
-$sizefactor = (isset($_GET["sizefactor"])?$_GET["sizefactor"]:"1");
+$sizefactor = (isset($_GET["sizefactor"])?$_GET["sizefactor"]:"1.6");
 
 // This function call can be copied into your project and can be made from anywhere in your code
 barcode( $filepath, $text, $size, $orientation, $code_type, $print, $sizefactor );

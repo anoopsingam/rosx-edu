@@ -165,7 +165,7 @@
 
             // Inject the table and other surrounding information
             win.document.body.innerHTML =
-                '<center><h4>' + exportInfo.title + '</h4><p>Powered By RosX Edu Soft,RoborosX Multitech Solutions LLP</p></center>' +
+                '<center><img src="../../web_assets/logo.png" height="150" width="150" />  <h4>' + exportInfo.title + '</h4><p>Powered By RosX Edu Soft,RoborosX Multitech Solutions LLP</p></center>' +
                 '<div>' + (exportInfo.messageTop || '') + '</div>' +
                 html +
                 '<div><br><h6>&copy;2022 Software Designed & Developed by RoborosX Multitech Solutions LLP</h6></div>';
