@@ -24,8 +24,8 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                             <label for="gender">Gender</label>
                             <select name="gender"  class="form-control m-1">
                                 <option value="<?= $data->gender;?>" selected><?= $data->gender;?> </option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="BOY">BOY</option>
+                                <option value="GIRL">GIRL</option>
                             </select>
                         </div>
                         <div class="col-md-3">
