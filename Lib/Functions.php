@@ -37,9 +37,14 @@ class func{
             echo"<option value='10'>10 Std</option>\n";
             echo "</select>";
     }
-    static function academicYear(string $ay="ay"){
+    static function academicYear(string $ay="ay", array $args=array()){
         echo"<select class='form-control m-1' name='$ay'>\n";
         echo"<option value=''>Select Academic Year </option>\n";
+        if($args!=null){
+            foreach($args as $key=>$value){
+            echo "<option value='$key' selected>$value</option>\n";
+            }
+            }
         echo"<option value='2020-2021'>2020-2021</option>\n";
         echo"<option value='2021-2022'>2021-2022</option>\n";
         echo"<option value='2022-2023'>2022-2023</option>\n";
@@ -52,9 +57,14 @@ class func{
         echo"<option value='2029-2030'>2029-2030</option>\n";
         echo"</select>";
     }
-    static function sectionList(string $section){
+    static function sectionList(string $section, array $args=array()){
         echo "<select class='form-control m-1' name='$section'>\n";
         echo"<option value=''>Select Section </option>\n";
+        if($args!=null){
+            foreach($args as $key=>$value){
+            echo "<option value='$key' selected>$value</option>\n";
+            }
+            }
         echo"<option value='A'>A</option>\n";
         echo"<option value='B'>B</option>\n";
         echo"<option value='C'>C</option>\n";
