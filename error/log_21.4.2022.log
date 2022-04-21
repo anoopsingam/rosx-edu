@@ -1,0 +1,18 @@
+Ip Address : 127.0.0.1 - April 21, 2022, 3:48 pm
+Error Message : Unknown column 'login_id' in 'field list'
+file path: C:\laragon\www\Rosx\model\fee\FeeStructureController.php
+User Meassage: Cant able to Process the request for Adding the Fee Structure 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 21, 2022, 4:37 pm
+Error Message : Unknown column 'updated_at' in 'field list'
+file path: C:\laragon\www\Rosx\model\fee\FeeStructureController.php
+User Meassage: Cant able to Process the request for Updating the Fee Structure 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - April 21, 2022, 10:26 pm
+Error Message : Unknown column 'student_id' in 'where clause'
+file path: C:\laragon\www\Rosx\model\admission\FullAdmissionController.php
+User Meassage: Cant able to Process the request for Updating the Student , Student Name : AFIFA S 
+User ID: admin
+-------------------------

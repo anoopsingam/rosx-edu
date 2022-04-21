@@ -40,7 +40,7 @@ $app->setTitle('Quick Admission');
     <?php
 
         if (isset($_POST['filter_result'])) {
-            $sql = "SELECT * FROM `student_enrollment` where `status`='WAITING'";
+            $sql = "SELECT * FROM `student_enrollment` WHERE 1";
 
             if (!empty($_POST['from_date'])) {
                 $sql .= " AND `enroll_time`>='".$_POST['from_date']." 00:00:00'";

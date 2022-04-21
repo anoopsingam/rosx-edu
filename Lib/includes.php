@@ -18,10 +18,18 @@ class includes
             'nucleo-icons.css',
             'nucleo-svg.css',
             'soft-ui-dashboard.min.css?v=1.0.8',
+            'bt_picker.css',
         ];
         foreach ($files as $file) {
             echo "<link rel='stylesheet' href='".url::myurl().'/assets/css/'.$file."'>\n";
         }
+        echo "<script src='".url::myurl().'/assets/js/plugins/Bt_picker.js'."'></script>\n";
+        echo " <script>
+        $(function() {
+          $('.chosen-select').chosen();
+          $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+        });
+      </script>";
     }
 
     public static function LoginCss()

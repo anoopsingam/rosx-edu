@@ -8,7 +8,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
         <button class="btn btn-primary">Edit Admission </button>
     </div>
     <div class="card-body">
-        <form id="form1" name="form1" method="post" action="<?= func::href("/FullAdmissionController/new/".uniqid())?>">
+        <form id="form1" name="form1" method="post" action="<?= func::href("/FullAdmissionController/edit/".$data->enrollment_no)?>">
         <?= set_csrf();?>
             <div class="card mb-3">
                 <div class="card-header">
@@ -16,6 +16,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <input type="hidden" name="studentid" value="<?= $data->studentid;?>" >
                         <div class="col-md-3">
                             <label for="student_name">Student Name</label><input class="form-control m-1" type="text"
                                 name="student_name" value="<?= $data->student_name;?>" id="student_name" />
@@ -428,7 +429,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-danger">Enroll Student</button>
+            <button type="submit" class="btn btn-warning">Update Student</button>
         </form>
     </div>
 </div>

@@ -80,11 +80,6 @@ class func{
         echo"</select>";
     }
 
-
-   
-    
-
-
     /**
      * Function to fetch new Student ID
      * @return string StudentId
@@ -93,13 +88,13 @@ class func{
         $db=new database();
         $conn=$db->conn;
         $app=new app();
-        $sql = "SELECT max(studentid) FROM `student_enrollment` ORDER BY `id` DESC LIMIT 1";
+        $sql = "SELECT max(studentid) as stud FROM `student_enrollment`";
         $result = mysqli_query($conn,$sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $stu_id = ++$row['studentid'];
+            $stu_id = ++$row['stud'];
         } else {
-            $stu_id = $app->short_name."0001";
+            $stu_id = "SNHS0001";
         }
         return $stu_id;
     }
@@ -189,5 +184,92 @@ class func{
         }
 
     }
+
+    /**
+     * Function for student Select List
+     * @return html SelectList
+     */
+     static function studentList(){
+        $db=new database();
+        $conn=$db->conn;
+        $result = mysqli_query($conn,"SELECT * FROM `student_enrollment` WHERE status='APPROVED' ORDER BY `student_name` ASC");
+        if ($result->num_rows > 0) {
+            echo ' <select data-placeholder="Select Student ID" name="studentid" class="chosen-select-deselect" tabindex="7">
+                    <option value=""></option>';
+            while($row = $result->fetch_assoc()){
+                echo"<option value='".$row['studentid']."'>".$row['student_name']."</option>\n";
+            }
+            echo "</select>";
+        }
+     }
+
+     /**
+      *  Function for Student Account Data 
+      *@param string studentid and string academic_year
+      *@return Account Details in Object
+      */
+        static function studentAccountData(string $studentid, string $academic_year){
+            $db=new database();
+            $conn=$db->conn;
+           if(!empty($studentid) && !empty($academic_year)){
+            $result = mysqli_query($conn,"SELECT * FROM `account` WHERE `student_id`='$studentid' AND `acdy`='$academic_year'");
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $student_account = $row;
+            } else {
+                $student_account = null;
+            }
+            return $student_account;
+           }else{
+                return null;
+           }
+        }
+
+        /**
+         * Function to fetch Student Last Payment Details
+         * @param string $studentid and string $academic_year
+         * @return object Student Payment Details
+         */
+        static function LastPaymentInfo(string $student_id='',string $academic_year=''){
+            $db=new database();
+            $conn=$db->conn;
+            if(!empty($student_id) && !empty($academic_year)){
+            $sql = "SELECT * FROM `fee_transactions` WHERE `student_id`='$student_id' AND `ay`='$academic_year' ORDER BY id DESC";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $student_account = $row;
+            } else {
+                $student_account = null;
+            }
+            return $student_account;
+            }else{
+                return null;
+            }
+        }
+
+        /**
+         * Function to Fetch the Fee Structure for the academic Year 
+         * @param string class and string academic_year
+         * @return object Fee Structure
+         */
+        static function getFeeStructure(string $class, string $academic_year){
+            $db=new database();
+            $conn=$db->conn;
+            if(!empty($class) && !empty($academic_year)){
+            $sql = "SELECT * FROM `fee_structure` WHERE `class`='$class' AND `academic_year`='$academic_year'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $fee_structure = $row;
+            } else {
+                $fee_structure = null;
+            }
+            return $fee_structure;
+            }else{
+                return null;
+            }
+        }
+        
 
 }

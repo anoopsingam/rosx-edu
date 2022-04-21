@@ -36,8 +36,24 @@ if(isset($action) && $action!=null){
         case 'edit':
             if($student_id!=null && is_csrf_valid()){
                 //Sanitize the input
-             
-
+                try{
+                    // print_r($_POST);
+                    $token=mysqli_real_escape_string($conn,$student_id);
+                    if($_POST['status']=="APPROVED" && empty($_POST['studentid'])){
+                        $_POST['studentid']=func::getStudentId();
+                    }
+                    // print_r($_POST);
+                    if($db->update("student_enrollment",$_POST,"enrollment_no='$student_id'")){
+                        js::alert("$_POST[studentid] $_POST[student_name] Successfully Updated");
+                        js::redirect("/Admission/Manage");
+                    }else{
+                        error_loger($db->conn->error, __FILE__, "Cant able to Process the request for Updating the Student , Student Name : $_POST[student_name] ",$_POST['login_id']);
+                        throw new Exception("Process Terminated with Error to Update Student");
+                    }
+                }catch(Exception $e){
+                    js::alert($e->getMessage());
+                    js::redirect('/Admission/Manage');
+                }
             }else{
                 js::alert("Invalid Auth Token");
                 js::redirect('/Dashboard');

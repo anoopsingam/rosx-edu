@@ -508,7 +508,7 @@ $data = func::getStudentDetails(decrypt($ern));
                 <h6> ___________________</h6>
 
                 <h6>PARENTS'S SIGN</h6>
-                Application Printed on: 19-04-2022
+                Application Printed on: <?= date("d-m-Y h:i:s")?>
             </div><br><br><br>
             <h5 class="text-right">SIGN OF THE HEAD OF
                 INSTITUTION WITH SEAL</h5>
