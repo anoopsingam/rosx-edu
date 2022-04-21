@@ -1,24 +1,27 @@
 <?php
 /**
- * Main Router File 
+ * Main Router File.
  */
-require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
+require_once "{$_SERVER['DOCUMENT_ROOT']}/router.php";
 
-/* 
+/*
 Dashboard Routes
 */
 get('/Dashboard', 'views/dashboard.php');
-/* 
+/*
 Login Routes
 */
-require_once("{$_SERVER['DOCUMENT_ROOT']}/routes/Auth.php");
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Auth.php";
 
 /**
- * Admission
+ * Admission.
  */
-require_once("{$_SERVER['DOCUMENT_ROOT']}/routes/Admission.php");
-
-/* 
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Admission.php";
+/*
+ * Fee Transactions
+ */
+require_once  "{$_SERVER['DOCUMENT_ROOT']}/routes/FeeTransactions.php";
+/*
 Error Routes
 */
-any('/404','views/error/404.php');
+any('/404', 'views/error/404.php');

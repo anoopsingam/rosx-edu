@@ -98,7 +98,9 @@ $app->setTitle('Quick Admission');
                 echo'<td>'.$data->present_class.' - '.$data->present_section.'</td>';
                 echo'<td>'.$data->academic_year.'</td>';
                 echo '<td>'; ?>
-          <a onclick="window.open('<?= func::href('/Admission/View/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="btn btn-dark text-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+          <a onclick="window.open('<?= func::href('/Admission/View/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-success badge-pill"><i class="fa fa-eye" aria-hidden="true"></i></a>
+          <a onclick="window.open('<?= func::href('/Admission/Edit/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-warning badge-pill"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+          <a onclick="window.open('<?= func::href('/Admission/Delete/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-danger badge-pill"><i class="fa fa-trash" aria-hidden="true"></i></a>
             <?php
             echo '</td>';
                 echo '</tr>';
