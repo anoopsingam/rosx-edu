@@ -102,8 +102,7 @@ $app->setTitle("Quick Admission");
             </div>
     
             <button class="btn btn-success btn-lg m-2" type="submit">Submit</button>
-    </form>
-    
+    </form> 
 </div>
 </div>
 <?php   
