@@ -160,14 +160,14 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                     <div class="row">
                         <div class="col-md-4">
                             <label for="permanentaddress">Permanent Address</label>
-                            <textarea name="permanentaddress" id="permanentaddress" cols="30" rows="5" value="<?= $data->permanentaddress;?>"
-                                class="form-control m-1"></textarea>
+                            <textarea name="permanentaddress" id="permanentaddress" cols="30" rows="5" value=""
+                                class="form-control m-1"><?= $data->permanentaddress;?></textarea>
 
                         </div>
                         <div class="col-md-4">
                             <label for="temporaryaddress">Temporary Address</label>
-                            <textarea name="temporaryaddress" id="temporaryaddress" cols="30" rows="5" value="<?= $data->temporaryaddress;?>"
-                                class="form-control m-1"></textarea>
+                            <textarea name="temporaryaddress" id="temporaryaddress" cols="30" rows="5" value=""
+                                class="form-control m-1"><?= $data->temporaryaddress;?></textarea>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" onclick="copyAddress()" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Same as Permanent Address
@@ -177,8 +177,8 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                         </div>
                         <div class="col-md-4">
                             <label for="guardianaddress">Guardian Address</label>
-                            <textarea name="guardianaddress" id="guardianaddress" cols="30" rows="5" value="<?= $data->guardianaddress;?>"
-                                class="form-control m-1"></textarea>
+                            <textarea name="guardianaddress" id="guardianaddress" cols="30" rows="5" value=""
+                                class="form-control m-1"><?= $data->guardianaddress;?></textarea>
                         </div>
                     </div>
                 </div>
@@ -273,8 +273,8 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                         </div>
                         <div class="col-md-4">
                             <label for="previousschool_address">Previous School Address</label>
-                            <textarea name="previousschool_address" id="previousschool_address" cols="30" rows="6" value="<?= $data->previousschool_address;?>"
-                                class="form-control m-1"></textarea>
+                            <textarea name="previousschool_address" id="previousschool_address" cols="30" rows="6" value=""
+                                class="form-control m-1"><?= $data->previousschool_address;?></textarea>
 
                         </div>
                     </div>
@@ -303,7 +303,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                         <div class="row">
                             <div class="col-md-6">                                
                                 <label for="bankaddress">Bank Address</label>
-                                <textarea name="bankaddress" class="form-control m-1" id="" cols="30" rows="5" value="<?= $data->bankaddress;?>" ></textarea>
+                                <textarea name="bankaddress" class="form-control m-1" id="" cols="30" rows="5" value="" ><?= $data->bankaddress;?></textarea>
                         </div>
                     </div>
                 </div>
@@ -411,8 +411,9 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="remarks">Remarks</label><input class="form-control m-1" type="text"
-                                name="remarks" id="remarks" value="<?= $data->remarks;?>" />
+                            <label for="remarks">Remarks</label>                                
+                            <textarea name="remarks" class="form-control m-1" id="" cols="30" rows="5" value="" ><?= $data->remarks;?></textarea>
+
                         </div>
                         <div class="col-md-4">
                             <label for="status">Status</label>
