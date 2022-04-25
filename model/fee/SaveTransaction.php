@@ -69,12 +69,12 @@ if(empty($token) && is_csrf_valid()){
           js::alert("Transaction Aborted Please enter valid amount");
           js::redirect('/Transaction/New');
       } else {
-          $query = " INSERT INTO fee_transactions (student_id,total_fee, paid_amount, balance_amount, installment, bill_no, billing_date,due_date, login_id, ay,tid,disc_by,disc_amt,transaction_note,transaction_mode)  VALUES ( '$sid','$admission_fee', '$admission_fee_paid', '$u_fee_bal', '$installment', '$bill_no', '$date','$due_date', '$login_id', '$academic_year','$tid','$disc_by','$discount_amount','$trans_note','$transaction_mode') ";
+          $query = " INSERT INTO fee_transactions (student_id,class,total_fee, paid_amount, balance_amount, installment, bill_no, billing_date,due_date, loginid, ay,tid,disc_by,disc_amt,transaction_note,transaction_mode)  VALUES ( '$sid','$class','$admission_fee', '$admission_fee_paid', '$u_fee_bal', '$installment', '$bill_no', '$date','$due_date', '$login_id', '$academic_year','$tid','$disc_by','$discount_amount','$trans_note','$transaction_mode') ";
           if (mysqli_query($conn, $query)) {
 
               switch ($installment) {
                   case "INSTALLMENT-1":
-                      $sql_fee = "INSERT INTO `account`( `student_id`,`total_fee`, `fee_paid`, `fee_balance`,`discount`, `fee_status`, `last_installment`, `last_paid_date`, `last_collected_by`, `acdy`, `token_id`) VALUES ('$sid','$admission_fee','$u_fee_paid','$u_fee_bal','$disc_amt','$sts','$installment','$date','$login_id','$academic_year','" . uniqid($sid) . "')";
+                      $sql_fee = "INSERT INTO `account`( `student_id`,`class`,`total_fee`, `fee_paid`, `fee_balance`,`discount`, `fee_status`, `last_installment`, `last_paid_date`, `last_collected_by`, `acdy`, `token_id`) VALUES ('$sid','$class','$admission_fee','$u_fee_paid','$u_fee_bal','$disc_amt','$sts','$installment','$date','$login_id','$academic_year','" . uniqid($sid) . "')";
                       break;
                   default:
                       $sql_fee = "UPDATE `account` SET `fee_paid`='$u_fee_paid',`fee_balance`='$u_fee_bal',`discount`='$disc_amt',`fee_status`='$sts',`last_installment`='$installment',`last_paid_date`='$date',`last_collected_by`='$login_id' WHERE `student_id`='$sid' and acdy='$academic_year'";
@@ -102,14 +102,13 @@ if(empty($token) && is_csrf_valid()){
                       $response = curl_exec($ch);
                       curl_close($ch);
                   }
-                  js::alert('Fee Paid Successfully of ' . $name . ' Paid : ' . $admission_fee_paid . ', Balance : ' . $u_fee_bal . ', Discount : ' . $discount_amount . '  Transaction ID:- ' . $tid.' Please Check Spam Folder in your email for Confirmation Message !!! ');
+                  js::alert('Fee Paid Successfully  Student : ' . $name . ' Paid : ' . $admission_fee_paid . ', Balance : ' . $u_fee_bal . ', Discount : ' . $discount_amount . '  Transaction ID:- ' . $tid.' Please Check Spam Folder in your email for Confirmation Message !!! ');
                   js::redirect('/Transaction/Print/'.$tid);
               } else {
                   echo $conn->error;
               }
           } else {
               js::alert('Transaction Aborted . Error Code:- 115, Contact Technical Team ');
-
               js::redirect('/Transaction/New');
               //echo $conn->error;
           }

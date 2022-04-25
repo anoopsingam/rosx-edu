@@ -153,7 +153,7 @@ if (empty($bill_no)) {
         <div class="" style="border-bottom: 1px solid black; padding-bottom: 5px;">
             <div class="row">
                 <div class="col-3" style="text-align: start; ">
-                    <a href="/Transaction/Manage"><img src="<?=  url::myurl().'/'.$college->logo; ?>" id="logo"
+                    <a href="/Transaction/Reports"><img src="<?=  url::myurl().'/'.$college->logo; ?>" id="logo"
                             height="120px" width="120px" style="margin-left: 30px;" alt="logo"></a>
                 </div>
 
@@ -311,7 +311,7 @@ if (empty($bill_no)) {
         <div class="" style="border-bottom: 1px solid black; padding-bottom: 5px;">
             <div class="row">
                 <div class="col-3" style="text-align: start; ">
-                    <a href="/Transaction/Manage"><img src="<?=  url::myurl().'/'.$college->logo; ?>" id="logo"
+                    <a href="/Transaction/Reports"><img src="<?=  url::myurl().'/'.$college->logo; ?>" id="logo"
                             height="120px" width="120px" style="margin-left: 30px;" alt="logo"></a>
                 </div>
 

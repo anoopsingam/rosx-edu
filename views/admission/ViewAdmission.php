@@ -97,7 +97,7 @@ $data = func::getStudentDetails(decrypt($ern));
             display: grid;
             justify-content: center;
             align-content: center;
-            opacity: 0.2;
+            opacity: 0.1;
         }
     }
     </style>

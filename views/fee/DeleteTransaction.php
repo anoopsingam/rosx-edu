@@ -1,6 +1,6 @@
 <?php
 require_once './views/header.php';
-$app->setTitle("New Transaction");
+$app->setTitle("Delete Transaction");
 ?>
 <div class="card shadow m-3 p-3">
     <div class="card-header mb-0 pb-0">
@@ -75,7 +75,7 @@ $app->setTitle("New Transaction");
                             <td><?php echo $listn->disc_amt; ?></td>
                             <td><?php echo $listn->created_on; ?></td>
                             <td><?php echo $listn->due_date; ?></td>
-                            <td><?php echo $listn->login_id; ?></td>
+                            <td><?php echo $listn->loginid; ?></td>
                         </tr>
                         <?php
                                             }
@@ -184,21 +184,21 @@ $app->setTitle("New Transaction");
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="">Payment Received By</label>
-                                    <input type="text" class="form-control" value="<?php echo $row['login_id'] ?>"
+                                    <input type="text" class="form-control" value="<?php echo $row['loginid'] ?>"
                                         readonly>
                                 </div>
                             </div><?php
                                                     $var = str_split($transaction_id);
                                                     // print_r($var);
                                                     if ($var[8] == 'T' && $var[9] == 'T') {
-                                                        $query = "SELECT * FROM account WHERE student_id = '" . $row['student_id'] . "' AND acdy='" . $row['academic_year'] . "' ";
+                                                        $query = "SELECT * FROM account WHERE student_id = '" . $row['student_id'] . "' AND acdy='" . $row['ay'] . "' ";
                                                         $fetch_bal = mysqli_query($conn, $query);
                                                         $row_bal = mysqli_fetch_array($fetch_bal);
                                                         $total_fee = $row_bal['total_fee'];
                                                         $balance_amount = $row['disc_amt']+$row_bal['fee_balance'];
                                                         $paid_amount = $row_bal['fee_paid'];
                                                         $f_disc_amt=$row_bal['discount']-$row['disc_amt'];
-                                                        $parm = "account&fee_transactions&" . $row['academic_year'] . "&$total_fee&$row[installment]&$f_disc_amt";
+                                                        $parm = "account&fee_transactions&" . $row['ay'] . "&$total_fee&$row[installment]&$f_disc_amt";
                                                     } 
                                                     elseif ($var[9] == 'T' && $var[10] == 'A') {
                                                         $query = "SELECT * FROM account1 WHERE student_id = '" . $row['student_id'] . "' AND academic_year='" . $row['academic_year'] . "' ";

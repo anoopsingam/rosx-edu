@@ -2,6 +2,12 @@
 require_once './views/header.php';
 $app->setTitle("New Transaction");
 ?>
+<script>
+        $(function() {
+          $('.chosen-select').chosen();
+          $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+        });
+      </script>
 <div class="card shadow-lg m-3">
     <div class="card-header">
         <button class="btn btn-primary">New Transaction</button>

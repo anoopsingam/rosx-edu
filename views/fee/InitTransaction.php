@@ -1,5 +1,6 @@
 <?php
 require_once './views/header.php';
+error_reporting(0);
 $app->setTitle("Transaction $token");
 if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
     $ay=$_POST['ay'];
@@ -64,7 +65,7 @@ if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
                             <td><?php echo $listn->disc_amt; ?></td>
                             <td><?php echo $listn->created_on; ?></td>
                             <td><?php echo $listn->due_date; ?></td>
-                            <td><?php echo $listn->login_id; ?></td>
+                            <td><?php echo $listn->loginid; ?></td>
                             <td><?php echo $listn->transaction_note; ?></td>
                         </tr>
                         <?php

@@ -270,6 +270,33 @@ class func{
                 return null;
             }
         }
+
+
+        /**
+         *  Function to Fetch the count of students in a class in Approved Status
+         */
+        static function getStudentCount(string $class, string $academic_year){
+            $db=new database();
+            $conn=$db->conn;
+            if(!empty($class) && !empty($academic_year)){
+            $sql = "SELECT COUNT(studentid) as total  FROM `student_enrollment` WHERE `present_class`='$class' AND `status`='APPROVED'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $student_count = $row->total;
+            } else {
+                $student_count = 0;
+            }
+            return $student_count;
+            }else{
+                return 0;
+            }
+        }
+
+
+        static function FormatMoney($amount){
+            return preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $amount);
+        }
         
 
 }

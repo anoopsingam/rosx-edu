@@ -296,7 +296,7 @@ $user=login::UserInfo($_SESSION['username']);
                                     d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Fee Structure</span>
+                        <span class="nav-link-text ms-1">Fee & Transactions</span>
                     </a>
                     <div class="collapse " id="fee_transactions">
                         <ul class="nav ms-4 ps-3">
@@ -316,6 +316,24 @@ $user=login::UserInfo($_SESSION['username']);
                                 <a class="nav-link " href="<?= func::href("/Transaction/New")?>">
                                     <span class="sidenav-mini-icon"> C </span>
                                     <span class="sidenav-normal"> Collect Fee ₹ </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transaction/Reports")?>">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal"> Transaction Reports </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transaction/Statement")?>">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal"> Transaction Statement <i class="fa fa-file" aria-hidden="true"></i> </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transaction/Statement/Class")?>">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal">Class Fee Statement</span>
                                 </a>
                             </li>
                             <li class="nav-item ">

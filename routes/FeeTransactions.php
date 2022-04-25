@@ -12,3 +12,9 @@ get('/Transaction/Print/$transaction','views/fee/bill.php');
 get('/Transaction/Manage','views/fee/manage_transaction.php');
 any('/Transaction/Delete','views/fee/DeleteTransaction.php');
 any('/DeleteFeeTransaction/$token_id','model/fee/DeleteTransaction.php');
+
+any('/Transaction/Reports','views/fee/Reports.php');
+any('/Transaction/Statement','views/fee/Statement.php');
+post('/Transaction/Statement/Print','views/fee/PrintStatement.php');
+any('/Transaction/Statement/Class','views/fee/ClassStatement.php');
+post('/Transaction/Statement/Class/print','views/fee/PrintClassStatement.php');

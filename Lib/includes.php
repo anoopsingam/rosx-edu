@@ -24,12 +24,6 @@ class includes
             echo "<link rel='stylesheet' href='".url::myurl().'/assets/css/'.$file."'>\n";
         }
         echo "<script src='".url::myurl().'/assets/js/plugins/Bt_picker.js'."'></script>\n";
-        echo " <script>
-        $(function() {
-          $('.chosen-select').chosen();
-          $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
-        });
-      </script>";
     }
 
     public static function LoginCss()
