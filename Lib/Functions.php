@@ -293,10 +293,52 @@ class func{
             }
         }
 
-
+        /**
+         * Function to convert the given integer value to indian money format.
+         */
         static function FormatMoney($amount){
             return preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $amount);
         }
+
+        /**
+         * Function to create a dropdown of all Ho Accounts in Select Menu
+         * 
+         */
+        static function HoAccountList( array $args=[]){
+            $db=new database();
+            $conn=$db->conn;
+            $result = mysqli_query($conn,"SELECT * FROM `head_accounts` ORDER BY `ho_name` ASC ");
+            echo ' <select  name="ho_id" class="form-control" >
+            <option value="">Select Ho Account</option>';
+            if(!empty($args)){
+                echo "<option value='".$args['id']."' selected>".$args['ho_name']."</option>\n";
+            }
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                    echo"<option value='".$row['id']."'>".$row['ho_name']."</option>\n";
+                }
+            }
+            echo "</select>";
+        }
         
+        /**
+         * Function to Create a dropdown for all payee accounts in select menu
+         */
+        static function PayeeAccountList( array $args=[]){
+            $db=new database();
+            $conn=$db->conn;
+            $result = mysqli_query($conn,"SELECT * FROM `payee_details` ORDER BY `payee_name` ASC ");
+            echo ' <select  name="payee__id" class="form-control" >
+            <option value="">Select Payee Account</option>';
+            if(!empty($args)){
+                echo "<option value='".$args['payee_id']."' selected>".$args['payee_name']."</option>\n";
+            }
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                    echo"<option value='".$row['payee_id']."'>".$row['payee_name']."</option>\n";
+                }
+            }
+            echo "</select>";
+        }
 
 }
