@@ -87,11 +87,11 @@ if(empty($token) && is_csrf_valid()){
                     // js::alert(SendMail($msg, $email_id, $name." -".$tid,1));
                      
                   } else {
-                      // MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=
-                      $apiKey = urlencode('null');
+                      // 
+                      $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
                       $numbers = $phone_no;
-                      $sender = urlencode('MWASCL');
-                      $message = rawurlencode("Dear Parents, your ward $name is absent today $date. Regards, Principal MWA");
+                      $sender = urlencode('RBRXTH');
+                      $message = rawurlencode("Dear Parent, school Fee Paid-$admission_fee_paid in $transaction_mode, balance-$u_fee_bal, disc:-$discount_amount date:$date $bill_no SNHS, RBRXTH");
                       // Prepare data for POST request
                       $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
                       // Send the POST request with cURL

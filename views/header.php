@@ -327,14 +327,19 @@ $user=login::UserInfo($_SESSION['username']);
                             <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/Transaction/Statement")?>">
                                     <span class="sidenav-mini-icon"> C </span>
-                                    <span class="sidenav-normal"> Transaction Statement <i class="fa fa-file"
-                                            aria-hidden="true"></i> </span>
+                                    <span class="sidenav-normal"> Transaction Statement  </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/Transaction/Statement/Class")?>">
                                     <span class="sidenav-mini-icon"> C </span>
                                     <span class="sidenav-normal">Class Fee Statement</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transaction/DueList")?>">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Fee Due Date List </span>
                                 </a>
                             </li>
                             <li class="nav-item ">

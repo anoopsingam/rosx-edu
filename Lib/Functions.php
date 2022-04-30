@@ -340,5 +340,46 @@ class func{
             }
             echo "</select>";
         }
-
-}
+        /**
+         * Get the Payee Details for the given Payee ID
+         * @param string $payee_id
+         * @return object Payee Details
+         */
+        static function getPayeeDetails(string $payee_id){
+            $db=new database();
+            $conn=$db->conn;
+            if(!empty($payee_id)){
+            $sql = "SELECT * FROM `payee_details` WHERE `payee_id`='$payee_id'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $payee_details = $row;
+            } else {
+                $payee_details = null;
+            }
+            return $payee_details;
+            }else{
+                return null;
+            }
+        }
+        /**
+         * Get the Head Account Details for the given Head Account ID
+         */
+        static function getHeadAccountDetails(string $ho_id){
+            $db=new database();
+            $conn=$db->conn;
+            if(!empty($ho_id)){
+            $sql = "SELECT * FROM `head_accounts` WHERE `id`='$ho_id'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $head_account_details = $row;
+            } else {
+                $head_account_details = null;
+            }
+            return $head_account_details;
+            }else{
+                return null;
+            }
+        }
+        }

@@ -115,12 +115,106 @@ $app->setTitle("Manage Payee");
         }
     });
 </script>
-        <?php
-       $sql = 'SELECT * FROM expense_details e, head_accounts h, payee_details p where e.ho_id=h.id AND e.payee__id=p.payee_id ORDER BY e.expense_id DESC';
+<div class="card">
+    <div class="card-body">
+        <form action="" method="post">
+            <?= set_csrf()?>
+            <div class="row mb-3">
+                <div class="col-sm">
+                    <label for="payee_name">Form Date : </label>
+                    <input type="date" name="from_date" class="form-control" id="from_date"  />
+                </div>
+                <div class="col-sm">
+                    <label for="payee_name">To Date : </label>
+                    <input type="date" name="to_date" class="form-control" id="to_date"  />
+                </div>
+                <div class="col-sm">
+                    <label for="">Payee : </label>
+                    <?= func::PayeeAccountList(); ?>
+                </div>
+                
+            </div>
+            <div class="row mb-5">
+            <div class="col-sm">
+                    <label for="">Head Of Account : </label>
+                    <?= func::HoAccountList();?>
+                </div>
+                <div class="col-sm">
+                    <label for="">Academic Year : </label>
+                    <?= func::academicYear('expense_fy');?>
+                </div>
+                <div class="col-sm">
+                    <label for="">Payment Mode : </label>
+                    <select name="payment_mode" id="payment_mode" class="form-control" >
+                        <option value="">-select Payment Mode-</option>
+                        <option value="cash">Cash</option>
+                        <option value="cheque">Cheque</option>
+                        <option value="online">Online(UPI,ESBI..)</option>
+                        <option value="bank">Bank</option>
+                    </select>
+                </div>
+            </div>
+            <center class="mb-3">
+                <button type="submit" name="expense_filter"
+                    class="btn btn-round bg-gradient-success btn-lg  mt-4 mb-0">Search</button>
+            </center>
+        </form>
+    </div>
+</div>
+    <?php
+
+        if(isset($_POST['expense_filter'])){
+            $from_date = $_POST['from_date'];
+            $to_date = $_POST['to_date'];
+            $payee = $_POST['payee__id'];
+            $ho_id = $_POST['ho_id'];
+            $payment_mode = $_POST['payment_mode'];
+            $expense_fy = $_POST['expense_fy'];
+            $payment_mode = $_POST['payment_mode'];
+            $sql = 'SELECT * FROM expense_details e, head_accounts h, payee_details p where e.ho_id=h.id AND e.payee__id=p.payee_id';
+            $text='';
+            if($from_date != ''){
+                $sql .= " AND e.expense_date >= '$from_date'";
+                $text .= " From <b>$from_date</b>";
+            }
+            if($to_date != ''){
+                $sql .= " AND e.expense_date <= '$to_date'";
+                $text .= " To <b>$to_date</b>";
+            }
+            if($payee != ''){
+                $sql .= " AND e.payee__id = '$payee'";
+                $text .= " Payee ".func::getPayeeDetails($payee)->payee_name;
+            }
+            if($ho_id != ''){
+                $sql .= " AND e.ho_id = '$ho_id'";
+                $text .= " Head Of Account ".func::getHeadAccountDetails($ho_id)->ho_name;
+            }
+            if($payment_mode != ''){
+                $sql .= " AND e.payment_mode = '$payment_mode'";
+                $text .= " Payment Mode <b>$payment_mode</b>";
+            }
+            if($expense_fy != ''){
+                $sql .= " AND e.expense_fy = '$expense_fy'";
+                $text .= " Academic Year <b>$expense_fy</b>";
+            }
+            $sql .= " ORDER BY e.expense_id DESC";
+
+        }else{
+            $sql = 'SELECT * FROM expense_details e, head_accounts h, payee_details p where e.ho_id=h.id AND e.payee__id=p.payee_id ORDER BY e.expense_id DESC';
+            $text='';
+        }
         $result = mysqli_query($db->conn, $sql);
     ?>
-        <?= includes::Datatables('Expense Details', '0,1,2,3', 'landscape'); ?>
-        <table id="example" class="display" style="width:100%">
+        <?= includes::Datatables('Expense Details', '0,1,2,3,4,5', 'landscape'); ?>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4 class="card-title">Expense Details</h4>
+                <p class="card-text">
+                    <?= $text; ?>
+                </p>
+            </div>
+            <div class="card-body">
+            <table id="example" class="tbale table-sm" style="width:100%">
             <thead>
                 <tr class="bg-dark text-light">
                     <th>#</th>
@@ -128,19 +222,35 @@ $app->setTitle("Manage Payee");
                     <th>Payee Name</th>
                     <th>Amount</th>
                     <th>Expense Date</th>
+                    <th>Payment Mode</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody style="font-size:small;">
                 <?php
                 $i = date("Y").'1';
+                $total=0;
             while ($data = $result->fetch_object()) {
+                if($data->payment_mode=="cash"){
+                    $mode="<span class='badge badge-pill bg-success'>Cash</span>";
+                }
+                if($data->payment_mode=="cheque"){
+                    $mode="<span class='badge badge-pill bg-warning'>Cheque</span>";
+                }
+                if($data->payment_mode=="online"){
+                    $mode="<span class='badge badge-pill bg-info'>Online</span>";
+                }
+                if($data->payment_mode=="bank"){
+                    $mode="<span class='badge badge-pill bg-danger'>Bank</span>";
+                }
                 echo'<tr>';
                 echo'<td>'.$i++.'</td>';
                 echo'<td>'.$data->ho_name.'</td>';
                 echo'<td>'.$data->payee_name.'</td>';
                 echo'<td>₹'.func::FormatMoney($data->expense_amount).'</td>';
                 echo'<td>'.$data->expense_date.'</td>';
+                echo'<td>'.$mode.'</td>';
+                $total=$total+$data->expense_amount;
                 ?>
                 <td>
                 <a onclick="window.open('<?= func::href('/Expense/PrintVocher/'.encrypt($data->expense_id)); ?>','popup','width=800,height=1000');"
@@ -228,7 +338,20 @@ $app->setTitle("Manage Payee");
             }
             ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Total</th>
+                    <th>₹<?= $total ?></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
         </table>
+            </div>
+        </div>
     </div>
 </div>
 <?php   

@@ -18,3 +18,4 @@ any('/Transaction/Statement','views/fee/Statement.php');
 post('/Transaction/Statement/Print','views/fee/PrintStatement.php');
 any('/Transaction/Statement/Class','views/fee/ClassStatement.php');
 post('/Transaction/Statement/Class/print','views/fee/PrintClassStatement.php');
+any('/Transaction/DueList','views/fee/DueList.php');
