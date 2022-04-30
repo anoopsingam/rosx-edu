@@ -25,6 +25,12 @@ require_once  "{$_SERVER['DOCUMENT_ROOT']}/routes/FeeTransactions.php";
  * Expense.
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Expense.php";
+
+/**
+ * Attendance.
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Attendance.php";
+
 /*
 Error Routes
 */
