@@ -9,7 +9,6 @@ $app->setTitle('Transaction Reports');
         <span class="btn bg-gradient-primary btn-lg">Fee Payment Due List (Date)</span>
     </div>
     <div class="card-body">
-
         <div class="card shadow-lg m-3 p-2">
             <div class="card-header">
                 <span class="h3">Search Transaction</span>
@@ -83,7 +82,7 @@ $app->setTitle('Transaction Reports');
                 if($transaction_mode!=""){
                     $sql.=" AND transaction_mode='$transaction_mode' ";
                 }
-                echo $sql;
+                // echo $sql;
                 includes::Datatables(" Fee Transaction Due Date Data $_POST[from_date] to $_POST[to_date] ", '0,1,2,3,4,5,6,7,8', 'landscape');
             }else{
                 $sql="SELECT * FROM fee_transactions f, student_enrollment e  WHERE f.student_id=e.studentid ";
@@ -93,7 +92,7 @@ $app->setTitle('Transaction Reports');
     ?>
 
 
-        <div class="container" style="overflow:scroll;">
+        <div class="container-fluid" style="overflow:scroll;">
             <table id="example" class=" table table-bordered table-sm table-responsive-xl" >
             <thead>
                 <tr class="bg-gradient-dark text-light">

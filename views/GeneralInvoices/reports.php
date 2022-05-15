@@ -1,6 +1,6 @@
-<?php include 'head.php';
-
-setTitle("General Billing Invoices");
+<?php
+require_once './views/header.php';
+$app->setTitle("Genral Invoices Reports");
 ?>
 
 <div class="card">
@@ -121,10 +121,10 @@ setTitle("General Billing Invoices");
                                 <td><?= $row['payment_status']; ?></td>
                                 <td><?= $row['account_type']; ?></td>
                                 <td>
-                                <a onclick="window.open('/GeneralInvoice?inv_no=<?= encrypt($row['invoice_no']); ?>','popup','width=800,height=750');"><button
+                                <a onclick="window.open('/GeneralInvoice/View/<?= encrypt($row['invoice_no']); ?>','popup','width=800,height=750');"><button
                                         class="btn btn-success">View</button></a>
-                                  <a href="EditInvoice?inv=<?= encrypt($row['invoice_no']);?>" class="btn btn-primary">Edit</a>
-                                    <a href="DeleteInvoice?inv=<?=encrypt($row['invoice_no']);?>" class="btn btn-danger">Delete</a>
+                                  <a href="/GeneralInvoice/Edit/<?= encrypt($row['invoice_no']);?>" class="btn btn-primary">Edit</a>
+                                    <a href="/GeneralInvoice/Controller/delete/<?=encrypt($row['invoice_no']);?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php
@@ -150,4 +150,6 @@ setTitle("General Billing Invoices");
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php   
+    require_once './views/footer.php';
+?>

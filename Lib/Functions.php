@@ -382,4 +382,113 @@ class func{
                 return null;
             }
         }
+        /**
+         * Function to return totoal no of students in school
+         */
+        static function getTotalStudents(){
+            $db=new database();
+            $conn=$db->conn;
+            $sql = "SELECT COUNT(studentid) as total  FROM `student_enrollment` WHERE status='APPROVED'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $total_students = $row->total;
+            } else {
+                $total_students = 0;
+            }
+            return $total_students;
+        }
+        /**
+         * Function to return total no of students based on gender
+         */
+        static function getStudentCountGender(string $gender=''){
+            $db=new database();
+            $conn=$db->conn;
+            $sql = "SELECT COUNT(studentid) as total  FROM `student_enrollment` WHERE gender='$gender' AND status='APPROVED' ";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $total_students = $row->total;
+            } else {
+                $total_students = 0;
+            }
+            return $total_students;
+        }
+        /**
+         * Funtion to fetch total no of students absent today
+         */
+        static function getTotalAbsentToday(){
+            $db=new database();
+            $conn=$db->conn;
+            $sql = "SELECT COUNT(reg_no) as total  FROM `student_attendance` WHERE `attendance_date`=CURDATE() AND `attendance`='ABSENT'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $total_absent = $row->total;
+            } else {
+                $total_absent = 0;
+            }
+            return $total_absent;
+        }
+
+        /**
+         * Function for all Bus Details 
+         * @return html Select 
+         */
+        static function getBusList(array $args=[]){
+            $db=new database();
+            $conn=$db->conn;
+            $result = mysqli_query($conn,"SELECT * FROM `transport_bus` ORDER BY `bus_name` ASC ");
+            echo ' <select  name="route_bus_id" class="form-control" >
+            <option value="">Select Bus</option>';
+            if(!empty($args)){
+                echo "<option value='".$args['db_id']."' selected>".$args['bus_name']."</option>\n";
+            }
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                    echo"<option value='".$row['db_id']."'>".$row['bus_reg_no']." [".$row['bus_name']."]</option>\n";
+                }
+            }
+            echo "</select>";
+        }
+
+        /**
+         * Function to Fetch all Routes
+         * @return Html Select
+         */
+        static function getRouteList(array $args=[]){
+            $db=new database();
+            $conn=$db->conn;
+            $result = mysqli_query($conn,"SELECT * FROM `transport_routes` ORDER BY `route_name` ASC ");
+            echo ' <select  name="stage_route_id" class="form-control" >
+            <option value="">Select Route</option>';
+            if(!empty($args)){
+                echo "<option value='".$args['route_id']."' selected>".$args['route_name']."</option>\n";
+            }
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                    echo"<option value='".$row['route_id']."'>".$row['route_name']."</option>\n";
+                }
+            }
+            echo "</select>";
+        }
+
+        static function getStageDetails(array $args=[]){
+            $db=new database();
+            $conn=$db->conn;
+            $result = mysqli_query($conn,"SELECT * FROM transport_stages s, transport_routes t, transport_bus b WHERE s.stage_route_id=t.route_id AND t.route_bus_id=b.db_id ORDER BY t.route_name,s.route_stage_name ASC ");
+            echo ' <select  name="stage_id" class="form-control" >
+            <option value="">Select Stage</option>';
+            if(!empty($args)){
+                echo "<option value='".$args['stage_id']."' selected>".$args['stage_name']."</option>\n";
+            }
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                    echo"<option value='".$row['route_stage_id']."'>".$row['route_stage_name']."- ₹".$row['route_stage_fare']." [".$row['route_name']."/ ".$row['bus_reg_no']."] </option>\n";
+                }
+            }
+            echo "</select>";
+        }
+
+
         }

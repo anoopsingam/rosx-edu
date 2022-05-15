@@ -62,7 +62,19 @@ if(isset($action) && $action!=null){
 
         case 'delete':
             if($student_id!=null){
-
+                try{
+                    $token=mysqli_real_escape_string($conn,decrypt($student_id));
+                    if($db->delete("student_enrollment","enrollment_no='$token'")){
+                        js::alert("$token Successfully Deleted");
+                        js::WindowClose();
+                    }else{
+                        error_loger($db->conn->error, __FILE__, "Cant able to Process the request for Deleting the Student , Student Name : $student_id ",$_POST['login_id']);
+                        throw new Exception("Process Terminated with Error to Delete Student");
+                    }
+                }catch(Exception $e){
+                    js::alert($e->getMessage());
+                    js::WindowClose();
+                }
             }else{
                 js::alert("Invalid Auth Token");
                 js::redirect('/Dashboard');

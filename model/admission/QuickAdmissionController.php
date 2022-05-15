@@ -25,11 +25,13 @@
                         $present_section=mysqli_real_escape_string($conn,$_POST['present_section']);
                         $academic_year=mysqli_real_escape_string($conn,$_POST['academic_year']);
                         $login_id=mysqli_real_escape_string($conn,$_POST['login_id']);
+                        $dob=mysqli_real_escape_string($conn,$_POST['dob']);
                         $enrollment_no=func::getEnrollementNo();
                         $app_no=func::getApplicationNo();
                         $PushData=[
                             "student_name"=>$student_name,
                             "gender"=>$gender,
+                            "dob"=>$dob,
                             "father_name"=>$father_name,
                             "father_number"=>$father_number,
                             "mother_name"=>$mother_name,

@@ -58,7 +58,6 @@ if(isset($action) && $action!=null){
                 js::redirect('/Dashboard');
             }
             break;
-
         case 'delete':
             if($hoid!=null){
                 //Sanitize the input
@@ -75,7 +74,6 @@ if(isset($action) && $action!=null){
                     js::alert($e->getMessage());
                     js::WindowClose();
                 }
-
             }else{
                 js::alert("Invalid Auth Token");
                 js::redirect('/Dashboard');

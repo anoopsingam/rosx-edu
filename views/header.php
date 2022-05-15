@@ -19,7 +19,6 @@ $user=login::UserInfo($_SESSION['username']);
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap');
 
-
     * {
         margin: 0;
         padding: 0;
@@ -71,181 +70,7 @@ $user=login::UserInfo($_SESSION['username']);
                         <span class="nav-link-text ms-1">Dashboards</span>
                     </a>
                 </li>
-                <li class="nav-item mt-3">
-                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PAGES</h6>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link " aria-controls="pagesExamples"
-                        role="button" aria-expanded="false">
-                        <div
-                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <!-- Include Relavent SVG -->
-                        </div>
-                        <span class="nav-link-text ms-1">Pages</span>
-                    </a>
-                    <div class="collapse " id="pagesExamples">
-                        <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#profileExample">
-                                    <span class="sidenav-mini-icon"> P </span>
-                                    <span class="sidenav-normal"> Profile <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="profileExample">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/profile/overview.html">
-                                                <span class="sidenav-mini-icon text-xs"> P </span>
-                                                <span class="sidenav-normal"> Profile Overview </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/profile/teams.html">
-                                                <span class="sidenav-mini-icon text-xs"> T </span>
-                                                <span class="sidenav-normal"> Teams </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/profile/projects.html">
-                                                <span class="sidenav-mini-icon text-xs"> A </span>
-                                                <span class="sidenav-normal"> All Projects </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#usersExample">
-                                    <span class="sidenav-mini-icon"> U </span>
-                                    <span class="sidenav-normal"> Users <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="usersExample">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/users/reports.html">
-                                                <span class="sidenav-mini-icon text-xs"> R </span>
-                                                <span class="sidenav-normal"> Reports </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/users/new-user.html">
-                                                <span class="sidenav-mini-icon text-xs"> N </span>
-                                                <span class="sidenav-normal"> New User </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#accountExample">
-                                    <span class="sidenav-mini-icon"> A </span>
-                                    <span class="sidenav-normal"> Account <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="accountExample">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/account/settings.html">
-                                                <span class="sidenav-mini-icon text-xs"> S </span>
-                                                <span class="sidenav-normal"> Settings </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/account/billing.html">
-                                                <span class="sidenav-mini-icon text-xs"> B </span>
-                                                <span class="sidenav-normal"> Billing </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/account/invoice.html">
-                                                <span class="sidenav-mini-icon text-xs"> I </span>
-                                                <span class="sidenav-normal"> Invoice </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/account/security.html">
-                                                <span class="sidenav-mini-icon text-xs"> S </span>
-                                                <span class="sidenav-normal"> Security </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#projectsExample">
-                                    <span class="sidenav-mini-icon"> P </span>
-                                    <span class="sidenav-normal"> Projects <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="projectsExample">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/projects/general.html">
-                                                <span class="sidenav-mini-icon text-xs"> G </span>
-                                                <span class="sidenav-normal"> General </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/projects/timeline.html">
-                                                <span class="sidenav-mini-icon text-xs"> T </span>
-                                                <span class="sidenav-normal"> Timeline </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/pages/projects/new-project.html">
-                                                <span class="sidenav-mini-icon text-xs"> N </span>
-                                                <span class="sidenav-normal"> New Project </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/pricing-page.html">
-                                    <span class="sidenav-mini-icon"> P </span>
-                                    <span class="sidenav-normal"> Pricing Page </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/messages.html">
-                                    <span class="sidenav-mini-icon"> M </span>
-                                    <span class="sidenav-normal"> Messages </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/rtl-page.html">
-                                    <span class="sidenav-mini-icon"> R </span>
-                                    <span class="sidenav-normal"> RTL </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/widgets.html">
-                                    <span class="sidenav-mini-icon"> W </span>
-                                    <span class="sidenav-normal"> Widgets </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/charts.html">
-                                    <span class="sidenav-mini-icon"> C </span>
-                                    <span class="sidenav-normal"> Charts </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/sweet-alerts.html">
-                                    <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Sweet Alerts </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/pages/notifications.html">
-                                    <span class="sidenav-mini-icon"> N </span>
-                                    <span class="sidenav-normal"> Notifications </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#admission_dropdown" class="nav-link "
                         aria-controls="admission_dropdown" role="button" aria-expanded="false">
@@ -301,6 +126,24 @@ $user=login::UserInfo($_SESSION['username']);
                     <div class="collapse " id="fee_transactions">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/GeneralInvoices/ManageParticular")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Manage Particulars </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/GeneralInvoice/new")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> New Invoices </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/GeneralInvoice/Reports")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Invoices Reports </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/FeeStructure/new")?>">
                                     <span class="sidenav-mini-icon"> N </span>
                                     <span class="sidenav-normal"> Add Fee Structure </span>
@@ -346,6 +189,48 @@ $user=login::UserInfo($_SESSION['username']);
                                 <a class="nav-link " href="<?= func::href("/Transaction/Delete")?>">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Delete Transaction </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#transportation_dropdown" class="nav-link "
+                        aria-controls="transportation_dropdown" role="button" aria-expanded="false">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-truck" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">Transportation</span>
+                    </a>
+                    <div class="collapse " id="transportation_dropdown">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/ManageBus")?>">
+                                    <span class="sidenav-mini-icon"> N </span>
+                                    <span class="sidenav-normal"> Manage Bus </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/ManageRoute")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Manage Route </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/ManageStages")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Manage Stages</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/ManageEnrollment")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Transport Enrollment</span>
                                 </a>
                             </li>
                         </ul>

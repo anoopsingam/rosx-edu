@@ -117,20 +117,22 @@ $college = new app();
     }
     @media print {
         body:before {
-            content: url('<?= url::myurl().'/'.$app->logo; ?>');
+            content:'<?= $transaction; ?>';
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            color: #ff0000;
-            font-size: 100px;
-            font-weight: 500px;
+            color: #400040;
+            font-size: 80px;
+            font-weight: 700px;
             display: grid;
             justify-content: center;
             align-content: center;
             opacity: 0.2;
+
         }
+        
     }
     </style>
 </head>
@@ -148,7 +150,7 @@ if (empty($bill_no)) {
     $result = mysqli_query($conn, $sql);
     $row = json_decode(json_encode(mysqli_fetch_assoc($result)));
 ?>
-    <div class="main border border-dark border-5">
+    <div class="main border border-dark border-5  bg-logo">
         <!-- HEADER PART -->
         <div class="" style="border-bottom: 1px solid black; padding-bottom: 5px;">
             <div class="row">

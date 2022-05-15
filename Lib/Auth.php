@@ -49,7 +49,8 @@ class login
     }
 
     public static function UserInfo(string $username=''){
-        $db = new database();
+       if(!empty($username)){
+            $db = new database();
         $conn = $db->conn;
         $u=mysqli_real_escape_string($conn,$username);
         $sql = "SELECT * FROM `users` WHERE `username` = '$u'";
@@ -60,5 +61,6 @@ class login
         } else {
             return false;
         }
+       }
     }
 }

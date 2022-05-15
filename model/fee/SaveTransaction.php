@@ -7,6 +7,7 @@ if(empty($token) && is_csrf_valid()){
     require '././config.php';
     $db= new database();
     $conn=$db->conn;
+     $app= new app();
   //transactions
   $data=$_POST;
   $sid = $data['student_id'];
@@ -81,13 +82,28 @@ if(empty($token) && is_csrf_valid()){
               }
               $my_emails = [$email_id, "anoopnarayan@starktechlabs.in", "support@starktechlabs.in"];
               if (mysqli_query($conn, $sql_fee)) {
-                  if (!empty($email_id)) {
-                      $msg = "<h4>Dear $name ($sid),</h4><br>Transaction Id : $tid <br><p>Your fee payment for $installment ($date) of Rs. $admission_fee_paid/- has been successfully collected by $login_id, Bill No is $bill_no.<br> Your current fee balance is Rs. $u_fee_bal/-. Next Fee Payment Due Date is $due_date, Fee Payment Status : $sts,<br>Thank you for your support.<br>Regards,<br>Accounts Team,<br>" . $app->name() . ",<br>" . $app->address() . "<br>" . $app->phone() . '</p>';
-                   
-                    // js::alert(SendMail($msg, $email_id, $name." -".$tid,1));
-                     
-                  } else {
-                      // 
+                  if (!empty($email_id) && !empty($phone_no)) {
+                      $subject = "Fee Transaction- $tid | Shanthinikethan School | RoborosX ";
+                      $headers = "From: support@starktechlabs.in" . "\r\n" .
+                                 "CC: shanthinikethanschoolbpl2@gmail.com";
+                      $msg = "Dear $name ($sid),\n\n Transaction Id : $tid . \n Your fee payment for $installment ($date) of Rs. $admission_fee_paid /- has been successfully collected by $login_id, \n\n Bill No is $bill_no.\n Your current fee balance is Rs. $u_fee_bal/-. \n Next Fee Payment Due Date is $due_date,\n Fee Payment Status : $sts,\n\n Thank you for your support.\n Regards,\n Accounts Team";
+                      if(mail($email_id,$subject,$msg,$headers)){
+                          js::alert("Email Successfully Sent to $email_id");
+                      }
+                      $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
+                      $numbers = $phone_no;
+                      $sender = urlencode("RBRXTH");
+                      $message = rawurlencode("Dear Parent, school Fee Paid-$admission_fee_paid in $transaction_mode, balance-$u_fee_bal, disc:-$discount_amount date:$date $bill_no SNHS, RBRXTH");
+                      // Prepare data for POST request
+                      $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
+                      // Send the POST request with cURL
+                      $ch = curl_init('https://api.textlocal.in/send/');
+                      curl_setopt($ch, CURLOPT_POST, true);
+                      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                      $response = curl_exec($ch);
+                      curl_close($ch);
+                  } elseif(!empty($phone_no)) {
                       $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
                       $numbers = $phone_no;
                       $sender = urlencode('RBRXTH');

@@ -90,7 +90,7 @@ $app->setTitle('Transaction Reports');
     ?>
 
 
-        <div class="container" style="overflow:scroll;">
+        <div class="container-fluid" style="overflow:scroll;">
             <table id="example" class=" table table-bordered table-sm table-responsive-xl" >
             <thead>
                 <tr class="bg-gradient-dark text-light">

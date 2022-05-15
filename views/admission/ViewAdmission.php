@@ -29,7 +29,7 @@ $data = func::getStudentDetails(decrypt($ern));
         /* Chrome, Safari */
         color-adjust: exact !important;
         /*Firefox*/
-        
+
     }
 
     .example-print {
@@ -80,7 +80,7 @@ $data = func::getStudentDetails(decrypt($ern));
         font-family: 'Ubuntu', sans-serif;
         position: relative;
         height: 100%;
-        
+
     }
 
     @media print {
@@ -108,7 +108,7 @@ $data = func::getStudentDetails(decrypt($ern));
     <div class="container">
         <div class="row text-center mt-5">
             <div class="col-md-3">
-                <?= $app->SetLogo('140', '130'); ?>
+                <?= $app->SetLogo('200', '180'); ?>
             </div>
             <div class="col-md-6">
                 <h3 class="display-5 font-weigth-bolder text-uppercase"><?= $app->name; ?> </h3>
@@ -123,17 +123,27 @@ $data = func::getStudentDetails(decrypt($ern));
                 <p>Powered by RosX Edu Soft </p>
             </div>
         </div>
-        <table class="table table-bordered text-center" >
+        <table class="table table-bordered text-center">
             <tr>
                 <td><br>
                     <h5 class="mt-5">Application No : <span class="text-danger h4"><?= $data->app_no; ?></span>
                     </h5>
                 </td>
                 <td><br>
+                    <?php 
+                        if(!empty($data->studentid)){
+                            ?>
                     <h5 class="mt-2">Student Id : <br>
                         <p class="m-3"> <?= includes::barcode($data->studentid, 'false', '60'); ?></p><span
                             class="text-success h4"><?= $data->studentid; ?></span>
                     </h5>
+                    <?php
+                        }else{
+                            ?>
+                    <h5 class="text-primary text-center">Approval Pending</h5>
+                    <?php
+                        }
+                    ?>
                 </td>
                 <td>
                     <br>
@@ -497,7 +507,7 @@ $data = func::getStudentDetails(decrypt($ern));
             <div class="sign main" style="padding-top: 60px; padding-right: 60px; float: right;">
                 <h6> ____________________</h6>
 
-                <h6>APPLICANT’S SIGNATURE</h6>
+                <h6>APPLICANT'S SIGNATURE</h6>
             </div>
 
 

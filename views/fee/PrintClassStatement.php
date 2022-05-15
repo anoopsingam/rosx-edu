@@ -102,6 +102,7 @@ if (mysqli_num_rows($result) > 0) {
                     <th>Student Name</th>
                     <th>Class</th>
                     <th>Academic Year</th>
+                    <th>Total Fee's</th>
                     <th>Fee Paid</th>
                     <th>Fee Balance</th>
                     <th>Discount </th>
@@ -113,7 +114,7 @@ if (mysqli_num_rows($result) > 0) {
                 $total_paid=0;
                 $total_balance=0;
                 $total_discount=0;
-                        
+                $total_fee_collected=0;
                         $z=1;
                         $i='';
                         foreach($data as $row){
@@ -123,6 +124,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <td>$row[student_name]</td>
                                         <td>$row[class]</td>
                                         <td>$row[acdy]</td>
+                                        <td>$row[total_fee]</td>
                                         <td>$row[fee_paid]</td>
                                         <td>$row[fee_balance]</td>
                                         <td>$row[discount]</td>
@@ -130,6 +132,7 @@ if (mysqli_num_rows($result) > 0) {
                                 $total_paid+=$row['fee_paid'];
                                 $total_balance+=$row['fee_balance'];
                                 $total_discount+=$row['discount'];
+                                $total_fee_collected+=$row['total_fee'];
                                 $i++;
                             }
                         
@@ -194,7 +197,7 @@ if (mysqli_num_rows($result) > 0) {
                             ₹<?= func::FormatMoney(func::getFeeStructure($class,$ay)->tution_fee);?> *  <?= func::getStudentCount($class,$ay)?> =
                             </td>
                             <td>
-                                ₹<?= func::FormatMoney(func::getStudentCount($class,$ay)*$data[0]['total_fee']); ?>
+                                ₹<?= func::FormatMoney($total_fee_collected); ?>
                             </td>
                         </tr>
                         <tr class="text-center">
@@ -212,7 +215,7 @@ if (mysqli_num_rows($result) > 0) {
                                             "total_fee_collection"=>func::FormatMoney(func::getStudentCount($class,$ay)*$data[0]['total_fee'])
                                         ];
                                     ?>
-                                    <img src='https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=<?=  json_encode([$dt]); ?>'
+                                    <img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?=  json_encode([$dt]); ?>'
                                         id="QR" height="110" class="img-fluid" width="110" alt="logo">
                                 </td>
                         </tr>

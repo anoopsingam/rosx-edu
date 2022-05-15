@@ -20,7 +20,7 @@ $payLoad=[
 "ho_name"=>$data['ho_name'],
 "payee_name"=>$data['payee_name'],
 "expense_desc"=>$data['expense_desc'],
-"expense_amount"=>'₹'.func::FormatMoney($data['expense_amount']),
+"expense_amount"=>func::FormatMoney($data['expense_amount']),
 "payment_mode"=>$data['payment_mode'],
 "expense_date"=>$data['expense_date'],
 "expense_fy"=>$data['expense_fy'],
@@ -165,11 +165,11 @@ $payLoad=[
             <th colspan="2" class="p-3 text-center text-uppercase"> QR</th>
         </tr>
         <tr style="width: 100%; ">
-            <th colspan="2 " class="m-1 p-3 text-center h5"><?= $data['expense_added_by']?></th>
+            <th colspan="2 " class="m-1 p-3 text-center h5"><span class="mt-4"><br><br><?= $data['expense_added_by']?></span></th>
             <th colspan="2 " class="m-1 p-3 text-center"><span class="text-muted mt-4 mb-0 pt-5 pb-0"></span>
             </th>
             <th colspan="2 " class="m-1 p-3 text-center"> </th>
-            <th colspan="2 " class=" text-center"> <img src='https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=<?=  json_encode($payLoad); ?>' id="QR" height="110" class="img-fluid" width="110" alt="logo"> </th>
+            <th colspan="2 " class=" text-center"> <img class="m-3" src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?=  json_encode($payLoad); ?>' id="QR" height="110" class="img-fluid" width="110" alt="logo"> </th>
         </tr>
     </table>
     <p class="text-center text-dark font-weight-bolder">Software Designed & Developed by RoborosX Multi Tech Solutions

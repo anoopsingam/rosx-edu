@@ -1,6 +1,6 @@
 <?php
 require_once './views/header.php';
-$app->setTitle('Quick Admission');
+$app->setTitle('Manage Admission Data');
 ?>
 <div class="card m-2">
     <div class="card-header">
@@ -100,7 +100,7 @@ $app->setTitle('Quick Admission');
                 echo '<td>'; ?>
           <a onclick="window.open('<?= func::href('/Admission/View/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-success badge-pill"><i class="fa fa-eye" aria-hidden="true"></i></a>
           <a onclick="window.open('<?= func::href('/Admission/Edit/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-warning badge-pill"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-          <a onclick="window.open('<?= func::href('/Admission/Delete/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-danger badge-pill"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a onclick="window.open('<?= func::href('/FullAdmissionController/delete/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-danger badge-pill"><i class="fa fa-trash" aria-hidden="true"></i></a>
             <?php
             echo '</td>';
                 echo '</tr>';

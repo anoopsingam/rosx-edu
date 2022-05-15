@@ -3,7 +3,10 @@
  * Main Router File.
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/router.php";
-
+/**
+ * Api Routes
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Api.php";
 /*
 Dashboard Routes
 */
@@ -30,6 +33,30 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Expense.php";
  * Attendance.
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Attendance.php";
+/**
+ * General Billing
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/GeneralBilling.php";
+
+/**
+ *  Transportaation
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Transport.php";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 Error Routes
