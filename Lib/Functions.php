@@ -491,4 +491,49 @@ class func{
         }
 
 
+        /**
+         * Function for Fetching Transport Transaction Details
+         * @return JSON
+         */
+        static function getTransportTransactionDetails(string $transaction_id=''){
+            $db=new database();
+            $conn=$db->conn;
+            if(empty($transaction_id)){
+                return $transaction_details=null;
+            }else{
+            $sql = "SELECT * FROM `transport_transaction` 
+                LEFT JOIN `student_enrollment` ON `transport_transaction`.`trans_student_id` = `student_enrollment`.`studentid`
+                    WHERE `transport_transaction`.`trans_gen_id` = '$transaction_id' ";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $transaction_details = $row;
+            } else {
+                $transaction_details = null;
+            }
+            }
+            return $transaction_details;
         }
+
+        /**
+         * Function to Fetch Transport Account Details
+         * @return JSON
+         */
+        static function getTransAccountDetails(string $student_id='', string $ay=''){
+            $db=new database();
+            $conn=$db->conn;
+            if(empty($student_id) || empty($ay)){
+                return $transaction_details=null;
+            }else{
+            $sql = "SELECT * FROM `transport_account` WHERE `acc_student_id`='$student_id' AND `acc_academic_year`='$ay'";
+            $result = mysqli_query($conn,$sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_object();
+                $transaction_details = $row;
+            } else {
+                $transaction_details = null;
+            }
+            }
+            return $transaction_details;
+        }
+    }

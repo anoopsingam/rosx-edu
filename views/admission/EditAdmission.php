@@ -423,7 +423,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                                 <option value="WAITING">WAITING</option>
                                 <option value="APPROVED">APPROVED</option>
                                 <option value="REJECTED">REJECTED</option>
-                                <option value="TC_ISSUED">TC_ISSUED</option>
+                                <option value="TC ISSUED">TC_ISSUED</option>
                             </select>
                         </div>
                     </div>

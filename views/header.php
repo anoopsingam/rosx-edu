@@ -233,6 +233,30 @@ $user=login::UserInfo($_SESSION['username']);
                                     <span class="sidenav-normal"> Transport Enrollment</span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/Billing/new")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Transport Billing</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/Billing/Reports")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Billing Reports</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/Billing/BillPrintMain")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Bill Print </span>
+                                </a>
+                            </li> -->
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transport/Billing/DeleteTransaction")?>">
+                                    <span class="sidenav-mini-icon"> M </span>
+                                    <span class="sidenav-normal"> Delete Transaction </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

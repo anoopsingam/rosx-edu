@@ -24,6 +24,16 @@ $app->setTitle('Manage Admission Data');
                     <?= func::classlist('class_name'); ?>
                 </div>
                 <div class="col-sm">
+                    <label for="">Status : </label>
+                            <select name="status" class="form-control m-1" id="">
+                                <option value="">Select Status</option>
+                                <option value="WAITING">WAITING</option>
+                                <option value="APPROVED">APPROVED</option>
+                                <option value="REJECTED">REJECTED</option>
+                                <option value="TC ISSUED">TC_ISSUED</option>
+                            </select>
+                </div>
+                <div class="col-sm">
                     <label for="">Academic Year : </label>
                     <?= func::academicYear('academic_year'); ?>
                 </div>
@@ -54,9 +64,13 @@ $app->setTitle('Manage Admission Data');
             if (!empty($_POST['academic_year'])) {
                 $sql .= " AND `academic_year`='".$_POST['academic_year']."'";
             }
+              if (!empty($_POST['status'])) {
+                $sql .= " AND `status`='".$_POST['status']."'";
+            }
             if (!empty($_POST['user_id'])) {
                 $sql .= " AND `login_id`='".$_POST['user_id']."'";
             }
+             $sql .= " ORDER BY student_name ASC";
         } else {
             $sql = 'SELECT * FROM `student_enrollment`';
         }
@@ -64,12 +78,14 @@ $app->setTitle('Manage Admission Data');
     ?>
 
 
-        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10', 'landscape'); ?>
-        <table id="example" class="display" style="width:100%">
+        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10,11', 'landscape'); ?>
+    <div style="overflow:scroll;">
+                <table id="example" class="display" style="width:100%">
             <thead>
                 <tr class="bg-dark text-light">
                     <th>Application No.</th>
                     <th>Enrollment ID</th>
+                    <th>Admission No</th>
                     <th>Student Id</th>
                     <th>Student Name</th>
                     <th>D.O.B</th>
@@ -88,6 +104,7 @@ $app->setTitle('Manage Admission Data');
                 echo'<tr>';
                 echo'<td>'.$data->app_no.'</td>';
                 echo'<td>'.$data->enrollment_no.'</td>';
+                 echo'<td>'.$data->admission_no.'</td>';
                 echo'<td>'.$data->studentid.'</td>';
                 echo'<td>'.$data->student_name.'</td>';
                 echo'<td>'.$data->dob.'</td>';
@@ -108,6 +125,7 @@ $app->setTitle('Manage Admission Data');
             ?>
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 <?php

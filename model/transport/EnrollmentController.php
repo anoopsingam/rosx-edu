@@ -49,12 +49,10 @@ if(isset($action) && $action!=null){
                     $token=mysqli_real_escape_string($conn,decrypt($enrollid));
                     //append the request data with the append_data
                     $PushData=[
-                     "enroll_student_id"=>$_POST['student_id'],
                      "enroll_stage_id"=>$_POST['stage_id'],
                      "enroll_academic_year"=>$_POST['academic_year'],
-                     "enroll_added_by"=>$_POST['login_id'],
                     ];   
-                    if($db->update("transport_enroll",$PushData,"enroll_id='$token' AND  enroll_student_id='$_POST[student_id]'")){
+                    if($db->update("transport_enroll",$PushData,"enroll_id='$token' AND enroll_student_id='$_POST[student_id]'")){
                         js::alert("$_POST[student_id] Successfully Updated");
                         js::redirect("/Transport/ManageEnrollment");
                     }else{
