@@ -5,7 +5,7 @@ if(isset($token_id) && $token_id!=null){
     require '././config.php';
     $db= new database();
     $conn=$db->conn;
-    print_r($_POST);
+    // print_r($_POST);
     $trans_student_id=mysqli_real_escape_string($conn,$_POST['student_id']);
     $trans_date=mysqli_real_escape_string($conn,$_POST['payment_date']);
     $trans_gen_id=time();
@@ -38,7 +38,7 @@ if(isset($token_id) && $token_id!=null){
         "trans_added_by"=>$trans_added_by,
         "trans_bill_no"=>$trans_bill_no
     ];
-    print_r($data);
+    // print_r($data);
    if(empty($trans_paid_amount) || $balance<0){
        js::alert("Please Enter Valid Amount to Initiate Transaction");
    }else{

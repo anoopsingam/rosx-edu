@@ -15,11 +15,17 @@ $sql="SELECT * FROM transport_enroll e
 $fetch=mysqli_query($db->conn,$sql);
 $data=mysqli_fetch_assoc($fetch);
 // print_r($data);
-
+if(empty($data['enroll_id'])){
+    js::alert("No data found for this student");
+    js::redirect("/Transport/Billing/new");
+}
+$last_trans=mysqli_query($db->conn," SELECT SUM(trans_discount) AS total_discount from transport_transaction WHERE trans_student_id='$data[studentid]' AND trans_enroll_id='$data[enroll_id]'");
+$ltd=mysqli_fetch_object($last_trans);
+$total_dicount=(empty($ltd->total_discount))?0:$ltd->total_discount;
 $acc_data=mysqli_query($db->conn,"SELECT * FROM transport_account WHERE acc_student_id='$stu_id' and acc_academic_year='$academic_year'");
 $acc_data=mysqli_fetch_assoc($acc_data);
 $paid_amount=(empty($acc_data['acc_paid']))?0:$acc_data['acc_paid'];
-$balance_amount=$data['route_stage_fare']-$paid_amount;
+$balance_amount=$data['route_stage_fare']-$paid_amount-$total_dicount;
 }
 ?>
 <div class="card shadow-lg m-3">

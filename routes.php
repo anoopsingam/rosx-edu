@@ -43,7 +43,10 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/GeneralBilling.php";
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Transport.php";
 
-
+/**
+ * User Management
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Users.php";
 
 
 

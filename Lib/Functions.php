@@ -536,4 +536,38 @@ class func{
             }
             return $transaction_details;
         }
+
+
+        /**
+         * Function to check user Access
+         * @return boolean 
+         */
+     static function CheckAccess2($user_id, $page_name)
+    {
+        $db = new database();
+        $conn = $db->conn;
+        $sql = mysqli_query($conn, "SELECT * FROM users where id='$user_id'");
+        $row = mysqli_fetch_assoc($sql);
+        $v = json_decode($row['accesss']);
+        if ($v->$page_name == "access") {
+            return true;
+        } else {
+           return false;
+        }
+    }
+    public static function CheckAccess($user_id, $page_name)
+    {
+        $db = new database();
+        $conn = $db->conn;
+        $sql = mysqli_query($conn, "SELECT * FROM users where id='$user_id'");
+        $row = mysqli_fetch_assoc($sql);
+        $v = json_decode($row['accesss']);
+        if ($v->$page_name == "access") {
+            return true;
+        } else {
+            js::alert('You are not allowed to access this page.');
+            js::redirect(func::href("/Dashboard"));
+        }
+    }
+
     }

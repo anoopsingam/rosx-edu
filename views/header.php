@@ -70,7 +70,7 @@ $user=login::UserInfo($_SESSION['username']);
                         <span class="nav-link-text ms-1">Dashboards</span>
                     </a>
                 </li>
-
+                <?php if(func::CheckAccess2($user['id'],'admission')){ ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#admission_dropdown" class="nav-link "
                         aria-controls="admission_dropdown" role="button" aria-expanded="false">
@@ -108,24 +108,26 @@ $user=login::UserInfo($_SESSION['username']);
                         </ul>
                     </div>
                 </li>
+                <?php }?>
+                <?php if(func::CheckAccess2($user['id'],'accounts')){ ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#fee_transactions" class="nav-link "
-                        aria-controls="fee_transactions" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#general_billing" class="nav-link "
+                        aria-controls="general_billing" role="button" aria-expanded="false">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                                class="bi bi-receipt" viewBox="0 0 16 16">
                                 <path
-                                    d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                    d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
                                 <path
-                                    d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z" />
+                                    d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Fee & Transactions</span>
+                        <span class="nav-link-text ms-1">General Billing</span>
                     </a>
-                    <div class="collapse " id="fee_transactions">
+                    <div class="collapse " id="general_billing">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
+                        <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/GeneralInvoices/ManageParticular")?>">
                                     <span class="sidenav-mini-icon"> M </span>
                                     <span class="sidenav-normal"> Manage Particulars </span>
@@ -143,6 +145,27 @@ $user=login::UserInfo($_SESSION['username']);
                                     <span class="sidenav-normal"> Invoices Reports </span>
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#fee_transactions" class="nav-link "
+                        aria-controls="fee_transactions" role="button" aria-expanded="false">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                <path
+                                    d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z" />
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">Fee & Transactions</span>
+                    </a>
+                    <div class="collapse " id="fee_transactions">
+                        <ul class="nav ms-4 ps-3">
+                          
                             <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/FeeStructure/new")?>">
                                     <span class="sidenav-mini-icon"> N </span>
@@ -194,6 +217,8 @@ $user=login::UserInfo($_SESSION['username']);
                         </ul>
                     </div>
                 </li>
+                <?php }?>
+                <?php if(func::CheckAccess2($user['id'],'transport')){ ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#transportation_dropdown" class="nav-link "
                         aria-controls="transportation_dropdown" role="button" aria-expanded="false">
@@ -260,6 +285,8 @@ $user=login::UserInfo($_SESSION['username']);
                         </ul>
                     </div>
                 </li>
+                <?php }?>
+                <?php if(func::CheckAccess2($user['id'],'academics')){ ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#attendance_dropdown" class="nav-link "
                         aria-controls="attendance_dropdown" role="button" aria-expanded="false">
@@ -294,6 +321,8 @@ $user=login::UserInfo($_SESSION['username']);
                         </ul>
                     </div>
                 </li>
+                <?php }?>
+                <?php if(func::CheckAccess2($user['id'],'accounts')){ ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#expense_dropdown" class="nav-link "
                         aria-controls="expense_dropdown" role="button" aria-expanded="false">
@@ -335,6 +364,37 @@ $user=login::UserInfo($_SESSION['username']);
                         </ul>
                     </div>
                 </li>
+                <?php }?>
+                <?php if(func::CheckAccess2($user['id'],'users')){ ?>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#user_management" class="nav-link "
+                        aria-controls="user_management" role="button" aria-expanded="false">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+</svg>
+                        </div>
+                        <span class="nav-link-text ms-1">User Management</span>
+                    </a>
+                    <div class="collapse " id="user_management">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/User/AddNewUser")?>">
+                                    <span class="sidenav-mini-icon"> N </span>
+                                    <span class="sidenav-normal"> New User </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/User/ManageUsers")?>">
+                                    <span class="sidenav-mini-icon"> N </span>
+                                    <span class="sidenav-normal"> Manage User </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <?php }?>
             </ul>
         </div>
         <div class="sidenav-footer mx-3 mt-3 pt-3">

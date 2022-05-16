@@ -124,7 +124,7 @@ $app->setTitle("Dashboard");
               <h4 class="mb-2 text-gradient text-info text-center h3">Fee Structure</h4>
             </div>
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive " style="height:200px;overflow: scroll;">
             <table class="table  align-items-center p">
               <thead>
                 <tr class="bg-gradient-dark text-light font-weight-bolder">
