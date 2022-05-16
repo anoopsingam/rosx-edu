@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 01, 2022 at 07:06 AM
+-- Generation Time: May 16, 2022 at 08:17 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -58,6 +58,28 @@ INSERT INTO `account` (`id`, `student_id`, `class`, `total_fee`, `fee_paid`, `fe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `billing_particulars`
+--
+
+CREATE TABLE `billing_particulars` (
+  `billing_particular_id` int(250) NOT NULL,
+  `particular_name` varchar(250) NOT NULL DEFAULT 'GENERAL',
+  `charges` int(250) NOT NULL DEFAULT '100',
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `billing_particulars`
+--
+
+INSERT INTO `billing_particulars` (`billing_particular_id`, `particular_name`, `charges`, `created_on`) VALUES
+(2, 'EXAMINATION FEE 2ND PU', 5000, '2022-05-12 16:54:40'),
+(4, 'CAMPUS BUS FEES LOCAL', 8000, '2022-05-12 18:08:59'),
+(5, 'BUS MANAGEMENT FEE', 3250, '2022-05-14 23:56:02');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `expense_details`
 --
 
@@ -108,7 +130,8 @@ CREATE TABLE `fee_structure` (
 
 INSERT INTO `fee_structure` (`id`, `class`, `academic_year`, `tution_fee`, `login_id`, `added_on`, `updated_on`, `updated_by`, `token_id`) VALUES
 (5, '10', '2022-2023', '25000', 'admin', '2022-04-21 18:26:53', '2022-04-23 10:40:52', 'admin', '6261548bc82f9'),
-(6, '10', '2021-2022', '18000', 'admin', '2022-04-21 22:19:17', NULL, NULL, '62618b00789cb');
+(6, '10', '2021-2022', '18000', 'admin', '2022-04-21 22:19:17', NULL, NULL, '62618b00789cb'),
+(7, '9', '2022-2023', '16000', 'admin', '2022-05-16 23:42:29', NULL, NULL, '628293fa82ef5');
 
 -- --------------------------------------------------------
 
@@ -159,6 +182,28 @@ INSERT INTO `fee_transactions` (`id`, `student_id`, `class`, `total_fee`, `paid_
 (39, 'SNHS0680', '10', '25000', '1200', '15000', 'INSTALLMENT-5', '20220013', '2022-05-01', '2022-05-29', '2022-05-01 00:44:01', 'admin', NULL, NULL, '2022-2023', 'SNHS0680TTyeymc41', NULL, 'N/A', '0', 'N/A', 'Cash'),
 (40, 'SNHS0680', '10', '25000', '1000', '14000', 'INSTALLMENT-6', '20220014', '2022-05-01', '2022-06-05', '2022-05-01 00:45:12', 'admin', NULL, NULL, '2022-2023', 'SNHS0680TTvozc1sg', NULL, 'N/A', '0', 'N/A', 'UPI'),
 (41, 'SNHS0680', '10', '25000', '1', '13000', 'INSTALLMENT-7', '20220015', '2022-05-01', '2022-06-05', '2022-05-01 00:45:59', 'admin', NULL, NULL, '2022-2023', 'SNHS0680TT52hmzzr', NULL, 'N/A', '999', 'N/A', 'Cheque');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `general_invoice`
+--
+
+CREATE TABLE `general_invoice` (
+  `billing_id` bigint(250) NOT NULL,
+  `invoice_no` varchar(250) DEFAULT NULL,
+  `invoice_date` date DEFAULT NULL,
+  `payment_status` varchar(250) NOT NULL DEFAULT 'PENDING',
+  `stu_id` varchar(250) DEFAULT NULL,
+  `particulars` text,
+  `total_amount` bigint(250) NOT NULL DEFAULT '0',
+  `payment_mode` varchar(250) NOT NULL DEFAULT 'CASH',
+  `account_type` varchar(250) NOT NULL DEFAULT 'ACC',
+  `inv_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `invoice_added_by` varchar(250) DEFAULT NULL,
+  `inv_updated_on` varchar(250) DEFAULT NULL,
+  `inv_token_id` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1091,6 +1136,147 @@ INSERT INTO `student_enrollment` (`id`, `studentid`, `student_name`, `gender`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transport_account`
+--
+
+CREATE TABLE `transport_account` (
+  `account_id` bigint(250) NOT NULL,
+  `acc_student_id` varchar(250) DEFAULT NULL,
+  `acc_paid` bigint(250) DEFAULT '0',
+  `acc_enroll_id` bigint(250) DEFAULT NULL,
+  `acc_academic_year` varchar(250) DEFAULT NULL,
+  `acc_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_account`
+--
+
+INSERT INTO `transport_account` (`account_id`, `acc_student_id`, `acc_paid`, `acc_enroll_id`, `acc_academic_year`, `acc_created_on`) VALUES
+(3, 'SNHS0680', 500, 9, '2022-2023', '2022-05-16 23:26:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport_bus`
+--
+
+CREATE TABLE `transport_bus` (
+  `db_id` bigint(250) NOT NULL,
+  `driver_name` varchar(250) DEFAULT NULL,
+  `driver_number` varchar(250) DEFAULT NULL,
+  `driver_address` text,
+  `bus_reg_no` varchar(250) DEFAULT NULL,
+  `bus_name` varchar(250) DEFAULT NULL,
+  `bus_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_bus`
+--
+
+INSERT INTO `transport_bus` (`db_id`, `driver_name`, `driver_number`, `driver_address`, `bus_reg_no`, `bus_name`, `bus_created_on`) VALUES
+(3, 'ANOOP', '9886162566', 'BAGEPALLI', 'KA-40-EF-1905', 'ASHOK LEYLAND', '2022-05-15 15:03:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport_enroll`
+--
+
+CREATE TABLE `transport_enroll` (
+  `enroll_id` bigint(250) NOT NULL,
+  `enroll_student_id` varchar(250) DEFAULT NULL,
+  `enroll_stage_id` bigint(250) DEFAULT NULL,
+  `enroll_academic_year` varchar(250) DEFAULT NULL,
+  `enroll_added_by` varchar(250) DEFAULT NULL,
+  `enroll_added_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `enroll_token` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_enroll`
+--
+
+INSERT INTO `transport_enroll` (`enroll_id`, `enroll_student_id`, `enroll_stage_id`, `enroll_academic_year`, `enroll_added_by`, `enroll_added_on`, `enroll_token`) VALUES
+(9, 'SNHS0680', 6, '2022-2023', 'ADMIN', '2022-05-16 11:15:09', '34324VRE5T1E6TR1'),
+(11, 'SNHS0679', 6, '2022-2023', 'admin', '2022-05-16 11:21:05', '6281e5ec63c22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport_routes`
+--
+
+CREATE TABLE `transport_routes` (
+  `route_id` bigint(250) NOT NULL,
+  `route_name` varchar(250) DEFAULT NULL,
+  `route_src` varchar(250) DEFAULT NULL,
+  `route_dest` varchar(250) DEFAULT NULL,
+  `route_bus_id` bigint(250) DEFAULT NULL,
+  `route_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_routes`
+--
+
+INSERT INTO `transport_routes` (`route_id`, `route_name`, `route_src`, `route_dest`, `route_bus_id`, `route_created_on`) VALUES
+(6, 'R1 GULUR', 'SCHOOL', 'GULUR VILLAGE', 3, '2022-05-16 11:08:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport_stages`
+--
+
+CREATE TABLE `transport_stages` (
+  `route_stage_id` bigint(250) NOT NULL,
+  `stage_route_id` bigint(250) NOT NULL,
+  `route_stage_name` varchar(250) DEFAULT 'N/A',
+  `route_stage_fare` bigint(250) NOT NULL,
+  `stage_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_stages`
+--
+
+INSERT INTO `transport_stages` (`route_stage_id`, `stage_route_id`, `route_stage_name`, `route_stage_fare`, `stage_created_on`) VALUES
+(6, 6, 'GOVT SCHOOL BUS STOP', 9500, '2022-05-16 11:08:40'),
+(7, 6, 'DEPOT', 5500, '2022-05-16 11:08:52'),
+(8, 6, 'NETHAJI CIRCLE', 7500, '2022-05-16 11:09:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport_transaction`
+--
+
+CREATE TABLE `transport_transaction` (
+  `tt_id` bigint(250) NOT NULL,
+  `trans_student_id` varchar(250) DEFAULT NULL,
+  `trans_date` date DEFAULT NULL,
+  `trans_payment_mode` varchar(250) DEFAULT NULL,
+  `trans_gen_id` varchar(250) DEFAULT NULL,
+  `trans_paid_amount` bigint(250) DEFAULT '0',
+  `trans_discount` bigint(250) NOT NULL DEFAULT '0',
+  `trans_created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `trans_enroll_id` bigint(250) DEFAULT NULL,
+  `trans_added_by` varchar(250) DEFAULT NULL,
+  `trans_bill_no` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transport_transaction`
+--
+
+INSERT INTO `transport_transaction` (`tt_id`, `trans_student_id`, `trans_date`, `trans_payment_mode`, `trans_gen_id`, `trans_paid_amount`, `trans_discount`, `trans_created_on`, `trans_enroll_id`, `trans_added_by`, `trans_bill_no`) VALUES
+(5, 'SNHS0680', '2022-05-16', 'Cheque', '1652723779', 500, 500, '2022-05-16 23:26:19', 9, 'admin', 'TR0001');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -1103,15 +1289,19 @@ CREATE TABLE `users` (
   `img_url` varchar(250) DEFAULT NULL,
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip_address` varchar(200) DEFAULT NULL,
-  `user_type` varchar(250) DEFAULT NULL
+  `user_type` varchar(250) DEFAULT NULL,
+  `accesss` text,
+  `class` varchar(250) DEFAULT NULL,
+  `section` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `img_url`, `created_on`, `ip_address`, `user_type`) VALUES
-(7, 'admin', 'admin', 'M2VoUW1FMnQ2MEQrczF4bWhxWGxNZz09', 'admin@gmail.com', NULL, '2021-12-06 16:48:27', '127.0.0.1', 'ADMIN');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `img_url`, `created_on`, `ip_address`, `user_type`, `accesss`, `class`, `section`) VALUES
+(7, 'RoborosX', 'admin', 'M2VoUW1FMnQ2MEQrczF4bWhxWGxNZz09', 'support@starktechlabs.in', NULL, '2021-12-06 16:48:27', '127.0.0.1', 'ADMIN', '{\"admission\":\"access\",\"accounts\":\"access\",\"academics\":\"access\",\"transport\":\"access\",\"users\":\"access\"}', NULL, NULL),
+(31, 'anoop', 'anoop', 'dnVMV2dHdHllaHB6bzhGeXJvemNxZz09', 'anooprathod7@gmail.com', '', '2022-05-17 01:43:53', NULL, 'ADMIN', '{\"admission\":\"access\",\"accounts\":\"denied\",\"academics\":\"access\",\"transport\":\"access\",\"users\":\"denied\"}', '', '');
 
 --
 -- Indexes for dumped tables
@@ -1123,6 +1313,12 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `img_url`, `
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`),
   ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `billing_particulars`
+--
+ALTER TABLE `billing_particulars`
+  ADD PRIMARY KEY (`billing_particular_id`);
 
 --
 -- Indexes for table `expense_details`
@@ -1144,6 +1340,14 @@ ALTER TABLE `fee_structure`
 ALTER TABLE `fee_transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `general_invoice`
+--
+ALTER TABLE `general_invoice`
+  ADD PRIMARY KEY (`billing_id`),
+  ADD KEY `invoice_no` (`invoice_no`),
+  ADD KEY `stu_id` (`stu_id`);
 
 --
 -- Indexes for table `head_accounts`
@@ -1172,6 +1376,50 @@ ALTER TABLE `student_enrollment`
   ADD KEY `enrollment_no` (`enrollment_no`);
 
 --
+-- Indexes for table `transport_account`
+--
+ALTER TABLE `transport_account`
+  ADD PRIMARY KEY (`account_id`),
+  ADD KEY `acc_student_id` (`acc_student_id`),
+  ADD KEY `acc_enroll_id` (`acc_enroll_id`);
+
+--
+-- Indexes for table `transport_bus`
+--
+ALTER TABLE `transport_bus`
+  ADD PRIMARY KEY (`db_id`);
+
+--
+-- Indexes for table `transport_enroll`
+--
+ALTER TABLE `transport_enroll`
+  ADD PRIMARY KEY (`enroll_id`),
+  ADD KEY `enroll_stage_id` (`enroll_stage_id`),
+  ADD KEY `enroll_student_id` (`enroll_student_id`);
+
+--
+-- Indexes for table `transport_routes`
+--
+ALTER TABLE `transport_routes`
+  ADD PRIMARY KEY (`route_id`),
+  ADD KEY `route_n_bus` (`route_bus_id`);
+
+--
+-- Indexes for table `transport_stages`
+--
+ALTER TABLE `transport_stages`
+  ADD PRIMARY KEY (`route_stage_id`),
+  ADD KEY `route_n_stage_bind` (`stage_route_id`);
+
+--
+-- Indexes for table `transport_transaction`
+--
+ALTER TABLE `transport_transaction`
+  ADD PRIMARY KEY (`tt_id`),
+  ADD KEY `trans_enroll_id` (`trans_enroll_id`),
+  ADD KEY `trans_student_id` (`trans_student_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1185,7 +1433,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `billing_particulars`
+--
+ALTER TABLE `billing_particulars`
+  MODIFY `billing_particular_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `expense_details`
@@ -1197,13 +1451,19 @@ ALTER TABLE `expense_details`
 -- AUTO_INCREMENT for table `fee_structure`
 --
 ALTER TABLE `fee_structure`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `fee_transactions`
 --
 ALTER TABLE `fee_transactions`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `general_invoice`
+--
+ALTER TABLE `general_invoice`
+  MODIFY `billing_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `head_accounts`
@@ -1230,10 +1490,46 @@ ALTER TABLE `student_enrollment`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=683;
 
 --
+-- AUTO_INCREMENT for table `transport_account`
+--
+ALTER TABLE `transport_account`
+  MODIFY `account_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `transport_bus`
+--
+ALTER TABLE `transport_bus`
+  MODIFY `db_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `transport_enroll`
+--
+ALTER TABLE `transport_enroll`
+  MODIFY `enroll_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `transport_routes`
+--
+ALTER TABLE `transport_routes`
+  MODIFY `route_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `transport_stages`
+--
+ALTER TABLE `transport_stages`
+  MODIFY `route_stage_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `transport_transaction`
+--
+ALTER TABLE `transport_transaction`
+  MODIFY `tt_id` bigint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
@@ -1257,6 +1553,45 @@ ALTER TABLE `expense_details`
 --
 ALTER TABLE `fee_transactions`
   ADD CONSTRAINT `fee_transactions_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student_enrollment` (`studentid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `general_invoice`
+--
+ALTER TABLE `general_invoice`
+  ADD CONSTRAINT `fk_general_store_ke` FOREIGN KEY (`stu_id`) REFERENCES `student_enrollment` (`studentid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transport_account`
+--
+ALTER TABLE `transport_account`
+  ADD CONSTRAINT `transport_account_ibfk_1` FOREIGN KEY (`acc_student_id`) REFERENCES `student_enrollment` (`studentid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `transport_account_ibfk_2` FOREIGN KEY (`acc_enroll_id`) REFERENCES `transport_enroll` (`enroll_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transport_enroll`
+--
+ALTER TABLE `transport_enroll`
+  ADD CONSTRAINT `transport_enroll_ibfk_2` FOREIGN KEY (`enroll_student_id`) REFERENCES `student_enrollment` (`studentid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `transport_enroll_ibfk_3` FOREIGN KEY (`enroll_stage_id`) REFERENCES `transport_stages` (`route_stage_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transport_routes`
+--
+ALTER TABLE `transport_routes`
+  ADD CONSTRAINT `fk_route_bus_link` FOREIGN KEY (`route_bus_id`) REFERENCES `transport_bus` (`db_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transport_stages`
+--
+ALTER TABLE `transport_stages`
+  ADD CONSTRAINT `fa_route_stage_relation` FOREIGN KEY (`stage_route_id`) REFERENCES `transport_routes` (`route_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transport_transaction`
+--
+ALTER TABLE `transport_transaction`
+  ADD CONSTRAINT `transport_transaction_ibfk_1` FOREIGN KEY (`trans_student_id`) REFERENCES `student_enrollment` (`studentid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `transport_transaction_ibfk_2` FOREIGN KEY (`trans_enroll_id`) REFERENCES `transport_enroll` (`enroll_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
