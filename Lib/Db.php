@@ -5,6 +5,10 @@ class database
     @override 
     Edit Server Details to Proceed for CRUD Database Class 
 */
+    // private $servername = "localhost";
+    // private $username = "u199543696_sssvn";
+    // private $password = "Ssvn@2021";
+    // private $database_name = "u199543696_sssvn";
     private $servername = "localhost";
     private $username = "root";
     private $password = "";

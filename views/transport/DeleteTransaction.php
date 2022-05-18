@@ -39,7 +39,7 @@ if(isset($_POST['del_init'])){
         WHERE `transport_transaction`.`trans_gen_id` = '$transport_trans_id' AND `transport_account`.`acc_academic_year`='$ay' ");
        if(mysqli_num_rows($updateSql)>0){
                 $row=mysqli_fetch_object($updateSql);
-                print_r($row);
+                // print_r($row);
                 $t_paid=$row->trans_paid_amount;
                 $t_disc=$row->trans_discount;
                 $stu_id=$row->trans_student_id;

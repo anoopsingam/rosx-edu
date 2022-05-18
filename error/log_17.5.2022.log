@@ -1,36 +1,6 @@
-Ip Address : 127.0.0.1 - May 17, 2022, 1:00 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
-User ID: admin
--------------------------
-Ip Address : 127.0.0.1 - May 17, 2022, 1:01 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
-User ID: admin
--------------------------
-Ip Address : 127.0.0.1 - May 17, 2022, 1:01 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
-User ID: admin
--------------------------
-Ip Address : 127.0.0.1 - May 17, 2022, 1:01 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
-User ID: admin
--------------------------
-Ip Address : 127.0.0.1 - May 17, 2022, 1:02 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
-User ID: admin
--------------------------
-Ip Address : 127.0.0.1 - May 17, 2022, 1:02 am
-Error Message : Unknown column 'access' in 'field list'
-file path: C:\laragon\www\rosx\views\users\AddNewUser.php
-User Meassage: Cant able to Process the request for Adding the user 
+Ip Address : 59.93.97.75 - May 17, 2022, 1:10 pm
+Error Message : Cannot add or update a child row: a foreign key constraint fails (`u199543696_sssvn`.`transport_enroll`, CONSTRAINT `transport_enroll_ibfk_3` FOREIGN KEY (`enroll_stage_id`) REFERENCES `transport_stages` (`route_stage_id`) ON DELETE CASCADE ON UPDATE NO ACTI)
+file path: /home/u199543696/domains/roborosx.com/public_html/V2ERP/model/transport/EnrollmentController.php
+User Meassage: Cant able to Process the request for Adding the Enrollment , Student ID  : chethan 
 User ID: admin
 -------------------------

@@ -31,6 +31,7 @@ $app->setTitle('Manage Admission Data');
                                 <option value="APPROVED">APPROVED</option>
                                 <option value="REJECTED">REJECTED</option>
                                 <option value="TC ISSUED">TC_ISSUED</option>
+                                <option value="ALUMNI">ALUMNI</option>
                             </select>
                 </div>
                 <div class="col-sm">
@@ -78,7 +79,7 @@ $app->setTitle('Manage Admission Data');
     ?>
 
 
-        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10,11', 'landscape'); ?>
+        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10,11,12', 'landscape'); ?>
     <div style="overflow:scroll;">
                 <table id="example" class="display" style="width:100%">
             <thead>
@@ -94,7 +95,8 @@ $app->setTitle('Manage Admission Data');
                     <th>Father Mobile No</th>
                     <th>SATS NO</th>
                     <th>Class - Section</th>
-                    <th>Academic Year</th>
+                    <th>Academic Year</th> 
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -114,6 +116,7 @@ $app->setTitle('Manage Admission Data');
                 echo'<td>'.$data->sts_no.'</td>';
                 echo'<td>'.$data->present_class.' - '.$data->present_section.'</td>';
                 echo'<td>'.$data->academic_year.'</td>';
+                echo'<td>'.$data->status.'</td>';
                 echo '<td>'; ?>
           <a onclick="window.open('<?= func::href('/Admission/View/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-success badge-pill"><i class="fa fa-eye" aria-hidden="true"></i></a>
           <a onclick="window.open('<?= func::href('/Admission/Edit/'.encrypt($data->enrollment_no)); ?>','popup','width=1000,height=1000');" class="badge bg-warning badge-pill"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>

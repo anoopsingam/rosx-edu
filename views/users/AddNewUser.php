@@ -140,7 +140,7 @@ if(isset($_POST['submit'])){
         if($db->insert("users", $inserData)){
             if(!empty($email)){
                 $subject = "User Login | RoborosX ";
-                $headers = "From: support@starktechlabs.in" . "\r\n";
+                $headers = "From: support@roborosx.com" . "\r\n";
                 if(mail($email,$subject,$mail_txt,$headers)){
                     js::alert("Email Successfully Sent to $email");
                 }

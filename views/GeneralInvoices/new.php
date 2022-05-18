@@ -10,7 +10,7 @@ $app->setTitle("Manage Billing Particulars");
       </script>
 <div class="card">
     <div class="card-header">
-        <span class="btn bg-gradient-primary">Generate Invoice</span>
+        <span class="btn bg-gradient-primary">Generate UBS Invoice</span>
     </div>
     <div class="card-body text-center">
        <form action="" method="post">

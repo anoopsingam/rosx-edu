@@ -124,7 +124,9 @@ $app->setTitle('Transaction Reports');
                 echo'<td>'.'₹'.$data->paid_amount.'</td>';
                 echo'<td>'.'₹'.$data->balance_amount.'</td>';
                 echo'<td>'.$data->disc_amt.'</td>';
-                echo'<td>'.$data->tid.'</td>';
+                ?>
+                <td onclick="window.open('<?= func::href('/Transaction/UnifiedPrint/'.$data->tid); ?>','popup','width=1000,height=1000');" class="btn" ><?= $data->tid ?></td>
+                <?php 
                 echo'<td>'.$data->transaction_mode.'</td>';
                 echo'<td>'.$data->loginid.'</td>';
                 echo'<td>'.$data->ay.'</td>';

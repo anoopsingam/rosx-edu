@@ -9,7 +9,7 @@ if(!empty($id)){
     ?>
     <div class="card mt-3">
     <div class="card-header text-center">
-        <h5>General Invoice</h5>
+        <h5>UBS Invoice</h5>
     </div>
     <div class="card-body">
     <form action="/GeneralInvoice/Controller/edit/<?= encrypt($inv['invoice_no'])?>" method="post">

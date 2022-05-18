@@ -146,7 +146,7 @@ if(isset($_POST['update'])){
         if($db->update("users", $inserData,"id='$uid'")){
             if(!empty($email)){
                 $subject = "User Login Update | RoborosX ";
-                $headers = "From: support@starktechlabs.in" . "\r\n";
+                $headers = "From: support@roborosx.com" . "\r\n";
                 if(mail($email,$subject,$mail_txt,$headers)){
                     js::alert("Email Successfully Sent to $email");
                 }

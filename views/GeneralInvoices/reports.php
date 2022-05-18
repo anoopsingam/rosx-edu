@@ -5,7 +5,7 @@ $app->setTitle("Genral Invoices Reports");
 
 <div class="card">
     <div class="card-header">
-        <span class="btn btn-primary">General Invoices</span>
+        <span class="btn btn-primary">UBS Invoices</span>
     </div>
     <div class="card-body">
         <form action="" method="post">

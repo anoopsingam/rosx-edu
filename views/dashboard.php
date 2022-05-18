@@ -86,11 +86,11 @@ $app->setTitle("Dashboard");
                   </h3>
                 </div>
               </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                  <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-              </div>
+              <!--<div class="col-4 text-end">-->
+              <!--  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">-->
+              <!--    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>-->
+              <!--  </div>-->
+              <!--</div>-->
             </div>
           </div>
         </div>
@@ -106,11 +106,11 @@ $app->setTitle("Dashboard");
                   </h3>
                 </div>
               </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                  <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-              </div>
+              <!--<div class="col-4 text-end">-->
+              <!--  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">-->
+              <!--    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>-->
+              <!--  </div>-->
+              <!--</div>-->
             </div>
           </div>
         </div>

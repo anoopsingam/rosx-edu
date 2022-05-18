@@ -9,6 +9,21 @@ if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
     $balance=func::LastPaymentInfo($id,$ay);
     $account_data=func::studentAccountData($id,$ay);
     $t_fee=func::getFeeStructure($d->present_class,$ay);
+
+    $sql="SELECT * FROM transport_enroll e 
+    LEFT JOIN student_enrollment s ON e.enroll_student_id=s.studentid
+     LEFT JOIN transport_stages t ON e.enroll_stage_id=t.route_stage_id 
+     LEFT JOIN transport_routes r ON t.stage_route_id =r.route_id 
+     LEFT JOIN transport_bus b ON r.route_bus_id = b.db_id WHERE e.enroll_student_id='$id' and e.enroll_academic_year='$ay' ";
+$fetch=mysqli_query($db->conn,$sql);
+$data=mysqli_fetch_assoc($fetch);
+$trns=false;
+if(!empty($data['enroll_id'])){
+ $trns=true;
+}
+
+
+
 ?>
 <div class="card shadow-lg m-3">
     <div class="card-header">
@@ -79,6 +94,12 @@ if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
             </div>
         </div>
         <form action="/Transaction/Save/<?=$token?>" method="post">
+            <h6 class="text-center">
+                <span class="text-dark m-5">
+                    Tuition Fee :
+                </span>
+                <br>
+            </h6>
             <div class="row mb-3">
                 <div class="col-lg-4">
                     <label for="">Student ID :</label>
@@ -181,7 +202,115 @@ if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
                 }
                 </script>
             </div>
-            <div class="row mb-3">
+            <?php 
+                    if($trns){
+                        $last_trans=mysqli_query($db->conn," SELECT SUM(trans_discount) AS total_discount from transport_transaction WHERE trans_student_id='$data[studentid]' AND trans_enroll_id='$data[enroll_id]'");
+                        $ltd=mysqli_fetch_object($last_trans);
+                        $total_dicount=(empty($ltd->total_discount))?0:$ltd->total_discount;
+                        $acc_data=mysqli_query($db->conn,"SELECT * FROM transport_account WHERE acc_student_id='$id' and acc_academic_year='$ay'");
+                        $acc_data=mysqli_fetch_assoc($acc_data);
+                        $paid_amount=(empty($acc_data['acc_paid']))?0:$acc_data['acc_paid'];
+                        $balance_amount=$data['route_stage_fare']-$paid_amount-$total_dicount;
+                        ?>
+            <input type="hidden" name="transport_opted" value="yes">
+            <h6 class="text-center m-5">
+                <span class="text-dark ">
+                    Transport Fee :
+                </span>
+                <br>
+            </h6>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <label for="">Route Name : </label>
+                    <input type="text" name="route_name" class="form-control" value="<?= $data['route_name']?>"
+                        readonly>
+                </div>
+                <div class="col-sm">
+                    <label for="">Bus Name : </label>
+                    <input type="text" name="bus_name" class="form-control" value="<?= $data['bus_name']?>" readonly>
+                </div>
+                <div class="col-sm">
+                    <input type="hidden" name="enroll_id" value="<?= $data['enroll_id']?>">
+                    <label for="">Stage Name : </label>
+                    <input type="text" name="stage_name" class="form-control" value="<?= $data['route_stage_name']?>"
+                        readonly>
+                </div>
+                <div class="col-sm">
+                    <label for="">Stage Fare :</label>
+                    <input type="text" name="stage_fare" id="stage_fare" class="form-control"
+                        value="<?= $data['route_stage_fare']?>" readonly>
+                </div>
+                <div class="col-sm">
+                    <label for="">Enrolled Academic Year :</label>
+                    <input type="text" name="enroll_ay" class="form-control" value="<?= $data['enroll_academic_year']?>"
+                        readonly>
+                </div>
+            </div>
+            <h6>Payment Detials : </h6>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <label for="">Paid Amount : </label>
+                    <input type="text" name="paid_amount" class="form-control" value="<?= $paid_amount?>" readonly>
+                </div>
+                <div class="col-sm">
+                    <label for="">Balance Amount : </label>
+                    <input type="text" name="balance_amount" id="balance_amount" class="form-control"
+                        value="<?= $balance_amount?>" readonly>
+                </div>
+                <!-- <div class="col-sm">
+                <label for="">Payment Mode : </label>
+                <select name="payment_mode" id="" class="form-control">
+                    <option value="" selected disabled>Select Payment Mode</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Cheque">Cheque</option>
+                    <option value="DD">DD</option>
+                    <option value="UPI">UPI(Phone Pe, Paytm, Bhartpe)</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="">Payment Date : </label>
+                <input type="date" name="payment_date" value="<?= date("Y-m-d")?>" class="form-control">
+            </div> -->
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <label for="\">Amount Paying Now : </label>
+                    <input type="text" name="amount_paying" id="paying_no" onkeyup="CalculateBalance()"
+                        class="form-control">
+                </div>
+                <div class="col-sm">
+                    <label for="">Updated Balance : </label>
+                    <input type="text" name="updated_balance" id="updated_balance" class="form-control" readonly>
+                </div>
+                <div class="col-sm">
+                    <label for="">Discount : </label>
+                    <input type="text" name="discount" id="discount" onkeyup="CalculateBalance()" class="form-control">
+                </div>
+            </div>
+            <script>
+            function CalculateBalance() {
+                var paying_no = document.getElementById('paying_no').value;
+                var stage_fare = document.getElementById('balance_amount').value;
+                var discount = document.getElementById('discount').value;
+                var updated_balance = stage_fare - paying_no - discount;
+                document.getElementById('updated_balance').value = updated_balance;
+            }
+            </script>
+            <?php
+                    }else{
+                        ?>
+            <input type="hidden" name="transport_opted" value="no">
+            <h6 class="text-center m-5">
+                <span class="text-danger ">
+                    Transport Not Opted
+                </span>
+                <br>
+            </h6>
+            <?php
+                    }
+           
+           ?>
+            <div class="row mt-5  mb-3">
                 <div class="col-lg-4">
                     <label for="">Transaction Note :</label>
                     <textarea name="transaction_note" id="" cols="5" rows="5" class="form-control">N/A</textarea>
@@ -189,6 +318,7 @@ if(!empty($token) && !empty($_POST['studentid']) && is_csrf_valid() ){
                 <div class="col-lg-4">
                     <label for="">Transaction Mode : </label>
                     <select name="transaction_mode" id="" class="form-control">
+                        <option value="" selected disabled>Select Payment Mode</option>
                         <option value="Cash">Cash</option>
                         <option value="Cheque">Cheque</option>
                         <option value="DD">DD</option>

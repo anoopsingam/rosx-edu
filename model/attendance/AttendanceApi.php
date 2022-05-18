@@ -17,7 +17,7 @@ for ($i = 0; $i < $_POST['number']; $i++) {
             $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
             $numbers = $_POST['mobile_no'][$i];
             $sender = urlencode('STARKT');
-            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College SNHS. Regards Admin, STARKT");
+            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College SSSVN. Regards Admin, STARKT");
             // Prepare data for POST request
             $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
             // Send the POST request with cURL

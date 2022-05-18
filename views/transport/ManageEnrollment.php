@@ -17,6 +17,7 @@ $app->setTitle("Manage Transport Enrollment ");
             </div>
         </div>
     </div>
+
     <div class="card-body">
         <div class="modal fade" id="modal-form_new_ho" tabindex="-1" role="dialog" aria-labelledby="modal-form_new_ho"
             aria-hidden="true">
@@ -32,13 +33,18 @@ $app->setTitle("Manage Transport Enrollment ");
                                     <?= set_csrf();?>
                                     <label for="">Student Id : </label>
                                     <div class="input-group mb-3">
-                                        <input type="text" name="student_id" class="form-control"
+                                        <input type="text" name="student_id" list="student_list" class="form-control"
                                             placeholder="Student Id ..." aria-label="student_id"
                                             aria-describedby="class_details">
+
+                                    </div>
+                                    <label for=""> Choose Route </label>
+                                    <div class="input-group mb-3">
+                                        <?= func::getRouteListApi();?>
                                     </div>
                                     <label for=""> Choose Stage </label>
-                                    <div class="input-group mb-3">
-                                        <?= func::getStageDetails();?>
+                                    <div class="input-group mb-3" id="stage_id">
+
                                     </div>
                                     <label for="">Academic Year : </label>
                                     <div class="input-group mb-3">
@@ -111,21 +117,40 @@ $app->setTitle("Manage Transport Enrollment ");
                                             <?= $data->student_name ?> </h3>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/Transport/EnrollmentController/edit/<?= encrypt($data->enroll_id ); ?>"
+                                        <form
+                                            action="/Transport/EnrollmentController/edit/<?= encrypt($data->enroll_id ); ?>"
                                             method="post">
                                             <?= set_csrf();?>
                                             <label for="">Student Id : </label>
                                             <div class="input-group mb-3">
-                                                <input type="text" name="student_id" class="form-control"
-                                                    placeholder="Student Id ..." aria-label="student_id"
-                                                    aria-describedby="class_details" value="<?= $data->enroll_student_id ?>" readonly>
+                                                <input type="text" name="student_id" list="student_list"
+                                                    class="form-control" placeholder="Student Id ..."
+                                                    aria-label="student_id" aria-describedby="class_details"
+                                                    value="<?= $data->enroll_student_id ?>" readonly>
+                                            </div>
+                                            <label for=""> Choose Route </label>
+                                            <div class="input-group mb-3">
+                                                <?= func::getRouteListApi($data->enroll_student_id ,"UpdateStage".$data->enroll_student_id."()");?>
                                             </div>
                                             <label for=""> Choose Stage </label>
-                                            <div class="input-group mb-3">
-                                                <?= func::getStageDetails(
-                                                    ["stage_id"=>$data->enroll_stage_id,"stage_name"=>$data->route_stage_name."- ₹".$data->route_stage_fare."[".$data->route_name."]"]
-                                                );?>
+                                            <div class="input-group mb-3" id="stage_id<?= $data->enroll_student_id ?>">
+
                                             </div>
+                                            <script>
+                                            function UpdateStage<?= $data->enroll_student_id ?>() {
+                                                var route_id = $('#<?= $data->enroll_student_id ?>').val();
+                                                $.ajax({
+                                                    url: '<?= func::href("/Api/GetStageList")?>',
+                                                    type: 'POST',
+                                                    data: {
+                                                        route_id: route_id
+                                                    },
+                                                    success: function(response) {
+                                                        $('#stage_id<?= $data->enroll_student_id ?>').html(response);
+                                                    }
+                                                });
+                                            }
+                                            </script>
                                             <label for="">Academic Year : </label>
                                             <div class="input-group mb-3">
                                                 <?= func::academicYear("academic_year",
@@ -152,6 +177,23 @@ $app->setTitle("Manage Transport Enrollment ");
         </table>
     </div>
 </div>
+<script>
+function GetStages() {
+    var route_id = $('#route_id').val();
+    $.ajax({
+        url: '<?= func::href("/Api/GetStageList")?>',
+        type: 'POST',
+        data: {
+            route_id: route_id
+        },
+        success: function(response) {
+            $('#stage_id').html(response);
+        }
+    });
+}
+</script>
+
+<?= func::EnrollTransportSearch();?>
 <?php   
     require_once './views/footer.php';
 ?>

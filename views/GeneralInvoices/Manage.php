@@ -6,12 +6,12 @@ $app->setTitle("Manage Billing Particulars");
     <div class="card-header">
         <div class="row">
             <div class="col-md-3">
-            <span class="btn btn-danger btn-lg">Manage Billing Particulars</span>
+            <span class="btn btn-danger btn-lg">Manage UBS Particulars</span>
             </div>
             <div class="col-md-9 text-right ">
                 <p align="right">
             <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal"
-                    data-bs-target="#modal-form_new_ho">New Particular</button></p>
+                    data-bs-target="#modal-form_new_ho">New UBS Particular</button></p>
             </div>
         </div>
     </div>

@@ -123,26 +123,26 @@ $user=login::UserInfo($_SESSION['username']);
                                     d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">General Billing</span>
+                        <span class="nav-link-text ms-1">UBS</span>
                     </a>
                     <div class="collapse " id="general_billing">
                         <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/GeneralInvoices/ManageParticular")?>">
                                     <span class="sidenav-mini-icon"> M </span>
-                                    <span class="sidenav-normal"> Manage Particulars </span>
+                                    <span class="sidenav-normal"> UBS Particulars </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/GeneralInvoice/new")?>">
                                     <span class="sidenav-mini-icon"> M </span>
-                                    <span class="sidenav-normal"> New Invoices </span>
+                                    <span class="sidenav-normal"> UBS Invoices </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link " href="<?= func::href("/GeneralInvoice/Reports")?>">
                                     <span class="sidenav-mini-icon"> M </span>
-                                    <span class="sidenav-normal"> Invoices Reports </span>
+                                    <span class="sidenav-normal"> UBS Reports </span>
                                 </a>
                             </li>
                         </ul>
@@ -182,6 +182,12 @@ $user=login::UserInfo($_SESSION['username']);
                                 <a class="nav-link " href="<?= func::href("/Transaction/New")?>">
                                     <span class="sidenav-mini-icon"> C </span>
                                     <span class="sidenav-normal"> Collect Fee ₹ </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="<?= func::href("/Transaction/StudentFeeUpdate/".uniqid())?>">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal"> Student Fee Update </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
