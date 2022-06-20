@@ -32,7 +32,7 @@ login::loginPage();
                     <div class="col-lg-5 text-center mx-auto">
                        <img src='<?=url::myurl() ?>/web_assets/transperent.png' height='150' width='180' class='img-fluid m-0' alt='RoborosX Edu'>
                         <h4 class="text-white mb-2 mt-2"> <?= $app->name; ?> <br> ERP Login</h4>
-                        <p class="text-lead text-white">Powered by RoborosX Multi Tech Solutions LLP.</p>
+                        <p class="text-lead text-white">Powered by RoborosX Omni Tech Solutions LLP.</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@ login::loginPage();
             <div class="row">
                 <div class="col-8 mx-auto text-center mt-1">
                     <p class="mb-0 text-secondary">
-                        Copyright &copy; 2022 made with <i class="text-danger fa fa-heart"></i> by <a class="text-primary " href="https://roborosx.com" target="_blank">RoborosX Multi Tech Solutions LLP</a>
+                        Copyright &copy; 2022 made with <i class="text-danger fa fa-heart"></i> by <a class="text-primary " href="https://roborosx.com" target="_blank">RoborosX Omni Tech Solutions LLP</a>
                     </p>
                 </div>
             </div>

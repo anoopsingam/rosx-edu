@@ -7,6 +7,11 @@ class includes
         echo "<script src='".url::myurl().'/web_assets/brcd.js'."'></script>";
     }
 
+    public static function insertJS(string $url){
+        echo "<script src='".url::myurl().'/assets/js/'.$url."'></script>";
+    }
+
+
     public static function barcode(string $id = '', string $display = 'true', string $size = '50')
     {
         echo '<img src="'.url::myurl().'/barcode/'.$size.'/'.$id.'/'.$display.'" alt="'.$id.'">';
@@ -64,7 +69,6 @@ class includes
            'plugins/smooth-scrollbar.min.js',
            'plugins/dragula/dragula.min.js',
            'plugins/jkanban/jkanban.js',
-           'plugins/chartjs.min.js',
            'plugins/threejs.js',
            'plugins/orbit-controls.js',
         ];

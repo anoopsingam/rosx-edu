@@ -3,7 +3,8 @@
 require '././config.php';
 $db = new database();
 $conn = $db->conn;
-
+$app= new app();
+$short_name = $app->short_name;
 if(isset($_SESSION['confirmation']) && $_SESSION['confirmation']=="YES"){
     $s = "INSERT INTO `student_attendance`(`student_name`, `reg_no`, `student_class`,`attendance_date`,`month_`,`attendance`, `login_id`, `response`,`ay`) VALUES";
 for ($i = 0; $i < $_POST['number']; $i++) {
@@ -17,7 +18,7 @@ for ($i = 0; $i < $_POST['number']; $i++) {
             $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
             $numbers = $_POST['mobile_no'][$i];
             $sender = urlencode('STARKT');
-            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College SSSVN. Regards Admin, STARKT");
+            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College/School $short_name. Regards Admin, STARKT");
             // Prepare data for POST request
             $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
             // Send the POST request with cURL

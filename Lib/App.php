@@ -1,15 +1,16 @@
 <?php
 class app
 {
-    public $name = "Shanthinikethan School";
-    public $address = "4th Ward Gulur road, Bagepalli";
-    public $phone = "+91-7353434241";
-    public $email = "shanthinikethanschoolbpl2@gmail.com";
-    public $website = "www.shanthinikethanschool.com";
+    public $name = "Sri Sathya Sai Vidya Niketan";
+    public $address = "Sri Sathya Sai Nagar, Bagepalli, Chikkaballapura Dist, KA-561207";
+    public $phone = "7022537447, 9966930530, 8494961431";
+    public $email = "sssvn561207@gmail.com";
+    public $website = "www.sssvnbagepalli.in";
     public $logo = "web_assets/logo.png";
-    public $short_name = "SNHS";
+    public $short_name = "SSVN";
     public $currency_symbol = "₹";
     public $city="Bagepalli";
+    public $quotation="Quotation"; 
     public function name()
     {
         echo $this->name;

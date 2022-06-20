@@ -33,7 +33,8 @@ $college = new app();
     }
 
     .main {
-        width: 850px;
+        width: 900px;
+        height: max-content;
         margin: 10px auto;
         padding: 10px 0px;
         color: rgb(26, 26, 26);
@@ -118,7 +119,7 @@ $college = new app();
     @media print {
         body:before {
             content:'<?= $transaction; ?>';
-            position: fixed;
+            position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
@@ -150,7 +151,7 @@ if (empty($bill_no)) {
     $result = mysqli_query($conn, $sql);
     $row = json_decode(json_encode(mysqli_fetch_assoc($result)));
 ?>
-    <div class="main border border-dark border-5  bg-logo">
+    <div class="main border border-dark border-5 mt-5  bg-logo">
         <!-- HEADER PART -->
         <div class="" style="border-bottom: 1px solid black; padding-bottom: 5px;">
             <div class="row">
@@ -166,11 +167,15 @@ if (empty($bill_no)) {
                     </span>
                     <span style="font-size: 12px;font-weight:bold;"><?php echo $college->address(); ?><br>PH.NO:
                         <?php echo $college->phone?> <br> <?php echo $college->email(); ?> </span>
+                        <span style="float: left;font-weight: 900;" class="text-center">Powered By
+                    RoborosX Omni Tech Solutions LLP, Bengaluru</span>
                 </div>
                 <div class="col-3" style="text-align: start; ">
                     <a href="#"><img
                             src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo $college->name() . "   Name : " . $row->student_name . "   SID :" . $row->student_id . "   BILL NO:" . $row->bill_no . " Total Fee :" . $row->total_fee . " Installment :" . $row->installment . "   PAID AMOUNT :" . $row->paid_amount . "   BALANCE AMOUNT : " . $row->balance_amount . "  PAID ON :" . $row->created_on . " COLLECTED BY : " . $row->login_id . "  Transaction ID :" . $row->tid . " Bill Printed On :" . date("d-m-Y"); ?>"
                             id="QR" height="100px" width="100px" style="margin-left: 30px;" alt="logo"></a>
+                          <br>
+                    <p class="text-center">AY- <strong><?php echo $row->ay ?></strong></p>
                 </div>
             </div>
         </div>
@@ -183,7 +188,7 @@ if (empty($bill_no)) {
             <div class="info-1">
                 <div class="col">
                     <label> Receipt No:</label>
-                    <span><strong><?php echo $row->bill_no ?></strong></span>
+                    <h5 class="text-danger"><strong><?php echo $row->bill_no ?></strong></h5>
                 </div>
                 <div class="col" style="text-align: center;">
                     <label>Transaction ID:</label>
@@ -200,20 +205,20 @@ if (empty($bill_no)) {
             <div class="info-1">
                 <div class="col">
                     <label style="font-size: smaller;"> STUDENT ID:</label>
-                    <span><?= includes::barcode($row->student_id,"true","50")?></span>
+                    <span><h4><?= $row->student_id; ?></h4></span>
 
                 </div>
                 <div class="col" style="text-align: center;">
                     <label>Class:</label>
-                    <span><strong><?php echo $row->present_class ?></strong></span>
+                    <span><strong><?php echo $row->present_class.' - '.$row->present_section ?></strong></span>
                 </div>
                 <div class="col" style="text-align: center;">
-                    <label>Section :</label>
-                    <span><strong><?php echo $row->present_section ?></strong></span>
+                    <label>TYPE :</label>
+                    <span><strong><?php echo $row->admission_type; ?></strong></span>
                 </div>
                 <div class="col" style="text-align: right;">
-                    <label>Academic year:</label>
-                    <span><strong><?php echo $row->ay ?></strong></span>
+                <label>Transaction by :</label>
+                    <span><strong><?php echo $row->transaction_mode ?></strong></span>
                 </div>
             </div>
             <div class="info-2">
@@ -226,8 +231,8 @@ if (empty($bill_no)) {
                     <span><strong>₹<?php echo $row->total_fee ?></strong></span>
                 </div>
                 <div class="col" style="text-align: right;font-size:xx-small;">
-                    <label>Fee Collected By [ID]:</label>
-                    <span><strong><?php echo $row->login_id ?></strong></span>
+                    <label> Collected By :</label>
+                    <span><strong><?php echo $row->loginid ?></strong></span>
                 </div>
 
             </div>
@@ -235,7 +240,7 @@ if (empty($bill_no)) {
         </div>
 
         <!-- FEE STRUCTURE -->
-        <div class="fee-content m-4">
+        <div class="fee-content mr-4 ml-4 mb-4">
             <table class="table-bordered">
                 <thead>
                     <tr>
@@ -271,22 +276,30 @@ if (empty($bill_no)) {
 
 
 
-            <div class="font-monospace">
-                <h6 align="center">IN WORDS: <p style="font-weight: 900;" id="inwords"> </p>
-                </h6>
+            <h6 class="mt-2" align="center">IN WORDS: <span style="font-weight: 900;" id="inwords"> </span>
+                    </h6>
 
-            </div>
-
-            <p><span style="float: left;font-weight: 900;">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                <span style="float: left;font-weight: 900;">
                     Sign(<?php echo $_SESSION['username'] ?>) /-
 
                 </span>
+                </div>
+                <div class="col-md-4 text-center">
+                <span style="font-weight: 900;">
+                    Parent Sign /-
+                </span> <br>
+            </div>
+            <div class="col-md-4">
                 <span style="float: right;font-weight: 900;">
                     Principal Sign /-
-                </span><br>
-                <span style="float: left;font-weight: 500;" class="text-center">Software Designed & Developed By
-                    RoborosX Mutitech Solutions LLP, Bengaluru</span>
-            </p>
+                </span>
+            </div>
+        </div>
+        <p style="font-weight: 500;" class="text-center mt-2"><b>Note : </b> Fee Once paid its Non-refundable </p>
+            
+            
         </div>
         <script>
         var num =
@@ -306,9 +319,11 @@ if (empty($bill_no)) {
         document.getElementById("inwords").innerHTML = number2words(<?php echo $row->paid_amount ?>) + ' RUPEES /-';
         </script>
     </div>
+<br><br>
     <center> <span>-----------------------------------------------Cut
-            Here-------------------------------------------</span></center>
-    <div class="main border border-dark border-5">
+            Here-------------------------------------------</span></center> <br> 
+        <br><br>
+            <div class="main border border-dark border-5 mt-4  bg-logo">
         <!-- HEADER PART -->
         <div class="" style="border-bottom: 1px solid black; padding-bottom: 5px;">
             <div class="row">
@@ -324,11 +339,15 @@ if (empty($bill_no)) {
                     </span>
                     <span style="font-size: 12px;font-weight:bold;"><?php echo $college->address(); ?><br>PH.NO:
                         <?php echo $college->phone?> <br> <?php echo $college->email(); ?> </span>
+                        <span style="float: left;font-weight: 900;" class="text-center">Powered By
+                    RoborosX Omni Tech Solutions LLP, Bengaluru</span>
                 </div>
                 <div class="col-3" style="text-align: start; ">
                     <a href="#"><img
                             src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo $college->name() . "   Name : " . $row->student_name . "   SID :" . $row->student_id . "   BILL NO:" . $row->bill_no . " Total Fee :" . $row->total_fee . " Installment :" . $row->installment . "   PAID AMOUNT :" . $row->paid_amount . "   BALANCE AMOUNT : " . $row->balance_amount . "  PAID ON :" . $row->created_on . " COLLECTED BY : " . $row->login_id . "  Transaction ID :" . $row->tid . " Bill Printed On :" . date("d-m-Y"); ?>"
                             id="QR" height="100px" width="100px" style="margin-left: 30px;" alt="logo"></a>
+                          <br>
+                    <p class="text-center">AY- <strong><?php echo $row->ay ?></strong></p>
                 </div>
             </div>
         </div>
@@ -341,7 +360,7 @@ if (empty($bill_no)) {
             <div class="info-1">
                 <div class="col">
                     <label> Receipt No:</label>
-                    <span><strong><?php echo $row->bill_no ?></strong></span>
+                    <h5 class="text-danger"><strong><?php echo $row->bill_no ?></strong></h5>
                 </div>
                 <div class="col" style="text-align: center;">
                     <label>Transaction ID:</label>
@@ -358,20 +377,20 @@ if (empty($bill_no)) {
             <div class="info-1">
                 <div class="col">
                     <label style="font-size: smaller;"> STUDENT ID:</label>
-                    <span><?= includes::barcode($row->student_id,"true","60")?></span>
+                    <span><h4><?= $row->student_id; ?></h4></span>
 
                 </div>
                 <div class="col" style="text-align: center;">
                     <label>Class:</label>
-                    <span><strong><?php echo $row->present_class ?></strong></span>
+                    <span><strong><?php echo $row->present_class.' - '.$row->present_section ?></strong></span>
                 </div>
                 <div class="col" style="text-align: center;">
-                    <label>Section :</label>
-                    <span><strong><?php echo $row->present_section ?></strong></span>
+                    <label>TYPE :</label>
+                    <span><strong><?php echo $row->admission_type; ?></strong></span>
                 </div>
                 <div class="col" style="text-align: right;">
-                    <label>Academic year:</label>
-                    <span><strong><?php echo $row->ay ?></strong></span>
+                <label>Transaction by :</label>
+                    <span><strong><?php echo $row->transaction_mode ?></strong></span>
                 </div>
             </div>
             <div class="info-2">
@@ -384,8 +403,8 @@ if (empty($bill_no)) {
                     <span><strong>₹<?php echo $row->total_fee ?></strong></span>
                 </div>
                 <div class="col" style="text-align: right;font-size:xx-small;">
-                    <label>Fee Collected By [ID]:</label>
-                    <span><strong><?php echo $row->login_id ?></strong></span>
+                    <label> Collected By :</label>
+                    <span><strong><?php echo $row->loginid ?></strong></span>
                 </div>
 
             </div>
@@ -393,7 +412,7 @@ if (empty($bill_no)) {
         </div>
 
         <!-- FEE STRUCTURE -->
-        <div class="fee-content m-4">
+        <div class="fee-content mr-4 ml-4 mb-4">
             <table class="table-bordered">
                 <thead>
                     <tr>
@@ -429,22 +448,30 @@ if (empty($bill_no)) {
 
 
 
-            <div class="font-monospace">
-                <h6 align="center">IN WORDS: <p style="font-weight: 900;" id="inwords2"> </p>
-                </h6>
+            <h6 class="mt-2" align="center">IN WORDS: <span style="font-weight: 900;" id="inwords2"> </span>
+                    </h6>
 
-            </div>
-
-            <p><span style="float: left;font-weight: 900;">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                <span style="float: left;font-weight: 900;">
                     Sign(<?php echo $_SESSION['username'] ?>) /-
 
                 </span>
+                </div>
+                <div class="col-md-4 text-center">
+                <span style="font-weight: 900;">
+                    Parent Sign /-
+                </span> <br>
+            </div>
+            <div class="col-md-4">
                 <span style="float: right;font-weight: 900;">
                     Principal Sign /-
-                </span><br>
-                <span style="float: left;font-weight: 500;" class="text-center">Software Designed & Developed By
-                    RoborosX Mutitech Solutions LLP, Bengaluru</span>
-            </p>
+                </span>
+            </div>
+        </div>
+        <p style="font-weight: 500;" class="text-center mt-2"><b>Note : </b> Fee Once paid its Non-refundable </p>
+            
+            
         </div>
         <script>
         var num =

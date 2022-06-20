@@ -1,0 +1,2 @@
+// add two sql tables academics_subjects_info and academics_marks 
+ALTER TABLE `student_enrollment` ADD `admission_type` VARCHAR(250) NOT NULL DEFAULT 'PAID' AFTER `status`;

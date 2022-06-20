@@ -4,7 +4,7 @@
                         <div class="col-lg-6 mb-lg-0 mb-4">
                             <div class="copyright text-center text-sm text-muted text-lg-start">
                                 © <?= date("Y")?> made with <i class="text-danger fa fa-heart"></i> by
-                                <a href="https://www.roborosx.com" class="font-weight-bold text-primary" target="_blank">RoborosX Multi Tech Solutions LLP </a> 
+                                <a href="https://www.roborosx.com" class="font-weight-bold text-primary" target="_blank">RoborosX Omni Tech Solutions LLP </a> 
                             </div>
                         </div>
                     </div>

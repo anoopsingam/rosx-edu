@@ -71,7 +71,7 @@ $app->setTitle("Quick Admission");
                     <label for="medium_c">Medium</label>
                     <select name="medium_c" class="form-control m-1" id="">
                         <option value="">Select Medium</option>
-                        <option value="ENGLISH">ENGLISH</option>
+                        <option value="ENGLISH" selected>ENGLISH</option>
                         <option value="KANNADA">KANNADA</option>
                         <option value="HINDI">HINDI</option>
                         <option value="URDU">URDU</option>
@@ -98,6 +98,10 @@ $app->setTitle("Quick Admission");
                 <div class="col-sm">
                     <label for="present_section">Present Section</label>
                     <?= func::sectionList('present_section'); ?>
+                </div>
+                <div class="col-sm">
+                    <label for="">Admission Type : </label>
+                    <?= func::getAdmissionType(); ?>
                 </div>
             </div>
     

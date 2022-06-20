@@ -1,0 +1,18 @@
+Ip Address : 127.0.0.1 - June 18, 2022, 11:59 am
+Error Message : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-month,res_sub_1_marks,res_sub_2_marks,res_sub_3_marks,res_sub_4_marks,res_sub_5' at line 1
+file path: C:\laragon\www\Rosx\model\academics\MarksEntryController.php
+User Meassage: Cant able to Process the request for Inserting Data of Marks FA-1 SNHS0569 2022-2023 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - June 18, 2022, 12:00 pm
+Error Message : Table 'rosx_edu.academics_results' doesn't exist
+file path: C:\laragon\www\Rosx\model\academics\MarksEntryController.php
+User Meassage: Cant able to Process the request for Inserting Data of Marks FA-1 SNHS0569 2022-2023 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - June 18, 2022, 12:01 pm
+Error Message : Unknown column 'res_sub_2_marks' in 'field list'
+file path: C:\laragon\www\Rosx\model\academics\MarksEntryController.php
+User Meassage: Cant able to Process the request for Inserting Data of Marks FA-1 SNHS0569 2022-2023 
+User ID: admin
+-------------------------

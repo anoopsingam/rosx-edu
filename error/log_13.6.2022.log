@@ -1,0 +1,18 @@
+Ip Address : 127.0.0.1 - June 13, 2022, 1:31 pm
+Error Message : Unknown column 'login_id' in 'field list'
+file path: C:\laragon\www\Rosx\model\academics\SubjectsController.php
+User Meassage: Cant able to Process the request for Adding the Subjects for  UKG 2026-2027 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - June 13, 2022, 2:31 pm
+Error Message : Unknown column 'U2xiYStqQkRSQ3pwWlBJSGRjOXIwQT09' in 'where clause'
+file path: C:\laragon\www\Rosx\model\academics\SubjectsController.php
+User Meassage: Cant able to Process the request for Deleting the Subjects U2xiYStqQkRSQ3pwWlBJSGRjOXIwQT09 
+User ID: U2xiYStqQkRSQ3pwWlBJSGRjOXIwQT09
+-------------------------
+Ip Address : 127.0.0.1 - June 13, 2022, 2:47 pm
+Error Message : Unknown column 'submit' in 'field list'
+file path: C:\laragon\www\Rosx\model\academics\SubjectsController.php
+User Meassage: Cant able to Process the request for Updating the Subjects for  10 2022-2023 
+User ID: admin
+-------------------------

@@ -527,7 +527,7 @@ $data = func::getStudentDetails(decrypt($ern));
         <div class="copyright text-center text-sm text-muted text-lg-start">
             © <?= date('Y'); ?> Software Developed <i class="text-danger fa fa-heart"></i> by
             <a href="https://www.roborosx.com" class="font-weight-bold text-primary text-decoration-none"
-                target="_blank">RoborosX Multi Tech Solutions LLP </a>
+                target="_blank">RoborosX Omni Tech Solutions LLP </a>
         </div>
     </div>
 

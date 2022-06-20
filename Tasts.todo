@@ -1,6 +1,6 @@
 Project Rosx:
     - Done with general Invoices and Reports @done
-    - Add Fee Fixation after Generation of 1st Invoice 
+    - Add Fee Fixation after Generation of 1st Invoice @done
     - Provide Separate Previllages to users @done
     - Add Transaport Management System Following with @done
         - Add Driver and Bus @done
@@ -8,5 +8,28 @@ Project Rosx:
         - Add Stage @done
         - Transport Enrollment @done
         - Billing of Transport needs to be done @done
-        - Add Application and Status Check Portal
-    - Add Academics module 
+        - Add Application and Status Check Portal @done
+    - Add Academics module @done
+    - --------------------------
+    - Add Attendance Summar in Dashboard (minor) @done
+    - Provide Manual Entry of Co-Subjects Data (post)
+    - provide Manual Entry for Working Days (post)
+    - Remove date Restriction in Admission Data (minor) @done
+    - Universal Student Search in Dashboard(App No, Enrollment no , Name , Father or Mother Mobile No.) (major) ui ////
+    - Add School Custom banner in Login (Auth Page Src:Auth@Controller ->Model); (Permission Required)
+    - Employee management and Leave Summary (post)
+    - Add Class & Section UBS Reports (done) @done
+    - Add Route & Stage (minor) @done
+    - Class Wise Attendance Reports in Dashboard (Summary) [Minor] @done
+    - Add Performance Report class & student wise, Academic year comparison (post)
+    - Add Separete Marks Card Printing in Term wise (I,II,Full) (post)
+    - Transfer Expense Accounts from Old ERP to new (major --@ExpenseImport @need)
+    - Add Student Login with Student_id default session set @Controller (Short Deadline Production Plan min 2 Dev ! testing Engineer Appointment for Project)
+    - Add Fee Category in Fee Payment (Minor) @done
+                    - Default : PAID ADMISSION @done
+                    - RTE @done
+                    - STAFF @done
+                    - FREE/SPONSERED @done
+    -Argon Layout (Major)
+    -Add Type of Flow in Expense Maanagement (Minor)
+    

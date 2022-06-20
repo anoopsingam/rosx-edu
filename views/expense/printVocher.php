@@ -58,8 +58,6 @@ $payLoad=[
     th {
         border: 1px solid #000000;
     }
-
-
     hr {
         border-top: 2px solid black;
     }
@@ -69,26 +67,27 @@ $payLoad=[
     </style>
 </head>
 <body class="container-fluid">
-   <div class="container voucher-border">
-   <div class="row m-1">
+<div class="container-fluid voucher-border h-75">
+   <div class="row">
         <div class="col-md-3 mb-0">
-            <?= $app->SetLogo('180','180','');?>
+            <?= $app->SetLogo('150','150','ml-5 mt-4');?>
         </div>
-        <div class="col-md-6 mb-0">
-            <h2 class="text-center mt-3"><?= $app->name();?></h2>
-            <h5 class="text-center"><?= $app->address();?></h5>
-            <h6 class="text-center">Phone No: <?= $app->phone();?> <br> Email: <?= $app->email();?></h6>
-            <p class="h3 text-center text-dark mb-0">PAYMENT VOUCHER</p>
+        <div class="col-md-6 mb-0 text-center">
+            <h3 class=" mt-3"><?= $app->name();?></h3>
+            <span><?= $app->address();?><br></span>
+            <span>Phone No: <?= $app->phone();?> <br> Email: <?= $app->email();?></span>
+            <p class="h4 text-center text-danger m-0">PAYMENT VOUCHER</p>
+            <span>Powered by RosX Edu Soft </span>
         </div>
         <div class="col-md-3 text-center mb-0">
-            <img src="<?= url::myurl()?>/web_assets/transperent.png" height="140" width="190" alt="">
-            <p>Powered by RosX Edu Soft </p>
-        </div>
+        <img class="m-3" src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=<?=  json_encode($payLoad); ?>' id="QR" height="150" class="img-" width="150" alt="logo">
+        
+    </div>
     </div>
     <hr >
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-bordered table-sm text-center">
+            <table class="table table-bordered table-sm text-center h-25">
                 <th colspan="2">
                     <h5 class="text-center">Payee Details</h5>
                 </th>
@@ -107,9 +106,9 @@ $payLoad=[
             </table>
         </div>
         <div class="col-md-6">
-            <table class="table table-bordered table-sm text-center">
+            <table class="table table-bordered table-sm text-center h-25">
                 <th colspan="2">
-                    <h5 class="text-center">Expense Details</h5>
+                    <h5 class="text-center">Expense Details  FY :<?= $data['expense_fy']?></h5>
                 </th>
                 <tr>
                     <td>
@@ -128,11 +127,6 @@ $payLoad=[
                         <h6 class="font-weight-bolder">Voucher No : </h6>
                     </td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                    FY :<?= $data['expense_fy']?>
-                    </td>
                 </tr>
             </table>
         </div>
@@ -156,25 +150,30 @@ $payLoad=[
             <td colspan="2 " class="p-2 fs-4"> <?= $data['payment_mode']?></td>
             <td colspan="2 " class="p-2 fs-4"><?= $data['expense_trans_id']?></td>
         </tr>
+        <tr>
+            <td colspan="7" align="center">
+                <span><b>In Words : </b><i><?= func::convert_number($data['expense_amount'])?></i></span>
+            </td>
+        </tr>
     </table>
     <table class="table table-bordered table-sm border border-dark border-1">
         <tr class="text-center h5 text-uppercase">
-            <th colspan="2" class="p-3 text-center text-uppercase">Passed by:</th>
-            <th colspan="2" class="p-3 text-center text-uppercase">Authorized Sign:</th>
-            <th colspan="2" class="p-3 text-center text-uppercase"> Payee Sign :</th>
-            <th colspan="2" class="p-3 text-center text-uppercase"> QR</th>
+            <th colspan="2" class="p-1 text-center text-uppercase">Passed by:</th>
+            <th colspan="2" class="p-1 text-center text-uppercase">Authorized Sign:</th>
+            <th colspan="2" class="p-1 text-center text-uppercase"> Payee Sign :</th>
         </tr>
         <tr style="width: 100%; ">
-            <th colspan="2 " class="m-1 p-3 text-center h5"><span class="mt-4"><br><br><?= $data['expense_added_by']?></span></th>
-            <th colspan="2 " class="m-1 p-3 text-center"><span class="text-muted mt-4 mb-0 pt-5 pb-0"></span>
+            <th colspan="2 " class="m-1 p-2 text-center h5"><span class="mt-4"><?= $data['expense_added_by']?></span></th>
+            <th colspan="2 " class="m-1 p-2 text-center"><span class="text-muted mt-4 mb-0 pt-5 pb-0"></span>
             </th>
-            <th colspan="2 " class="m-1 p-3 text-center"> </th>
-            <th colspan="2 " class=" text-center"> <img class="m-3" src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?=  json_encode($payLoad); ?>' id="QR" height="110" class="img-fluid" width="110" alt="logo"> </th>
+            <th colspan="2 " class="m-1 p-1 text-center"> </th>
         </tr>
     </table>
-    <p class="text-center text-dark font-weight-bolder">Software Designed & Developed by RoborosX Multi Tech Solutions
+    <p class="text-center text-dark font-weight-bolder">Software Designed & Developed by RoborosX Omni Tech Solutions
         LLP</p>
    </div>
+   <br>
+   
 
 </body>
 

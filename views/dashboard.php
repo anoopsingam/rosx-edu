@@ -2,180 +2,215 @@
 require_once 'header.php';
 $app->setTitle("Home");
 $app->setTitle("Dashboard");
+includes::insertJS('plugins/chartjs.min.js');
 ?>
-<div class="row">
-  <div class="col-12">
-    <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
-      <canvas width="700" height="600" class="w-lg-100 h-lg-100 w-75 h-75 me-lg-0 me-n10 mt-lg-5"></canvas>
+<div class="row mt-4">
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-danger shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">man_3</i>
+        </div>
+        <div class="text-center pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Total Boys</h5>
+          <h3 class="mb-0 text-gradient text-dark"><?= func::getStudentCountGender('BOY'); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">Restaurant</span></p> -->
+      </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-7 position-relative z-index-2">
-    <div class="card card-plain mb-4">
-      <div class="card-body p-3">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="d-flex flex-column h-100">
-                <?= $app->SetLogo('180','180')?>
-              <h4 class="font-weight-bolder text-gradient text-dark mb-0"><?= $app->name(); ?></h4>
-              <small class="text-muted"><?= $app->address(); ?></small>
-                <small class="text-muted"><?= $app->phone(); ?>  <?= $app->email(); ?></small>
-                
-            </div>
-          </div>
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">woman</i>
         </div>
+        <div class="text-center pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Total Girls</h5>
+          <h3 class="mb-0 text-gradient text-dark"><?= func::getStudentCountGender('GIRL'); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">Restaurant</span></p> -->
       </div>
     </div>
-    
-    <div class="row">
-      <div class="col-lg-5 col-sm-6">
-        <div class="card  mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <h5 class=" mb-0 text-capitalize font-weight-bolder text-gradient text-warning">Total Students</h5>
-                  <h3 class="font-weight-bolder mb-0 text-gradient text-info">
-                    <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
-                    <?= func::getTotalStudents(); ?>
-                  </h3>
-                </div>
-              </div>
-              <!-- <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                  <i class="ni ni-single-2 text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-              </div> -->
-            </div>
-          </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">person</i>
         </div>
-        <div class="card ">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <h5 class=" mb-0 text-capitalize font-weight-bolder text-gradient text-primary"> Total Boys  </h5>
-                  <h3 class="font-weight-bolder mb-0 text-gradient text-info">
-                  <?= func::getStudentCountGender('BOY'); ?>
-                    <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
-                  </h3>
-                </div>
-              </div>
-              <!-- <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                  <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-              </div> -->
-            </div>
-          </div>
+        <div class="text-center pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Total Students</h5>
+          <h3 class="mb-0 text-gradient text-dark"><?= func::getTotalStudents(); ?></h3>
         </div>
       </div>
-      <div class="col-lg-5 col-sm-6 mt-sm-0 mt-4">
-        <div class="card  mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <h5 class=" mb-0 text-capitalize font-weight-bolder text-gradient text-danger">Total Girls</h5>
-                  <h3 class="font-weight-bolder mb-0 text-gradient text-info">
-                  <?= func::getStudentCountGender('GIRL'); ?>
-
-                    <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
-                  </h3>
-                </div>
-              </div>
-              <!--<div class="col-4 text-end">-->
-              <!--  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">-->
-              <!--    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>-->
-              <!--  </div>-->
-              <!--</div>-->
-            </div>
-          </div>
-        </div>
-        <div class="card ">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class=" text-sm mb-0 text-capitalize font-weight-bolder text-gradient text-primary">Total Absent [<?= date('d-m-Y') ?>]</p>
-                  <h3 class="font-weight-bolder mb-0 text-gradient text-info">
-                  <?= func::getTotalAbsentToday(); ?>
-                    <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
-                  </h3>
-                </div>
-              </div>
-              <!--<div class="col-4 text-end">-->
-              <!--  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">-->
-              <!--    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>-->
-              <!--  </div>-->
-              <!--</div>-->
-            </div>
-          </div>
-        </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">Restaurant</span></p> -->
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-12 col-lg-10">
-        <div class="card ">
-          <div class="card-header pb-0 p-3 bg-gradient-dark text-light">
-            <div class="d-flex justify-content-between ">
-              <h4 class="mb-2 text-gradient text-info text-center h3">Fee Structure</h4>
-            </div>
-          </div>
-          <div class="table-responsive " style="height:200px;overflow: scroll;">
-            <table class="table  align-items-center p">
-              <thead>
-                <tr class="bg-gradient-dark text-light font-weight-bolder">
-                  <td>Sl No.</td>
-                  <td>Class</td>
-                  <td>Fee ₹</td>
-                  <td>Academic Year</td>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $i = 1;
-                $db = new database();
-                $conn = $db->conn;
-                $sql = "SELECT * FROM fee_structure order by class asc";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                  <tr>
-                    <td class="font-weight-bolder"><?php echo $i++; ?></td>
-                    <td class="font-weight-bolder"><?php echo $row['class']; ?></td>
-                    <td class="font-weight-bolder"><?php echo $row['tution_fee']; ?></td>
-                    <td class="font-weight-bolder"><?php echo $row['academic_year']; ?></td>
-                  </tr>
-                <?php
-                }
-                ?>
-              </tbody>
-            </table>
-          </div>
+  </div>
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">edit_note</i>
         </div>
+        <div class="text-center pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Total Absent</h5>
+          <h3 class="mb-0 text-gradient text-dark"><?= func::getTotalAbsentToday(); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> </span></p> -->
       </div>
     </div>
   </div>
 </div>
-<!-- <div class="row">
-  <div class="col-12">
-    <div class="card m-2 p-3">
-      <div class="card-header text-left">
-        <h4 class="card-title">Notice : </h4>
+<div class="row mt-5">
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-danger shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">currency_rupee</i>
+        </div>
+        <div class="text-end pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Fee Collected Today</h5>
+          <h3 class="mb-0 text-center text-gradient text-dark">₹<?= (empty(func::getTodaysFeeCollection('tuition'))) ? '0' : func::getTodaysFeeCollection('tuition'); ?></h3>
+        </div>
       </div>
-      <div class="card-body text-danger ">
-        <ul>
-          <li>Phase-2 ERP has been Updated Phase 3 will be updated by 25/02/2022</li>
-        </ul>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">Tuition</span></p>
       </div>
     </div>
   </div>
-</div> -->
-  
-            <?php 
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">directions_bus</i>
+        </div>
+        <div class="text-end pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Fee Collected Today</h5>
+          <h3 class="mb-0 text-center text-gradient text-dark">₹<?= (empty(func::getTodaysFeeCollection('transport'))) ? '0' : func::getTodaysFeeCollection('transport'); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">Transport</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">library_books</i>
+        </div>
+        <div class="text-end pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Fee Collected Today</h5>
+          <h3 class="mb-0 text-center text-gradient text-dark">₹<?= (empty(func::getTodaysFeeCollection('ubs'))) ? '0' : func::getTodaysFeeCollection('ubs'); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">UBS</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">summarize</i>
+        </div>
+        <div class="text-end pt-1">
+          <h5 class="text-sm mb-0 text-capitalize">Total Fee Collected </h5>
+          <h3 class="mb-0 text-gradient text-center text-dark">₹<?= func::getTodaysFeeCollection('tuition') + func::getTodaysFeeCollection('ubs') + func::getTodaysFeeCollection('transport'); ?></h3>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> Total </span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="h5 text-gradient text-primary mb-0">Search Student</h3>
+        <h6>(Student Id/Name/ Father/Mother Mobile No) </h6>
+      </div>
+      <div class="card-body">
+        <form action="" method="post">
+          <div class="row">
+            <div class="col-sm">
+              <input type="text" name="string" class="form-control" placeholder="Enter Details..." id="">
+            </div>
+            <div class="col-sm">
+              <button type="submit" name="fetch_data" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </form>
+        <div style="overflow:scroll;height: 500px;">
+          <?php
+          if (isset($_POST['fetch_data'])) {
+            func::searchStudent($_POST['string']);
+          }
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="h5 text-gradient text-danger mb-0">Students Data</h3>
+        <h6>(Class Wise) </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-sm table-responsive text-center">
+            <thead class="bg-gradient-dark text-info">
+              <th>Class </th>
+              <th>Boys</th>
+              <th>Girls</th>
+              <th>Total</th>
+              <th>Present</th>
+              <th>Absent</th>
+            </thead>
+            <tbody>
+              <?php
+              $arraClass = ['LKG', 'UKG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+              foreach ($arraClass as $classes) {
+                echo '<tr>';
+                echo '<td><h5>' . $classes . '</h5></td>';
+                echo '<td>' . func::getTotalStudentsByGenderClass($classes, 'BOY') . '</td>';
+                echo '<td>' . func::getTotalStudentsByGenderClass($classes, 'GIRL') . '</td>';
+                echo '<td>' . func::getStudentCount($classes, '2023') . '</td>'; ?>
+                <td><?= (!empty(func::TodaysAttendance($classes, "PRESENT"))) ? func::TodaysAttendance($classes, "PRESENT") : "0"; ?></td>
+                <td><?= (!empty(func::TodaysAttendance($classes, "ABSENT"))) ? func::TodaysAttendance($classes, "ABSENT") : "0"; ?></td>
+              <?= '</tr>';
+              } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php
 require_once 'footer.php';
 ?>
-<script src="<?=url::myurl()?>/assets/js/index.js"></script>
+<script src="<?= url::myurl() ?>/assets/js/index.js"></script>

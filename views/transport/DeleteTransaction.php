@@ -34,9 +34,9 @@ if(isset($_POST['del_init'])){
     $transport_trans_id=$_POST['transport_trans_id'];
     $ay=$_POST['ay'];
     if(!empty($transport_trans_id) && !empty($ay)){
-       $updateSql=mysqli_query($db->conn,"SELECT* FROM `transport_transaction`, `transport_account` 
-           LEFT JOIN `student_enrollment` ON `transport_account`.`acc_student_id` = `student_enrollment`.`studentid`
-        WHERE `transport_transaction`.`trans_gen_id` = '$transport_trans_id' AND `transport_account`.`acc_academic_year`='$ay' ");
+       $updateSql=mysqli_query($db->conn,"SELECT * FROM transport_transaction tr, transport_account ac, transport_enroll en, transport_stages st 
+            WHERE en.enroll_student_id=tr.trans_student_id AND ac.acc_student_id=tr.trans_student_id AND ac.acc_academic_year=en.enroll_academic_year 
+            AND st.route_stage_id=en.enroll_stage_id AND tr.trans_gen_id='$transport_trans_id' ");
        if(mysqli_num_rows($updateSql)>0){
                 $row=mysqli_fetch_object($updateSql);
                 // print_r($row);

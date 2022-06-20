@@ -13,6 +13,50 @@ class func
     }
 
     /**
+     * Function to display all the test 
+     * @return html select 
+     */
+    static function getTestList(string $test_name = 'test_name', array $arrgs = [])
+    {
+        echo "<select name='$test_name' class='form-control'>";
+        if (!empty($arrgs)) {
+            foreach ($arrgs as $key => $value) {
+                echo "<option value='$key'>$value</option>";
+            }
+        }
+        echo '<option value="">Select Test</option>
+            <option value="FA-1">FA-1</option>
+            <option value="FA-2">FA-2</option>
+            <option value="FA-3">FA-3</option>
+            <option value="FA-4">FA-4</option>
+            <option value="SA-1">SA-1</option>
+            <option value="SA-2">SA-2</option>';
+        echo "</select>";
+    }
+
+    /**
+     * Function for Admission Type
+     * @return html select
+     */
+
+    static function getAdmissionType(string $admission_type = 'admission_type', array $arrgs = [])
+    {
+        echo "<select name='admission_type' class='form-control'>";
+        if (!empty($arrgs)) {
+            foreach ($arrgs as $key => $value) {
+                echo "<option value='$key'>$value</option>";
+            }
+        }
+        echo '<option value="">Select Admission Type</option>
+            <option value="PAID">PAID</option>
+            <option value="FREE">FREE/SPONSORED</option>
+            <option value="STAFF">STAFF</option>
+            <option value="RTE">RTE</option>';
+        echo "</select>";
+    }
+
+
+    /**
      * Function to fetch Class list
      * @param string form:name 
      * @param array class_list
@@ -578,11 +622,9 @@ class func
         if (empty($transaction_id)) {
             return $transaction_details = null;
         } else {
-          $sql = "SELECT `transport_transaction`.*, `transport_account`.*, `transport_enroll`.*, `transport_stages`.*
-          FROM `transport_transaction`, `transport_account` 
-              LEFT JOIN `transport_enroll` ON `transport_account`.`acc_enroll_id` = `transport_enroll`.`enroll_id` 
-              LEFT JOIN `transport_stages` ON `transport_enroll`.`enroll_stage_id` = `transport_stages`.`route_stage_id`
-              WHERE `transport_transaction`.`trans_gen_id` ='$transaction_id' ";
+            $sql = "SELECT * FROM transport_transaction tr, transport_account ac, transport_enroll en, transport_stages st ,transport_routes rt
+            WHERE en.enroll_student_id=tr.trans_student_id AND ac.acc_student_id=tr.trans_student_id AND ac.acc_academic_year=en.enroll_academic_year 
+            AND st.route_stage_id=en.enroll_stage_id AND st.stage_route_id=rt.route_id  AND tr.trans_gen_id='$transaction_id' ";
             $result = mysqli_query($conn, $sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -685,5 +727,232 @@ class func
             }
         }
         echo "</select>";
+    }
+
+
+    public static function convert_number($number)
+    {
+        $decimal = round($number - ($no = floor($number)), 2) * 100;
+        $hundred = null;
+        $digits_length = strlen($no);
+        $i = 0;
+        $str = array();
+        $words = array(
+            0 => '', 1 => 'One', 2 => 'Two',
+            3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six',
+            7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
+            10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve',
+            13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
+            16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen',
+            19 => 'Nineteen', 20 => 'Twenty', 30 => 'Thirty',
+            40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
+            70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety'
+        );
+        $digits = array('', 'Hundred', 'Thousand', 'Lakh', 'Crore');
+        while ($i < $digits_length) {
+            $divider = ($i == 2) ? 10 : 100;
+            $number = floor($no % $divider);
+            $no = floor($no / $divider);
+            $i += $divider == 10 ? 1 : 2;
+            if ($number) {
+                $plural = (($counter = count($str)) && $number > 9) ? null : null;
+                $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
+                $str[] = ($number < 21) ? $words[$number] . ' ' . $digits[$counter] . $plural . ' ' . $hundred : $words[floor($number / 10) * 10] . ' ' . $words[$number % 10] . ' ' . $digits[$counter] . $plural . ' ' . $hundred;
+            } else $str[] = null;
+        }
+        $Rupees = implode('', array_reverse($str));
+        $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
+        return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise;
+    }
+
+
+
+    public static function getAllClasses(string $name = 'test_class')
+    {
+        $db = new database();
+        $conn = $db->conn;
+        $result = mysqli_query($conn, "SELECT * FROM `academic_subjects_info` ORDER BY `acd_class` ASC ");
+        echo ' <select  id="class_id" name="' . $name . '"  class="form-control" >
+        <option value="">Select Class</option>';
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['acd_id'] . "'>" . $row['acd_class'] . "</option>\n";
+            }
+        }
+        echo "</select>";
+    }
+
+
+    public function getAcdDetails($id)
+    {
+        $db = new database();
+        $conn = $db->conn;
+        if (!empty($id)) {
+            $result = mysqli_query($conn, "SELECT * FROM `academic_subjects_info` WHERE `acd_id`='$id' ");
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static function getMarksEntryDetails(string $student_id = '', string $test, string $academic_year = '')
+    {
+        $db = new database();
+        $conn = $db->conn;
+        if (!empty($student_id) && !empty($test) && !empty($academic_year)) {
+            $result = mysqli_query($conn, "SELECT * FROM `academics_marks` WHERE `res_student_id`='$student_id' AND `res_test`='$test' AND `res_ay`='$academic_year' ");
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
+    public static function getSubjects(string $class)
+    {
+        $db = new database();
+        $conn = $db->conn;
+        if (!empty($class)) {
+            $result = mysqli_query($conn, "SELECT * FROM `academic_subjects_info` WHERE `acd_class`='$class' ");
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
+    public static function TodaysAttendance(string $class, string $attendace)
+    {
+        $db = new database();
+        $result = mysqli_query($db->conn, "SELECT COUNT(reg_no) as total FROM `student_attendance` WHERE attendance_date='" . date('Y-m-d') . "' AND student_class='$class' AND attendance='$attendace'");
+        if ($result->num_rows > 0) {
+            $data = '';
+            while ($row = $result->fetch_assoc()) {
+                $data = $row['total'];
+            }
+            return $data;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public static function getTodaysFeeCollection(string $type = '')
+    {
+        $db = new database();
+        $sql = '';
+        switch ($type) {
+            case 'tuition':
+                $sql = "SELECT SUM(paid_amount) AS fee_collected FROM fee_transactions WHERE billing_date=CURDATE()";
+                break;
+            case 'transport':
+                $sql = "SELECT SUM(trans_paid_amount) AS fee_collected FROM transport_transaction WHERE trans_date=CURDATE()";
+                break;
+            case 'ubs':
+                $sql = "SELECT SUM(total_amount) AS fee_collected FROM general_invoice WHERE invoice_date=CURDATE()";
+                break;
+            default:
+                $sql = "SELECT SUM(paid_amount) AS fee_collected FROM fee_transactions WHERE billing_date=CURDATE()";
+                break;
+        }
+        $result = mysqli_query($db->conn, $sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['fee_collected'];
+        } else {
+            return 0;
+        }
+    }
+
+    public static function getTotalStudentsByGenderClass(string $class, string $gender)
+    {
+        $db = new database();
+        if (!empty($class) && !empty($gender)) {
+            $exec_query = mysqli_query($db->conn, "SELECT COUNT(studentid) as total FROM student_enrollment WHERE gender='$gender' AND present_class='$class' AND status='APPROVED' ");
+            if ($exec_query->num_rows > 0) {
+                $row = $exec_query->fetch_assoc();
+                return $row['total'];
+            } else {
+                return 0;
+            }
+        }
+    }
+
+
+    public static function searchStudent(string $str)
+    {
+        $db = new database();
+        $sql = "SELECT * FROM student_enrollment WHERE CONCAT(studentid,student_name,father_number,enrollment_no,app_no) LIKE '%$str%' ";
+        $result = mysqli_query($db->conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+?>
+                <div class="card m-3 bg-gradient-dark text-light">
+                    <div class="card-header bg-gradient-dark ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <b class="card-title"><?php echo $row['student_name']; ?></b>
+                            </div>
+                            <div class="col-md-6">
+                                <b class="card-title"><?php echo $row['studentid']; ?></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-light ">
+                        <div class="row">
+                            <div class="col-sm">
+                                <b>Father name : </b> <?php echo $row['father_name']; ?>
+                            </div>
+                            <div class="col-sm">
+                                <b>Mother name : </b> <?php echo $row['mother_name']; ?>
+                            </div>
+                            <div class="col-sm">
+                                <b>Guardian Name : </b> <?php echo $row['guardian_name']; ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <b>Father number : </b> <?php echo $row['father_number']; ?>
+                            </div>
+                            <div class="col-sm">
+                                <b>Mother number : </b> <?php echo $row['mother_number']; ?>
+                            </div>
+                            <div class="col-sm">
+                                <b> Present Class -Section : </b> <?php echo $row['present_class'] . '-' . $row['present_section']; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="row">
+                            <div class="col-sm">
+                                <a onclick="window.open('<?= func::href('/Admission/View/' . encrypt($row['enrollment_no'])); ?>','popup','width=1000,height=1000');" class="btn bg-gradient-success btn-md">View <i class="fa fa-eye" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-sm">
+                                <a onclick="window.open('<?= func::href('/Admission/Edit/' . encrypt($row['enrollment_no'])); ?>','popup','width=1000,height=1000');" class="btn bg-gradient-warning btn-md">Edit <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<?php
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Particular not found']);
+        }
     }
 }

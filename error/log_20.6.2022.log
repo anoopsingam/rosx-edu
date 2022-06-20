@@ -1,0 +1,6 @@
+Ip Address : 127.0.0.1 - June 20, 2022, 11:18 pm
+Error Message : Unknown column 'admission_type' in 'field list'
+file path: C:\laragon\www\Rosx\model\admission\QuickAdmissionController.php
+User Meassage: Cant able to Process the request for Adding the Student , Student Name : ANOOP 
+User ID: admin
+-------------------------

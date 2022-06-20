@@ -225,7 +225,7 @@ footer {
                         <?= $app->address();?></p>
                 </small>
                 <p>
-                    Software Designed & Developed by <b>RoborosX Multi Tech Solutions LLP</b>
+                    Software Designed & Developed by <b>RoborosX Omni Tech Solutions LLP</b>
                 </p>
             </div>
         </div>
@@ -383,7 +383,7 @@ footer {
                         <?= $app->address();?></p>
                 </small>
                 <p>
-                    Software Designed & Developed by <b>RoborosX Multi Tech Solutions LLP</b>
+                    Software Designed & Developed by <b>RoborosX Omni Tech Solutions LLP</b>
                 </p>
             </div>
         </div>

@@ -24,6 +24,10 @@ $app->setTitle('Manage Admission Data');
                     <?= func::classlist('class_name'); ?>
                 </div>
                 <div class="col-sm">
+                    <label for="">Admission Type : </label>
+                    <?= func::getAdmissionType(); ?>
+                </div>
+                <div class="col-sm">
                     <label for="">Status : </label>
                             <select name="status" class="form-control m-1" id="">
                                 <option value="">Select Status</option>
@@ -71,6 +75,9 @@ $app->setTitle('Manage Admission Data');
             if (!empty($_POST['user_id'])) {
                 $sql .= " AND `login_id`='".$_POST['user_id']."'";
             }
+            if (!empty($_POST['admission_type'])) {
+                $sql .= " AND `admission_type`='".$_POST['admission_type']."'";
+            }
              $sql .= " ORDER BY student_name ASC";
         } else {
             $sql = 'SELECT * FROM `student_enrollment`';
@@ -79,7 +86,7 @@ $app->setTitle('Manage Admission Data');
     ?>
 
 
-        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10,11,12', 'landscape'); ?>
+        <?= includes::Datatables('  Admission Data ', '0,1,2,3,4,5,6,7,8,9,10,11,12,13', 'landscape'); ?>
     <div style="overflow:scroll;">
                 <table id="example" class="display" style="width:100%">
             <thead>
@@ -87,6 +94,7 @@ $app->setTitle('Manage Admission Data');
                     <th>Application No.</th>
                     <th>Enrollment ID</th>
                     <th>Admission No</th>
+                    <th>TYPE</th>
                     <th>Student Id</th>
                     <th>Student Name</th>
                     <th>D.O.B</th>
@@ -107,6 +115,7 @@ $app->setTitle('Manage Admission Data');
                 echo'<td>'.$data->app_no.'</td>';
                 echo'<td>'.$data->enrollment_no.'</td>';
                  echo'<td>'.$data->admission_no.'</td>';
+                echo'<td>'.$data->admission_type.'</td>';
                 echo'<td>'.$data->studentid.'</td>';
                 echo'<td>'.$data->student_name.'</td>';
                 echo'<td>'.$data->dob.'</td>';

@@ -243,7 +243,7 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
             <div class="card-footer text-center font-weight-bolder mt-3">
-                <h6>Software Designed & Developed by RoborosX Multi Tech Solutions LLP</h6>
+                <h6>Software Designed & Developed by RoborosX Omni Tech Solutions LLP</h6>
             </div>
         </div>
 

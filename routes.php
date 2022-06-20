@@ -10,7 +10,7 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Api.php";
 /*
 Dashboard Routes
 */
-get('/Dashboard', 'views/dashboard.php');
+any('/Dashboard', 'views/dashboard.php');
 /*
 Login Routes
 */
@@ -48,7 +48,10 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Transport.php";
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Users.php";
 
-
+/**
+ * Academic
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Academics.php";
 
 
 

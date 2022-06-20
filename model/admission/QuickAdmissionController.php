@@ -26,6 +26,7 @@
                         $academic_year=mysqli_real_escape_string($conn,$_POST['academic_year']);
                         $login_id=mysqli_real_escape_string($conn,$_POST['login_id']);
                         $dob=mysqli_real_escape_string($conn,$_POST['dob']);
+                        $admission_type=mysqli_real_escape_string($conn,$_POST['admission_type']);
                         $enrollment_no=func::getEnrollementNo();
                         $app_no=func::getApplicationNo();
                         $PushData=[
@@ -48,12 +49,13 @@
                             "enrollment_no"=>$enrollment_no,
                             "app_no"=>$app_no,
                             "token"=>$token,
-                            "status"=>"WAITING"
+                            "status"=>"WAITING",
+                            "admission_type"=>$admission_type
                         ];
                         // print_r($PushData);
                         try{
                             if($db->insert("student_enrollment",$PushData)){
-                                js::alert("$student_name Successfully Registered with Enrollment No: $enrollment_no");
+                                js::alert("$student_name Successfully Registered with Enrollment No: $enrollment_no in $academic_year with $admission_type Admission Type ");
                                 js::redirect("/Admission/QuickAdmission");
                             }else{
                                 error_loger($db->conn->error, __FILE__, "Cant able to Process the request for Adding the Student , Student Name : $student_name ",$login_id);

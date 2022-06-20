@@ -263,7 +263,7 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                             <label for="medium_c">Medium</label>
                             <select name="medium_c" class="form-control m-1" id="">
                                 <option value="<?= $data->medium_c;?>"><?= $data->medium_c;?></option>
-                                <option value="ENGLISH">ENGLISH</option>
+                                <option value="ENGLISH" selected>ENGLISH</option>
                                 <option value="KANNADA">KANNADA</option>
                                 <option value="HINDI">HINDI</option>
                                 <option value="URDU">URDU</option>
@@ -426,6 +426,10 @@ $app->setTitle("Edit Admission | {$data->student_name}");
                                 <option value="TC ISSUED">TC_ISSUED</option>
                             </select>
                         </div>
+                        <div class="col-md-4">
+                    <label for="">Admission Type : </label>
+                    <?= func::getAdmissionType('',[$data->admission_type=>$data->admission_type]); ?>
+                </div>
                     </div>
                 </div>
             </div>
