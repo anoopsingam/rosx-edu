@@ -18,6 +18,71 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
     $max6 = 0;
     $max7 = 0;
     $max_total = 0;
+
+    $max_class = ['LKG', 'UKG'];
+    if (in_array($student->present_class, $max_class)) {
+        $fa_max_marks_list = [
+            "sub1" => "25",
+            "sub2" => "25",
+            "sub3" => "25",
+            "sub4" => "25",
+            "sub5" => "25",
+            "sub6" => "25",
+            "sub7" => "25"
+        ];
+        $sa_max_marks_list = [
+            "sub1" => "50",
+            "sub2" => "50",
+            "sub3" => "50",
+            "sub4" => "50",
+            "sub5" => "50",
+            "sub6" => "50",
+            "sub7" => "50"
+        ];
+    } else {
+        $fa_max_marks_list = [
+            "sub1" => "15",
+            "sub2" => "15",
+            "sub3" => "15",
+            "sub4" => "15",
+            "sub5" => "15",
+            "sub6" => "15",
+            "sub7" => "15"
+        ];
+        $sa_max_marks_list = [
+            "sub1" => "20",
+            "sub2" => "20",
+            "sub3" => "20",
+            "sub4" => "20",
+            "sub5" => "20",
+            "sub6" => "20",
+            "sub7" => "20"
+        ];
+    }
+
+
+    $arr_2 = ['9', '10'];
+    if (in_array($student->present_class, $arr_2)) {
+        $fa_max_marks_list = [
+            "sub1" => "25",
+            "sub2" => "20",
+            "sub3" => "20",
+            "sub4" => "20",
+            "sub5" => "20",
+            "sub6" => "20",
+            "sub7" => "25"
+        ];
+        $sa_max_marks_list = [
+            "sub1" => "100",
+            "sub2" => "80",
+            "sub3" => "80",
+            "sub4" => "80",
+            "sub5" => "80",
+            "sub6" => "80",
+            "sub7" => "50"
+        ];
+    }
+
     if ($test == "FA-1" ||  $test == "FA-2" || $test == "FA-3" || $test == "FA-4") {
         $max1 = $sub['subject1_m_max'] . " (15)";
         $max2 = $sub['subject2_m_max'] . " (15)";
@@ -37,7 +102,7 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
         $max7 = $sub['subject7_e_max'];
         $max_total = $sub['subject1_e_max'] + $sub['subject2_e_max'] + $sub['subject3_e_max'] + $sub['subject4_e_max'] + $sub['subject5_e_max'] + $sub['subject6_e_max'] + $sub['subject7_e_max'];
     }
-
+    $arr = ['FA-1', 'FA-2', 'FA-3', 'FA-4'];
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -93,9 +158,9 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                 <div class="col-md-6">
                     <h3 class="display-5 font-weigth-bolder text-uppercase"><?= $app->name; ?> </h3>
                     <small class=""><?= $app->address; ?> </small>
-                    <h6 class=""><?= 'Contact No : ' . $app->phone . '   Email : ' . $app->email; ?> </h6>
+                    <h6 class=""><?= 'Contact No : ' . $app->phone . '<br>  Email : ' . $app->email; ?> </h6>
 
-                    <h4 class="m-3 text-uppercase">Marks Card</h4>
+                    <h4 class="m-3 text-uppercase"><?= $test; ?> Marks Card</h4>
                     <!--<h6 class="h6">Contact No:  E-Mail:</h6>-->
                 </div>
                 <div class="col-md-3">
@@ -104,7 +169,7 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                 </div>
             </div>
             <hr class="my-4">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center ">
                 <tr>
                     <td colspan="4" class="text-center">
                         <h6 class="m-2"> : Student Details : </h6>
@@ -112,20 +177,20 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                 </tr>
                 <tr class="text-center">
                     <td>
-                        <h5>Student Id : </h5> 
+                        <h5>Student Id : </h5>
                         <img src="/barcode/50/<?= $student->studentid; ?>/false" alt="" srcset=""><br>
-                        <?= $student->studentid; ?>
-                        
+                       <h5> <?= $student->studentid; ?></h5>
+
                     </td>
                     <td>
-                        <h5>Student Name : </h5> <?= $student->student_name; ?>
+                        <h5>Student Name : </h5> <b><?= $student->student_name; ?></b>
                     </td>
 
                     <td>
-                        <h5>Class : </h5> <?= $student->present_class; ?>-<?= $student->present_section; ?>
+                        <h5>Class : </h5> <b><?= $student->present_class; ?>-<?= $student->present_section; ?></b>
                     </td>
                     <td>
-                        <h5>Academic Year : </h5> <?= $ay; ?>
+                        <h5>Academic Year : </h5> <b><?= $ay; ?></b>
                     </td>
                 </tr>
                 <tr>
@@ -135,16 +200,16 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                 </tr>
                 <tr>
                     <td>
-                        <h5>Test/Exam : </h5> <?= $test; ?>
+                        <h5>Test/Exam : </h5> <h4><?= $test; ?></h4>
                     </td>
                     <td>
-                        <h5>Month : </h5> <?= $data["res_month"]; ?>
+                        <h5>Month : </h5> <h4><?= $data["res_month"]; ?></h4>
                     </td>
                     <td>
-                        <h5>Marks Entered by :</h5> <?= $data["res_login_id"]; ?>
+                        <h5>Marks Entered by :</h5> <h5><?= $data["res_login_id"]; ?></h5>
                     </td>
                     <td>
-                        <h5>Entered On: </h5> <?= $data["res_created_on"]; ?>
+                        <h5>Entered On: </h5> <b><?= $data["res_created_on"]; ?></b>
                     </td>
                 </tr>
             </table>
@@ -164,48 +229,24 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><?= $sub['acd_sub1'] ?></td>
-                        <td><?= $max1 ?></td>
-                        <td><?= $data["res_sub_1_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><?= $sub['acd_sub2'] ?></td>
-                        <td><?= $max2 ?></td>
-                        <td><?= $data["res_sub_2_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><?= $sub['acd_sub3'] ?></td>
-                        <td><?= $max3 ?></td>
-                        <td><?= $data["res_sub_3_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><?= $sub['acd_sub4'] ?></td>
-                        <td><?= $max4 ?></td>
-                        <td><?= $data["res_sub_4_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><?= $sub['acd_sub5'] ?></td>
-                        <td><?= $max5 ?></td>
-                        <td><?= $data["res_sub_5_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><?= $sub['acd_sub6'] ?></td>
-                        <td><?= $max6 ?></td>
-                        <td><?= $data["res_sub_6_marks"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><?= $sub['acd_sub7'] ?></td>
-                        <td><?= $max7 ?></td>
-                        <td><?= $data["res_sub_7_marks"]; ?></td>
-                    </tr>
+                    <?php
+                    for ($i = 1; $i < 8; $i++) {
+                    ?>
+                        <tr>
+                            <td><?= $i; ?></td>
+                            <td><b class="h5"><?= $sub['acd_sub' . $i] ?></b></td>
+                            <td><b class="h5"><?php
+                                                if (in_array($test, $arr)) {
+                                                    echo $fa_max_marks_list['sub' . $i];
+                                                } else {
+                                                    echo $sa_max_marks_list['sub' . $i];
+                                                }
+                                                ?></b></td>
+                            <td><b><?= $data['res_sub_' . $i . '_marks'] ?></b></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
                 <tfoot>
                     <tr>
@@ -252,12 +293,12 @@ if (!empty($student_id) && !empty($test_name) && !empty($ay)) {
                 <center>
                     <button class="btn btn-danger m-1" onclick="window.print()">Print <i class="fa fa-print" aria-hidden="true"></i></button>
                 </center>
-                <form action="/Academics/SubmitMarks/delete" method="post" onsubmit="return confirm('Are Sure to Delete the Record ???')" >
+                <form action="/Academics/SubmitMarks/delete" method="post" onsubmit="return confirm('Are Sure to Delete the Record ???')">
                     <?= set_csrf(); ?>
                     <input type="hidden" name="student_id" value="<?= $data['res_student_id'] ?>">
                     <input type="hidden" name="class" value="<?= $data['res_class'] ?>">
                     <input type="hidden" name="test" value="<?= $data['res_test'] ?>">
-                    <input type="hidden" name="academicYear" value="<?= $ay; ?>"> 
+                    <input type="hidden" name="academicYear" value="<?= $ay; ?>">
                     <button class="btn btn-danger m-1" type="submit">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
                 </form>
             </span>

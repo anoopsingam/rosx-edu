@@ -1,0 +1,18 @@
+Ip Address : 127.0.0.1 - June 25, 2022, 10:02 am
+Error Message : Unknown column 'no_type' in 'field list'
+file path: C:\laragon\www\Rosx\model\expense\ho.php
+User Meassage: Cant able to Process the request for Updating the Head of Account , H.O Name :  
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - June 25, 2022, 10:02 am
+Error Message : Unknown column 'sub_fee' in 'field list'
+file path: C:\laragon\www\Rosx\model\Notification\Controller.php
+User Meassage: Cant able to Process the request for Updating notification  : HOME WORK 
+User ID: admin
+-------------------------
+Ip Address : 127.0.0.1 - June 25, 2022, 10:03 am
+Error Message : Unknown column 'sub_fee' in 'field list'
+file path: C:\laragon\www\Rosx\model\Notification\Controller.php
+User Meassage: Cant able to Process the request for Updating notification  : HOME WORK 
+User ID: admin
+-------------------------

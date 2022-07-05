@@ -50,12 +50,26 @@ function route($route, $path_to_include){
   include_once("$ROOT/$path_to_include");
   exit();
 }
+/**
+ * It outputs text to the screen, but it also makes sure that the text is safe to display
+ * 
+ * @param text The text to be converted.
+ */
 function out($text){echo htmlspecialchars($text);}
+/**
+ * It generates a random string and stores it in the session.
+ */
 function set_csrf(){
   if( ! isset($_SESSION["csrf"]) ){ $_SESSION["csrf"] = bin2hex(random_bytes(50)); }
   echo '<input type="hidden" name="csrf" value="'.$_SESSION["csrf"].'">
         <input type="hidden" name="login_id" value="'.$_SESSION["username"].'">';
 }
+
+/**
+ * If the CSRF token in the session doesn't match the one in the POST data, then the request is invalid
+ * 
+ * @return The function is_csrf_valid() is returning a boolean value.
+ */
 function is_csrf_valid(){
   if( ! isset($_SESSION['csrf']) || ! isset($_POST['csrf'])){ return false; }
   if( $_SESSION['csrf'] != $_POST['csrf']){ return false; }

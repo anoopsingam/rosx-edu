@@ -15,7 +15,7 @@ Project Rosx:
     - Provide Manual Entry of Co-Subjects Data (post)
     - provide Manual Entry for Working Days (post)
     - Remove date Restriction in Admission Data (minor) @done
-    - Universal Student Search in Dashboard(App No, Enrollment no , Name , Father or Mother Mobile No.) (major) ui ////
+    - Universal Student Search in Dashboard(App No, Enrollment no , Name , Father or Mother Mobile No.) (major) ui //// @done
     - Add School Custom banner in Login (Auth Page Src:Auth@Controller ->Model); (Permission Required)
     - Employee management and Leave Summary (post)
     - Add Class & Section UBS Reports (done) @done

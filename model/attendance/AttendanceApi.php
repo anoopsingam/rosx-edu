@@ -13,12 +13,14 @@ for ($i = 0; $i < $_POST['number']; $i++) {
  
         if ($_POST['attend'][$i] == 'ABSENT') {
             $date = $_POST['date'][$i];
-            $name = $_POST['name'][$i];
+            $name = trim($_POST['name'][$i]);
+            //trim name by 8 characters
+            $name = substr($name, 0, 7);
             // MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=
             $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
             $numbers = $_POST['mobile_no'][$i];
             $sender = urlencode('STARKT');
-            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College/School $short_name. Regards Admin, STARKT");
+            $message = rawurlencode("Dear Parent, your ward $name is Absent today $date, Please Contact College $short_name. Regards Admin, STARKT");
             // Prepare data for POST request
             $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
             // Send the POST request with cURL

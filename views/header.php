@@ -279,10 +279,22 @@ $user = login::UserInfo($_SESSION['username']);
                         </a>
                         <div class="collapse " id="academics_dropdown">
                             <ul class="nav ms-4 ps-3">
+                            <li class="nav-item ">
+                                    <a class="nav-link " href="<?= func::href("/Notification/Manage") ?>">
+                                        <span class="sidenav-mini-icon"> M </span>
+                                        <span class="sidenav-normal"> Manage Notifications</span>
+                                    </a>
+                                </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " href="<?= func::href("/Academics/ManageSubjects") ?>">
                                         <span class="sidenav-mini-icon"> M </span>
                                         <span class="sidenav-normal"> Manage Subjects </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="<?= func::href("/Academics/StudentMarksAnalysis") ?>">
+                                        <span class="sidenav-mini-icon"> M </span>
+                                        <span class="sidenav-normal"> Progress Analysis</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
@@ -297,7 +309,12 @@ $user = login::UserInfo($_SESSION['username']);
                                         <span class="sidenav-normal"> Result Sheet</span>
                                     </a>
                                 </li>
-                                
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="<?= func::href("/Academics/ProgressPrint") ?>">
+                                        <span class="sidenav-mini-icon"> M </span>
+                                        <span class="sidenav-normal"> Progress Cards </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -357,6 +374,7 @@ $user = login::UserInfo($_SESSION['username']);
                                         <span class="sidenav-normal"> Manage Payee </span>
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item ">
                                     <a class="nav-link " href="<?= func::href("/Expense/Manage") ?>">
                                         <span class="sidenav-mini-icon"> M </span>

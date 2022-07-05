@@ -53,7 +53,10 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Users.php";
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Academics.php";
 
-
+/**
+ * Notification Routes
+ */
+require_once "{$_SERVER['DOCUMENT_ROOT']}/routes/Notifications.php";
 
 
 

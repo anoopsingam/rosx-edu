@@ -194,7 +194,9 @@ includes::insertJS('plugins/chartjs.min.js');
               $arraClass = ['LKG', 'UKG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
               foreach ($arraClass as $classes) {
                 echo '<tr>';
-                echo '<td><h5>' . $classes . '</h5></td>';
+                ?>
+                <td><h5> <a href="<?= func::href("/Admission/StudentsList/".encrypt($classes))?>" target="_blank"><?=  $classes ?></a></h5></td>
+                <?php
                 echo '<td>' . func::getTotalStudentsByGenderClass($classes, 'BOY') . '</td>';
                 echo '<td>' . func::getTotalStudentsByGenderClass($classes, 'GIRL') . '</td>';
                 echo '<td>' . func::getStudentCount($classes, '2023') . '</td>'; ?>

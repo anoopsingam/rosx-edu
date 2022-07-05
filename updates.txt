@@ -1,2 +1,4 @@
 // add two sql tables academics_subjects_info and academics_marks 
 ALTER TABLE `student_enrollment` ADD `admission_type` VARCHAR(250) NOT NULL DEFAULT 'PAID' AFTER `status`;
+
+ALTER TABLE `expense_details` ADD `cash_flow_type` VARCHAR(250) NOT NULL DEFAULT 'EXPENSE' AFTER `expense_token`;

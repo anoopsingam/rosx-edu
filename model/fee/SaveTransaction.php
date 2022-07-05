@@ -62,6 +62,22 @@ if (empty($token) && is_csrf_valid()) {
 
     $short_name = $app->short_name;
 
+
+    $sms_paid=0;
+    $sms_bal=0;
+    $sms_dis=0;
+
+
+
+$sms_paid=$admission_fee_paid;
+$sms_bal=$u_fee_bal;
+$sms_dis=$discount_amount;
+
+
+
+
+
+
     $sql_check_transaction = "SELECT * FROM fee_transactions WHERE tid='$tid'";
     $result_check_transaction = mysqli_query($conn, $sql_check_transaction);
     $count_check_transaction = mysqli_num_rows($result_check_transaction);
@@ -123,6 +139,9 @@ if (empty($token) && is_csrf_valid()) {
                 if ($db->insert('transport_transaction', $data)) {
                     $com = true;
                     if (mysqli_num_rows($acc_data) > 0) {
+
+                        $sms_paid=$sms_paid+$trans_paid_amount;
+                        $sms_dis=$sms_dis+$data['trans_discount'];
                         //update the paid Amount
                         if ($db->update('transport_account', $acc_data_feed, "acc_student_id='$trans_student_id' AND acc_academic_year='$academicyear'")) {
                             $com = true;
@@ -167,11 +186,11 @@ if (empty($token) && is_csrf_valid()) {
                         if (mail($email_id, $subject, $msg, $headers)) {
                             //   js::alert("Email Successfully Sent to $email_id");
                         }
-                        //   MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=
-                        $apiKey = urlencode('');
+                        //   
+                        $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
                         $numbers = $phone_no;
                         $sender = urlencode("RBRXTH");
-                        $message = rawurlencode("Dear Parent, school Fee Paid-$admission_fee_paid in $transaction_mode, balance-$u_fee_bal, disc:-$discount_amount date:$date $bill_no $short_name, RBRXTH");
+                        $message = rawurlencode("Dear Parent, school Fee Paid-$sms_paid in $transaction_mode, balance-$u_fee_bal, disc:-$sms_dis date:$date $bill_no $short_name, RBRXTH");
                         // Prepare data for POST request
                         $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
                         // Send the POST request with cURL
@@ -183,10 +202,10 @@ if (empty($token) && is_csrf_valid()) {
                         curl_close($ch);
                     } elseif (!empty($phone_no)) {
                         //   MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=
-                        $apiKey = urlencode('');
+                        $apiKey = urlencode('MDJmNGY3OWVmZDQyMmNlNWUwNmRmYmUyNGRkMWIyZWI=');
                         $numbers = $phone_no;
                         $sender = urlencode('RBRXTH');
-                        $message = rawurlencode("Dear Parent, school Fee Paid-$admission_fee_paid in $transaction_mode, balance-$u_fee_bal, disc:-$discount_amount date:$date $bill_no SSVN, RBRXTH");
+                        $message = rawurlencode("Dear Parent, school Fee Paid-$sms_paid in $transaction_mode, balance-$u_fee_bal, disc:-$sms_dis date:$date $bill_no $short_name, RBRXTH");
                         // Prepare data for POST request
                         $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
                         // Send the POST request with cURL

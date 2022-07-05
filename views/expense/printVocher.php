@@ -103,6 +103,7 @@ $payLoad=[
                     </td>
                     <td><?= $data['payee_desc']?></td>
                 </tr>
+               
             </table>
         </div>
         <div class="col-md-6">
@@ -127,6 +128,12 @@ $payLoad=[
                         <h6 class="font-weight-bolder">Voucher No : </h6>
                     </td>
                     <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="font-weight-bolder">Type </h6>
+                    </td>
+                    <td><?= $data['cash_flow_type']?></td>
                 </tr>
             </table>
         </div>

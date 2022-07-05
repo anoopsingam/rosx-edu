@@ -17,13 +17,13 @@ if (isset($action) && $action != null) {
                 $test_array = ['FA-1', 'FA-2', 'FA-3', 'FA-4'];
                 $conversion = 0;
                 if ($class == 'LKG' || $class == 'UKG'  || $class == '9' || $class == '10') {
-                    $subject1_marks = $_POST['subject1_marks'];
-                    $subject2_marks = $_POST['subject2_marks'];
-                    $subject3_marks = $_POST['subject3_marks'];
-                    $subject4_marks = $_POST['subject4_marks'];
-                    $subject5_marks = $_POST['subject5_marks'];
-                    $subject6_marks = $_POST['subject6_marks'];
-                    $subject7_marks = $_POST['subject7_marks'];
+                    $subject1_marks = (empty($_POST['subject1_marks'])) ? '0' : $_POST['subject1_marks'];
+                    $subject2_marks = (empty($_POST['subject2_marks'])) ? '0' : $_POST['subject2_marks'];
+                    $subject3_marks = (empty($_POST['subject3_marks'])) ? '0' : $_POST['subject3_marks'];
+                    $subject4_marks = (empty($_POST['subject4_marks'])) ? '0' : $_POST['subject4_marks'];
+                    $subject5_marks = (empty($_POST['subject5_marks'])) ? '0' : $_POST['subject5_marks'];
+                    $subject6_marks = (empty($_POST['subject6_marks'])) ? '0' : $_POST['subject6_marks'];
+                    $subject7_marks = (empty($_POST['subject7_marks'])) ? '0' : $_POST['subject7_marks'];
                     $max_marks = $_POST['max_marks'];
                 } else {
                     if (in_array($test, $test_array)) {
@@ -32,11 +32,19 @@ if (isset($action) && $action != null) {
                         $subject2_marks = round(($_POST['subject2_marks'] / $max_sub->max2) * $conversion);
                         $subject3_marks = round(($_POST['subject3_marks'] / $max_sub->max3) * $conversion);
                         $subject4_marks = round(($_POST['subject4_marks'] / $max_sub->max4) * $conversion);
-                        $subject5_marks = round(($_POST['subject5_marks'] / $max_sub->max5) * $conversion);
-                        $subject6_marks = round(($_POST['subject6_marks'] / $max_sub->max6) * $conversion);
-                        if(!empty($_POST['subject7_marks'])){
+                        if (!empty($_POST['subject5_marks'])) {
+                            $subject5_marks = round(($_POST['subject5_marks'] / $max_sub->max5) * $conversion);
+                        } else {
+                            $subject5_marks = '0';
+                        }
+                        if (!empty($_POST['subject6_marks'])) {
+                            $subject6_marks = round(($_POST['subject6_marks'] / $max_sub->max6) * $conversion);
+                        } else {
+                            $subject6_marks = '0';
+                        }
+                        if (!empty($_POST['subject7_marks'])) {
                             $subject7_marks = round(($_POST['subject7_marks'] / $max_sub->max7) * $conversion);
-                        }else{
+                        } else {
                             $subject7_marks = 0;
                         }
                     } else {
@@ -47,16 +55,26 @@ if (isset($action) && $action != null) {
                         $subject4_marks = round(($_POST['subject4_marks'] / $max_sub->max4) * $conversion);
                         $subject5_marks = round(($_POST['subject5_marks'] / $max_sub->max5) * $conversion);
                         $subject6_marks = round(($_POST['subject6_marks'] / $max_sub->max6) * $conversion);
-                        if(!empty($_POST['subject7_marks'])){
+                        if (!empty($_POST['subject5_marks'])) {
+                            $subject5_marks = round(($_POST['subject5_marks'] / $max_sub->max5) * $conversion);
+                        } else {
+                            $subject5_marks = '0';
+                        }
+                        if (!empty($_POST['subject6_marks'])) {
+                            $subject6_marks = round(($_POST['subject6_marks'] / $max_sub->max6) * $conversion);
+                        } else {
+                            $subject6_marks = '0';
+                        }
+                        if (!empty($_POST['subject7_marks'])) {
                             $subject7_marks = round(($_POST['subject7_marks'] / $max_sub->max7) * $conversion);
-                        }else{
+                        } else {
                             $subject7_marks = 0;
                         }
                     }
                     $max_marks = $conversion * 7;
                 }
                 // echo $conversion;
-             
+
                 $total_marks = $subject1_marks + $subject2_marks + $subject3_marks + $subject4_marks + $subject5_marks + $subject6_marks + $subject7_marks;
                 //calculate percentage
                 $percentage = ($total_marks / $max_marks) * 100;

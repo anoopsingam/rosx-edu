@@ -144,7 +144,7 @@ class func
             $row = $result->fetch_assoc();
             $stu_id = ++$row['stud'];
         } else {
-            $stu_id = "SNHS0001";
+            $stu_id = "MWAS0001";
         }
         return $stu_id;
     }
